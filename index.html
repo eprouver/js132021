@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./style.css" rel="stylesheet">
+  <title>Closer - Reduce the space</title>
+  <meta name="monetization" content="$ilp.uphold.com/njQnNZy68WNK">
+</head>
+
+<body>
+  <div id="menu">
+    <div>
+      <h1>Closer</h1>
+      <br /><br />
+      <div class="dec right">
+        <h2>&hellip; as in, more nearby</h2>
+        <br />
+        <p>Fill in the empty space.<br/>Reduce the space between us.<br/></p>
+      </div>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <div>
+      <h2>Language:</h2>
+      <div class="lang-h">
+        <div class="lang selected" id="en">
+          <div class="flag">🇺🇸</div>
+          <div class="flag">🇬🇧</div>
+          English
+        </div>
+        <div class="lang" id="fr">
+          <div class="flag">🇫🇷</div>
+          <div class="flag">🇭🇹</div>
+          Français
+        </div>
+        <div class="lang" id="es">
+          <div class="flag">🇪🇸</div>
+          <div class="flag">🇲🇽</div>
+          Español
+        </div>
+        <div class="lang" id="zh-CN">
+          <div class="flag">🇨🇳</div>
+          <div class="flag">🇸🇬</div>
+          中文
+        </div>
+        <div class="lang" id="tp">
+          <div class="flag">🇺🇳</div>
+          toki pona
+        </div>
+      </div>
+      <br/>
+      <h2><span>Sound:</span>
+        <label class="switch">
+          <input type="checkbox" checked onchange="sound = !sound">
+          <span class="slider round"></span>
+        </label>
+      </h2><br />
+      <h2><span>Night Mode:</span> <label class="switch">
+          <input type="checkbox" onchange="body.classList.toggle('night')">
+          <span class="slider round"></span>
+        </label>
+      </h2>
+
+    </div>
+
+    <div>
+      <button class="clue" onclick="makeGames();">👍</button>
+    </div>
+
+    <div class="dec">
+      <h3><span>proche</span><span>cerca</span><span>更近</span><span>poka</span></p>
+      </h3>
+    </div>
+  </div>
+
+
+  <div id='cont'>
+    <div id="wb">
+    </div>
+    <div id="matrix">
+    </div>
+    <div id="pause" onclick="pauseGame()">☰</div>
+  </div>
+
+  <script src="./js/first.js"></script>
+  <script src="./js/sound.js"></script>
+  <script src="./js/shared.js"></script>
+  <script src="./js/workbook.js"></script>
+  <script src="./js/matrix.js"></script>
+  <script src="./js/games.js"></script>
+</body>
+
+</html>
