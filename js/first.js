@@ -49,6 +49,8 @@ const makeGames = () => {
 };
 
 const startNewGame = () => {
+  workbook.setAttribute('data-flair', `${randSkinTone(randGender('🕵🏼‍♂️'))}`);
+  workbook.setAttribute('data-msg', `${options[options.lang].wellDone}`);
   clear();
   if (currentGame && games.length < 4) {
     // Add new random game

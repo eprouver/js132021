@@ -84,7 +84,6 @@ const lang = (e, play = true) => {
   }
 
   options.lang = e;
-  workbook.setAttribute('data-msg', options[options.lang].wellDone);
 
   switch (options.lang) {
     case 'tp':

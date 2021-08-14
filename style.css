@@ -1,7 +1,17 @@
+html,body {
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
 
@@ -20,6 +30,11 @@ body {
   background: #444;
 }
 
+.night .title {
+  -webkit-text-stroke: 3px #ccc;
+  background-color: #ccc;
+}
+
 #cont {
   display: flex;
   display: flex;
@@ -28,7 +43,7 @@ body {
 
 /* matrix */
 #matrix {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   min-height: 40vh;
@@ -46,12 +61,13 @@ body {
   padding-bottom: 10px;
   width: 100%;
   table-layout: fixed;
-  transition: width 1s ease;
+  transition: all 1s ease;
   margin: 0 auto;
 }
 
 .end #matrix table {
   width: 80%;
+  min-height: 49.55vh;
 }
 
 th {
@@ -142,6 +158,7 @@ span.incorrect:before {
   box-shadow: 0 0 0 17px red, 0 0 0 20px black;
   border-radius: 100%;
   overflow: hidden;
+  z-index: 10;
 }
 
 .draggable.dragging span {
@@ -156,13 +173,11 @@ span[data-option="0"] {
 span[data-option="1"] {
   background-color: #7FDBFF;
 }
-
 span[data-option="2"] {
-  background-color: #39CCCC;
-}
-
-span[data-option="3"] {
   background-color: #FF851B;
+}
+span[data-option="3"] {
+  background-color: #39CCCC;
 }
 
 span[data-option="4"] {
@@ -189,7 +204,7 @@ span[data-option="8"] {
 /* workbook */
 #wb {
   text-align: center;
-  font-size: 1.8em;
+  font-size: 2.75vw;
   height: 60vh;
   overflow: scroll;
   padding: 50px 0 40vh 0;
@@ -201,13 +216,23 @@ span[data-option="8"] {
 .end #wb {
   background: #444;
   transition: all 0.5s ease;
+  min-height: 50vh;
+}
+
+.end #wb:before , .end #wb:after {
+  color: white;
+  animation: fadeOn 1s 1 forwards;
+  display: block;
+}
+.end #wb:before {
+  content: attr(data-flair);
+  font-size: 5em;
+  line-height: 1em;
 }
 
 .end #wb:after {
   content: attr(data-msg);
-  font-size: 4em;
-  color: white;
-  animation: fadeOn 1s 1 forwards;
+  font-size: 3em;
 }
 
 .end #wb * {
@@ -316,11 +341,12 @@ button.clue {
 }
 
 /* wb end */
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1000px), (screen-spanning: single-fold-horizontal) {
   #wb {
     height: 100vh;
     padding-right: 50vw;
     border: none;
+    font-size: 1.5vw;
   }
 
   .mrow td.draggable {
@@ -336,17 +362,22 @@ button.clue {
     height: 100vh;
     padding-top: 12.5em;
     border-left: 1px solid #aaaa;
+    bottom: auto;
+    top: 0;
   }
 
   button.clue {
     min-width: 80%;
   }
 
+  .end #wb:before {
+    font-size: 6em;
+  }
   .end #wb:after {
-    height: 100vh;
-    left: 0;
-    width: 50vw;
-    line-height: 50vh;
+    font-size: 4em;
+  }
+  .end #wb:before {
+    margin-top: 30vh;
   }
 }
 
@@ -379,13 +410,29 @@ div#menu {
   transition: background-color 0.2s ease;
 }
 
-#menu h1 {
-  font-size: 15vmin;
-  animation: apart 10s ease-in-out infinite forwards;
-  color: #9670c7;
-  white-space: nowrap;
-  -webkit-text-stroke: 3px #6f45a5;
-  font-family: monospace;
+.title{
+  display:block;
+  margin:auto;
+  font-size:12vw;
+  line-height:1;
+  font-family: Georgia;
+  font-weight:bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(100,100,100,0.5);
+  background-image: url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>👨🏽‍🎨👨🏿‍💼👨🏻‍🔧👨🏾‍⚕️👨🏼‍🌾🧑🏻‍⚖️👨🏾‍🔬👨🏼‍🎤👨🏽‍🚀</text></svg>");
+  -webkit-text-stroke: 3px #444;
+  background-color: #444;
+  background-size: 125% 100%;
+  animation: bg 126s linear infinite alternate;
+  transform: scaleX(1.25);
+  background-position-y:25em;
+}
+
+
+@keyframes bg{
+  0%{background-position-x:12em;}
+  100%{background-position-x:0%;}
 }
 
 #menu h2 {
@@ -405,6 +452,10 @@ div#menu {
   font-size: 2vmin;
 }
 
+#menu .right h2 {
+  color: #e59e0e;
+}
+
 #menu .dec {
   color: #666;
 }
@@ -417,33 +468,31 @@ div#menu {
 
 @keyframes apart {
   0% {
-    letter-spacing: 0.6em;
-    transform: translateY(0.25em) rotate(-10deg) scale(2, 0.8);
+    letter-spacing: 3vw;
+    transform: scale(1.2, 0.8);
   }
 
-  40% {
+  38% {
     letter-spacing: 0;
     transform: scale(0.45, 1);
   }
 
   42% {
-    letter-spacing: 0;
-    transform: rotate(0deg) scale(1, 1);
+    transform: scale(1, 1);
   }
 
-  45% {
-    letter-spacing: 0;
-    transform: rotate(0deg) scale(1, 1);
+  55% {
+    transform: scale(1, 1);
   }
 
   80% {
     letter-spacing: 0;
-    transform: translateY(0) rotate(0deg) scale(1);
+    transform: scale(1);
   }
 
   100% {
-    letter-spacing: 0.6em;
-    transform: translateY(0.25em) rotate(-10deg) scale(2, 0.8);
+    letter-spacing: 3vw;
+    transform: scale(1.2, 0.8);
   }
 }
 
@@ -456,30 +505,25 @@ div#menu {
 
 .lang {
   position: relative;
-      height: 7.5em;
-      padding-top: 0.5em;
-      cursor: pointer;
-      padding: 0.7em 0em;
-      width: 9em;
-      font-size: 20px;
-      white-space: nowrap;
+  padding-top: 0.5em;
+  cursor: pointer;
+  padding: 0.7em 0em;
+  width: 9em;
+  font-size: 1.25em;
+  white-space: nowrap;
+  margin-top: 5px;
 }
 
 .lang.selected {
-  background: #9670c7;
+  background: #abf374;
   border-radius: 20px;
 }
 
-.flag {
-  position: absolute;
-  font-size: 6em;
-  pointer-events: none;
-  margin-left: 0.25em;
-}
-
-.flag:nth-child(2) {
-  clip-path: polygon(100% 100%, 0% 100%, 100% 0);
-  animation: 3s 3s ease-in-out alternate infinite fadeOn;
+.set {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
 }
 
 #pause {
@@ -513,8 +557,8 @@ div#menu {
   display: inline-block;
   width: 8em;
   height: 3.4em;
-  font-size: 0.45em;
-  top: 0.7em;
+  font-size: 0.4em;
+  top: -0.9em;
 }
 
 .switch input {
@@ -548,16 +592,16 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(2.8em);
+  transform: translateX(2.85em);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 3.4em;
+  border-radius: 10px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+  border-radius: 10px;
 }
 
 /* end sliders */
