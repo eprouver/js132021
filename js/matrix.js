@@ -8,16 +8,16 @@ const createMatrix = () => {
   // why does this make one object by reference
   // userBoard = Array(currentGame.slotNum).fill(new Object());
 
-  const table = document.createElement('table');
-  const col = document.createElement('col');
+  const table = ce('table');
+  const col = ce('col');
   col.setAttribute('span', 1);
   table.appendChild(col);
-  let labelRow = document.createElement('tr');
-  let spacer = document.createElement('td');
+  let labelRow = ce('tr');
+  let spacer = ce('td');
   labelRow.appendChild(spacer);
 
   currentGame.slotNames.forEach(col => {
-    const newCol = document.createElement('th');
+    const newCol = ce('th');
     newCol.classList.add('person');
     newCol.innerHTML = `<span>${col}</span>`;
     labelRow.appendChild(newCol)
@@ -40,18 +40,18 @@ const createMatrix = () => {
   };
 
   currentGame.categories.forEach((r, i) => {
-    labelRow = document.createElement('tr');
+    labelRow = ce('tr');
     labelRow.classList.add('mrow');
-    spacer = document.createElement('th');
+    spacer = ce('th');
     spacer.innerHTML = currentGame.categoryNames[i]
     labelRow.appendChild(spacer);
 
     const clickOptions = [options[options.lang].empty, ...r];
     currentGame.slotNames.forEach((col, slot) => {
-      const newCol = document.createElement('td');
+      const newCol = ce('td');
       newCol.classList.add('draggable');
 
-      const newSpan = document.createElement('span');
+      const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
       newSpan.innerText = clickOptions[0];
       userBoard[slot][currentGame.categoryNames[i]] = { data: options[options.lang].empty, span: newSpan };
@@ -64,17 +64,17 @@ const createMatrix = () => {
 
     table.appendChild(labelRow);
 
-    labelRow = document.createElement('tr');
+    labelRow = ce('tr');
     labelRow.classList.add('mrow');
   });
 
-  labelRow = document.createElement('tr');
+  labelRow = ce('tr');
   labelRow.classList.add('mrow');
-  const attempt = document.createElement('td');
+  const attempt = ce('td');
   attempt.innerHTML = `${options[options.lang].attempts}: <h2>0</h2>`;
   labelRow.appendChild(attempt);
 
-  const checker = document.createElement('button');
+  const checker = ce('button');
   checker.classList.add('clue');
   checker.onclick = () => {
     if (scoreMatrix()) {
@@ -100,7 +100,7 @@ const createMatrix = () => {
   };
   checker.innerText = '👍';
 
-  spacer = document.createElement('td');
+  spacer = ce('td');
   spacer.setAttribute('colspan', currentGame.slotNum);
   spacer.appendChild(checker);
   labelRow.appendChild(spacer);

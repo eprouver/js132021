@@ -114,7 +114,7 @@ const wordClues = clue => {
 const showClueArr = (arr, div) => {
   [...document.getElementsByClassName('loading')].forEach(c => c.classList.remove('loading'));
   arr.map(wordClues).forEach((clue, i) => {
-      const note = document.createElement('div');
+      const note = ce('div');
       note.classList.add('waiting')
       note.innerHTML = '<h1>✉️</h1>';
       workbook.appendChild(note);
@@ -130,9 +130,7 @@ const showClueArr = (arr, div) => {
 
   if (div) {
     timeout(() => {
-      const note = document.createElement('div');
-      note.classList.add('clue');
-      note.innerHTML = '<h3 class="loading">&nbsp;</h3>';
+      const note = nnote();
       workbook.appendChild(note);
     }, (arr.length + 1) * 1000);
   }
@@ -181,7 +179,7 @@ const scoreMatrix = () => {
 }
 
 const extraClueButton = () => {
-  const checker = document.createElement('button');
+  const checker = ce('button');
   checker.classList.add('clue');
   checker.onclick = () => {
     sfx([3,,22,,.14,.08,1,2.8,4,-0.7,-300,,,1.9,,.5,.01,.75,.01]);
@@ -190,17 +188,24 @@ const extraClueButton = () => {
   };
   checker.innerText = '📩';
   for (let i = 0; i < 3; i++) {
-    const spacer = document.createElement('br');
+    const spacer = ce('br');
     workbook.appendChild(spacer);
   }
   workbook.appendChild(checker);
+}
+
+const nnote = () =>  {
+  const n = ce('div');
+  n.classList.add('clue');
+  n.innerHTML = '<h3 class="loading">&nbsp;</h3>';
+  return n;
 }
 
 let clueTime, levelTime;
 const setupWorkbook = () => {
   clueTime = (sound ? 6000 : 800);
   levelTime = (sound ? 2000 : 7000);
-  const tutorial = currentGame.slotNum === 1 ? 6000 : 0;
+  const tutorial = currentGame.slotNum === 1 ? 7000 : 0;
 
   let clues = 0;
   currentGame.levels.forEach((level, i, arr) => {
@@ -210,9 +215,7 @@ const setupWorkbook = () => {
 
       // if it's the last level still show the ellipse
       if (currentGame.level === arr.length - 1) {
-        const note = document.createElement('div');
-        note.classList.add('clue');
-        note.innerHTML = '<h3 class="loading">&nbsp;</h3>';
+        const note = nnote();
         workbook.appendChild(note);
         timeout(() => {
           note.classList.add('clue');
@@ -229,10 +232,11 @@ const setupWorkbook = () => {
   });
 
   if (tutorial > 0) {
-    const note = document.createElement('div');
+    const note = ce('div');
     note.innerHTML = `<div class="tutorial">${options[options.lang].tutorial}</div>`;
     say(options[options.lang].tutorial);
     workbook.appendChild(note);
+    workbook.appendChild(nnote());
   }
 };
 

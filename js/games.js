@@ -143,7 +143,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
 
   const addConstraint = (type = null, depth, callback) => {
     if (depth > 100) {
-      const note = document.createElement('div');
+      const note = ce('div');
       note.classList.add('clue');
       note.innerHTML = `<h3>${options[options.lang].noMore}</h3>`;
       sfx([4, , 25, .01, .19, .61, 1, 2.68, .7, .5, , , .12, .9, , .4, .48, .52, .04, .33]);

@@ -21,9 +21,18 @@ body {
   font-family: Georgia, sans-serif;
 }
 
-.night #menu, .night #matrix, .night #wb {
+#menu, #matrix, #wb, html, body {
+  background: white;
+  color: black;
+}
+
+.night #menu, .night #matrix, .night #wb, html, body {
   background: #333;
   color: white;
+}
+
+.night #matrix {
+  background: #282828;
 }
 
 .night td.draggable {
@@ -77,22 +86,21 @@ th {
 }
 
 th.person {
-  font-size: 3.2em;
+  font-size: 7vw;
   animation: sib 0.5s ease both;
 }
 
 th.person.bigger span {
-  font-size: 3em;
-  bottom: -38px;
   transition: 0.1s ease all;
+  transform: scale(1.5);
+  transform-origin: 50% 1.1em;
 }
 
 th.person span {
   position: absolute;
   margin-left: -0.5em;
-  bottom: -25px;
+  bottom: -0.2em;
   font-size: 2em;
-  text-shadow: 0 0 4px black, 0 0 5px black;
 }
 
 col {
@@ -171,34 +179,30 @@ span[data-option="0"] {
 }
 
 span[data-option="1"] {
-  background-color: #7FDBFF;
+  background: #7FDBFF;
 }
 span[data-option="2"] {
-  background-color: #FF851B;
+  background: #ff9a43;
 }
 span[data-option="3"] {
-  background-color: #39CCCC;
+  background: #81da7b;
 }
-
 span[data-option="4"] {
-  background-color: #FFDC00;
+  background: #ffeb6c;
 }
-
 span[data-option="5"] {
-  background-color: #3D9970;
+  background: #ff95e8;
 }
-
 span[data-option="6"] {
-  background-color: #01FF70;
+  background: #0074D9;
 }
-
 span[data-option="7"] {
-  background-color: #F012BE;
+  background: #3D9970;
+}
+span[data-option="8"] {
+  background: #fb4e4e;
 }
 
-span[data-option="8"] {
-  background-color: #0074D9;
-}
 
 /* matrix end */
 /* workbook */
@@ -211,6 +215,7 @@ span[data-option="8"] {
   transition: background-color 0.25s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
+  background: white;
 }
 
 .end #wb {
@@ -245,9 +250,9 @@ span[data-option="8"] {
 }
 
 .tutorial {
-  background: #eddfff;
+  background: #7fdbff;
   padding: 1em;
-  color: #84709e;
+  color: #267b9c;
   max-width: 80%;
   margin: 0 auto;
   border-radius: 20px;
@@ -360,7 +365,7 @@ button.clue {
     border: none;
     box-shadow: none;
     height: 100vh;
-    padding-top: 12.5em;
+    padding-top: 15vw;
     border-left: 1px solid #aaaa;
     bottom: auto;
     top: 0;
@@ -378,6 +383,11 @@ button.clue {
   }
   .end #wb:before {
     margin-top: 30vh;
+  }
+
+  th.person {
+    font-size: 4vw;
+    animation: sib 0.5s ease both;
   }
 }
 
@@ -413,7 +423,7 @@ div#menu {
 .title{
   display:block;
   margin:auto;
-  font-size:12vw;
+  font-size:11vw;
   line-height:1;
   font-family: Georgia;
   font-weight:bold;
@@ -427,6 +437,10 @@ div#menu {
   animation: bg 126s linear infinite alternate;
   transform: scaleX(1.25);
   background-position-y:25em;
+}
+
+.title span {
+  font-size: 1em;
 }
 
 
@@ -448,7 +462,7 @@ div#menu {
 }
 
 .right {
-  margin: 0.1em 0em 0.1em 16em;
+  margin: 0.4em 0em 0.1em 20em;
   font-size: 2vmin;
 }
 
@@ -466,41 +480,12 @@ div#menu {
   font-size: 1.45em;
 }
 
-@keyframes apart {
-  0% {
-    letter-spacing: 3vw;
-    transform: scale(1.2, 0.8);
-  }
-
-  38% {
-    letter-spacing: 0;
-    transform: scale(0.45, 1);
-  }
-
-  42% {
-    transform: scale(1, 1);
-  }
-
-  55% {
-    transform: scale(1, 1);
-  }
-
-  80% {
-    letter-spacing: 0;
-    transform: scale(1);
-  }
-
-  100% {
-    letter-spacing: 3vw;
-    transform: scale(1.2, 0.8);
-  }
-}
-
 .lang-h {
   display: flex;
   justify-content: space-around;
-  max-width: 80vw;
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 0 50px;
 }
 
 .lang {
@@ -522,8 +507,9 @@ div#menu {
 .set {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 0 50px;
 }
 
 #pause {

@@ -1,5 +1,4 @@
 const menu = document.getElementById('menu');
-
 const pauseGame = () => {
   say('')
   pause = true;

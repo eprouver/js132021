@@ -13,6 +13,8 @@ const timeout = (func, time) => {
   timeouts.push(setTimeout(func, time));
 };
 
+const ce = s => document.createElement(s);
+
 const sounds = {
   win: [1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]
 }
@@ -53,7 +55,7 @@ const options = {
     solvable: 'Résolution Possible.',
     empty: 'espace',
     noMore: 'Indices terminés.',
-    tutorial: 'Tutoriel: Utilisez les indices et remplissez les espaces. Enfin appuyez sur 👍',
+    tutorial: 'Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍',
   },
   es: {
     attempts: 'Prueba #',
@@ -61,7 +63,7 @@ const options = {
     solvable: 'Resolución Posible.',
     empty: 'espacio',
     noMore: 'No más pistas.',
-    tutorial: 'Tutorial: Usa las pistas y completa la información. Finalmente toca 👍',
+    tutorial: 'Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍',
   },
   'zh-CN': {
     attempts: '猜测 ＃',
@@ -152,6 +154,10 @@ const findGender = new RegExp(gMod.join('|'), "g");
 const findGender2 = new RegExp(gMod2.join('|'), "g");
 const randSkinTone = (string) => string.replace(findSkin, sample(stMod));
 const randGender = (string) => string.replace(findGender, sample(gMod)).replace(findGender2, sample(gMod2));
+
+const det = randSkinTone(randGender('🕵🏼‍♂️'));
+document.getElementById('det').innerText = det;
+document.title = `${det} Blanks - Reduce the space`;
 
 let voice;
 const selectNewVoice = () => {
