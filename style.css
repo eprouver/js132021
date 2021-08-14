@@ -1,7 +1,4 @@
 html,body {
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  -webkit-overflow-scrolling: touch;
   overflow: hidden;
 }
 
@@ -64,7 +61,7 @@ body {
 }
 
 #matrix table {
-  font-size: 20px;
+  font-size: 2vmin;
   text-align: center;
   border-collapse: collapse;
   padding-bottom: 10px;
@@ -86,7 +83,7 @@ th {
 }
 
 th.person {
-  font-size: 7vw;
+  font-size: 7vmin;
   animation: sib 0.5s ease both;
 }
 
@@ -125,7 +122,7 @@ td.draggable {
 
 td.draggable span {
   display: inline-block;
-  border-radius: 20px;
+  border-radius: 0.3em;
   padding: 0 10px;
   font-size: 3em;
   color: #9c9c9c;
@@ -174,7 +171,7 @@ span.incorrect:before {
 }
 
 span[data-option="0"] {
-  font-size: 20px !important;
+  font-size: 2vmin !important;
   padding: 16.5px !important;
 }
 
@@ -208,7 +205,7 @@ span[data-option="8"] {
 /* workbook */
 #wb {
   text-align: center;
-  font-size: 2.75vw;
+  font-size: 3.5vmin;
   height: 60vh;
   overflow: scroll;
   padding: 50px 0 40vh 0;
@@ -255,7 +252,7 @@ span[data-option="8"] {
   color: #267b9c;
   max-width: 80%;
   margin: 0 auto;
-  border-radius: 20px;
+  border-radius: 0.45em;
   animation: fadeOn 1s 1 forwards;
 }
 
@@ -273,7 +270,7 @@ h3 {
 }
 
 #wb span {
-  border-radius: 20px;
+  border-radius: 0.4em;
   padding: 5px 10px;
 }
 
@@ -332,7 +329,7 @@ h3 {
 }
 
 button.clue {
-  font-size: 50px;
+  font-size: 3em;
   padding: 0;
   animation: 1s ease forwards 1 fadeOn;
   border: 1px solid #b7b7b7;
@@ -342,11 +339,11 @@ button.clue {
   text-shadow: 0 0 4px black;
   cursor: pointer;
   margin: 0;
-  min-width: 40vw;
+  min-width: 40vmin;
 }
 
 /* wb end */
-@media screen and (min-width: 1000px), (screen-spanning: single-fold-horizontal) {
+@media screen and (min-width: 1000px), (screen-spanning: single-fold-horizontal), (orientation: landscape) {
   #wb {
     height: 100vh;
     padding-right: 50vw;
@@ -369,6 +366,14 @@ button.clue {
     border-left: 1px solid #aaaa;
     bottom: auto;
     top: 0;
+  }
+
+  #matrix table {
+    font-size: 2vmin;
+  }
+
+  span[data-option="0"] {
+    font-size: 2vmin !important;
   }
 
   button.clue {
@@ -455,7 +460,7 @@ div#menu {
 }
 
 #menu button {
-  font-size: 6em;
+  font-size: 3em;
   margin-top: 1em;
   width: 50% !important;
   min-width: auto;
@@ -476,14 +481,15 @@ div#menu {
 
 .dec span {
   display: inline-block;
-  width: 7em;
-  font-size: 1.45em;
+  width: 17vw;
+  font-size: 20px;
 }
 
 .lang-h {
+  font-size: 2.5vmin;
   display: flex;
   justify-content: space-around;
-  max-width: 1000px;
+  max-width: 60em;
   margin: 0 auto;
   padding: 0 50px;
 }
@@ -494,7 +500,7 @@ div#menu {
   cursor: pointer;
   padding: 0.7em 0em;
   width: 9em;
-  font-size: 1.25em;
+
   white-space: nowrap;
   margin-top: 5px;
   border-radius: 20px;
