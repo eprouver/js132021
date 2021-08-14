@@ -155,9 +155,14 @@ const findGender2 = new RegExp(gMod2.join('|'), "g");
 const randSkinTone = (string) => string.replace(findSkin, sample(stMod));
 const randGender = (string) => string.replace(findGender, sample(gMod)).replace(findGender2, sample(gMod2));
 
-const det = randSkinTone(randGender('🕵🏼‍♂️'));
-document.getElementById('det').innerText = det;
-document.title = `${det} Blanks - Reduce the space`;
+const newDet = () => {
+  const det = randSkinTone(randGender('🕵🏼‍♂️'));
+  document.getElementById('det').innerText = det;
+  document.title = `${det} Blanks - Reduce the space`;
+  workbook.setAttribute('data-flair', `${randSkinTone(randGender('🕵🏼‍♂️'))}`);
+}
+
+newDet();
 
 let voice;
 const selectNewVoice = () => {

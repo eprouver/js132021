@@ -48,7 +48,7 @@ const makeGames = () => {
 };
 
 const startNewGame = () => {
-  workbook.setAttribute('data-flair', `${randSkinTone(randGender('🕵🏼‍♂️'))}`);
+  newDet();
   workbook.setAttribute('data-msg', `${options[options.lang].wellDone}`);
   clear();
   if (currentGame && games.length < 4) {

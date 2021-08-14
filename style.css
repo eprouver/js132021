@@ -184,7 +184,7 @@ span[data-option="1"] {
 span[data-option="2"] {
   background: #ff9a43;
 }
-span[data-option="3"] {
+span[data-option="3"], .lang.selected {
   background: #81da7b;
 }
 span[data-option="4"] {
@@ -497,10 +497,6 @@ div#menu {
   font-size: 1.25em;
   white-space: nowrap;
   margin-top: 5px;
-}
-
-.lang.selected {
-  background: #abf374;
   border-radius: 20px;
 }
 
