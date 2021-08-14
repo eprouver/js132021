@@ -430,11 +430,11 @@ div#menu {
   background-clip: text;
   -webkit-background-clip: text;
   color: rgba(100,100,100,0.5);
-  background-image: url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>👨🏽‍🎨👨🏿‍💼👨🏻‍🔧👨🏾‍⚕️👨🏼‍🌾🧑🏻‍⚖️👨🏾‍🔬👨🏼‍🎤👨🏽‍🚀</text></svg>");
+  background-image: url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>🧑🏾‍🏭👨🏿‍🎓👩🏼‍🚒🧝🏻‍♀️👩🏾‍✈️👰🏽🧙🏼‍♂️💂🏿🧕🏿</text></svg>");
   -webkit-text-stroke: 3px #444;
   background-color: #444;
   background-size: 125% 100%;
-  animation: bg 126s linear infinite alternate;
+  animation: bg 60s linear infinite alternate;
   transform: scaleX(1.25);
   background-position-y:25em;
 }
