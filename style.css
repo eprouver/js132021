@@ -1,5 +1,6 @@
-html,body {
+html, body {
   overflow: hidden;
+  height: 100vh;
 }
 
 * {
@@ -19,13 +20,13 @@ body {
 }
 
 #menu, #matrix, #wb, html, body {
-  background: white;
-  color: black;
+  background: #fff;
+  color: #000;
 }
 
 .night #menu, .night #matrix, .night #wb, html, body {
   background: #333;
-  color: white;
+  color: #fff;
 }
 
 .night #matrix {
@@ -47,7 +48,6 @@ body {
   flex-direction: column;
 }
 
-/* matrix */
 #matrix {
   position: fixed;
   bottom: 0;
@@ -73,7 +73,7 @@ body {
 
 .end #matrix table {
   width: 80%;
-  min-height: 49.55vh;
+  min-height: 49vh;
 }
 
 th {
@@ -84,19 +84,19 @@ th {
 
 th.person {
   font-size: 7vmin;
-  animation: sib 0.5s ease both;
+  animation: sib .5s ease both;
 }
 
 th.person.bigger span {
-  transition: 0.1s ease all;
+  transition: .1s ease all;
   transform: scale(1.5);
   transform-origin: 50% 1.1em;
 }
 
 th.person span {
   position: absolute;
-  margin-left: -0.5em;
-  bottom: -0.2em;
+  margin-left: -.5em;
+  bottom: -.2em;
   font-size: 2em;
 }
 
@@ -117,12 +117,12 @@ col {
 td.draggable {
   cursor: pointer;
   position: relative;
-  background: white;
+  background: #fff;
 }
 
 td.draggable span {
   display: inline-block;
-  border-radius: 0.3em;
+  border-radius: .3em;
   padding: 0 10px;
   font-size: 3em;
   color: #9c9c9c;
@@ -135,21 +135,22 @@ span {
 span.person {
   font-size: 3em;
   position: relative;
-  top: 0.125em;
+  top: .125em;
 }
 
 #matrix span.correct, #matrix span.incorrect {
-  transition: all 0.2s ease;
+  transition: all .2s ease;
 }
 
 span.incorrect:before {
   content: '';
   position: absolute;
-  height: 15px;
-  width: 1.5em;
+  height: .3em;
+  width: 1.7em;
   background: red;
-  transform: rotate(45deg) translate3d(0.225em, 0.55em, 0);
+  transform: rotate(45deg) translate3d(0.11em, 0.55em, 0);
   transform-origin: 50% 50%;
+  border-radius: 1em;
 }
 
 #matrix span.correct {
@@ -160,7 +161,7 @@ span.incorrect:before {
 }
 
 #matrix span.incorrect {
-  box-shadow: 0 0 0 17px red, 0 0 0 20px black;
+  box-shadow: 0 0 0 .2em red, 0 0 0 .24em #000;
   border-radius: 100%;
   overflow: hidden;
   z-index: 10;
@@ -178,58 +179,64 @@ span[data-option="0"] {
 span[data-option="1"] {
   background: #7FDBFF;
 }
+
 span[data-option="2"] {
   background: #ff9a43;
 }
+
 span[data-option="3"], .lang.selected {
   background: #81da7b;
 }
+
 span[data-option="4"] {
   background: #ffeb6c;
 }
+
 span[data-option="5"] {
   background: #ff95e8;
 }
+
 span[data-option="6"] {
   background: #0074D9;
 }
+
 span[data-option="7"] {
   background: #3D9970;
 }
+
 span[data-option="8"] {
   background: #fb4e4e;
 }
 
-
-/* matrix end */
-/* workbook */
 #wb {
   text-align: center;
   font-size: 3.5vmin;
   height: 60vh;
   overflow: scroll;
-  padding: 50px 0 40vh 0;
-  transition: background-color 0.25s ease;
+  padding: 50px 0 40vh;
+  transition: background-color .25s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
-  background: white;
+  background: #fff;
 }
 
 .end #wb {
   background: #444;
-  transition: all 0.5s ease;
+  transition: all .5s ease;
   min-height: 50vh;
 }
 
-.end #wb:before , .end #wb:after {
-  color: white;
+.end #wb:before, .end #wb:after {
+  color: #fff;
   animation: fadeOn 1s 1 forwards;
   display: block;
 }
+
 .end #wb:before {
   content: attr(data-flair);
   font-size: 5em;
   line-height: 1em;
+  margin-top: .15em;
 }
 
 .end #wb:after {
@@ -252,7 +259,7 @@ span[data-option="8"] {
   color: #267b9c;
   max-width: 80%;
   margin: 0 auto;
-  border-radius: 0.45em;
+  border-radius: .45em;
   animation: fadeOn 1s 1 forwards;
 }
 
@@ -270,12 +277,12 @@ h3 {
 }
 
 #wb span {
-  border-radius: 0.4em;
+  border-radius: .4em;
   padding: 5px 10px;
 }
 
 .clue.hideMe {
-  animation: 0.2s ease forwards 1 fadeOut !important;
+  animation: .2s ease forwards 1 fadeOut !important;
   pointer-events: none;
 }
 
@@ -336,13 +343,12 @@ button.clue {
   border-radius: 4px;
   box-shadow: 0 0 2px #444;
   background: #f7f7f736;
-  text-shadow: 0 0 4px black;
+  text-shadow: 0 0 4px #000;
   cursor: pointer;
   margin: 0;
   min-width: 40vmin;
 }
 
-/* wb end */
 @media screen and (min-width: 1000px), (screen-spanning: single-fold-horizontal), (orientation: landscape) {
   #wb {
     height: 100vh;
@@ -358,7 +364,7 @@ button.clue {
 
   #matrix {
     width: 50.5vw;
-    right: 0px;
+    right: 0;
     border: none;
     box-shadow: none;
     height: 100vh;
@@ -383,16 +389,18 @@ button.clue {
   .end #wb:before {
     font-size: 6em;
   }
+
   .end #wb:after {
     font-size: 4em;
   }
+
   .end #wb:before {
     margin-top: 30vh;
   }
 
   th.person {
     font-size: 4vw;
-    animation: sib 0.5s ease both;
+    animation: sib .5s ease both;
   }
 }
 
@@ -410,10 +418,9 @@ button.clue {
   }
 }
 
-/* Main Menu */
 div#menu {
   position: absolute;
-  background: white;
+  background: #fff;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -422,36 +429,40 @@ div#menu {
   z-index: 10;
   justify-content: space-around;
   padding: 20px;
-  transition: background-color 0.2s ease;
+  transition: background-color .2s ease;
 }
 
-.title{
-  display:block;
-  margin:auto;
-  font-size:11vw;
-  line-height:1;
+.title {
+  display: block;
+  margin: auto;
+  font-size: 11vw;
+  line-height: 1;
   font-family: Georgia;
-  font-weight:bold;
+  font-weight: 700;
   background-clip: text;
   -webkit-background-clip: text;
-  color: rgba(100,100,100,0.5);
+  color: rgba(100, 100, 100, 0.5);
   background-image: url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>🧑🏾‍🏭👨🏿‍🎓👩🏼‍🚒🧝🏻‍♀️👩🏾‍✈️👰🏽🧙🏼‍♂️💂🏿🧕🏿</text></svg>");
   -webkit-text-stroke: 3px #444;
   background-color: #444;
   background-size: 125% 100%;
   animation: bg 60s linear infinite alternate;
   transform: scaleX(1.25);
-  background-position-y:25em;
+  background-position-y: 25em;
 }
 
 .title span {
   font-size: 1em;
 }
 
+@keyframes bg {
+  0% {
+    background-position-x: 12em;
+  }
 
-@keyframes bg{
-  0%{background-position-x:12em;}
-  100%{background-position-x:0%;}
+  100% {
+    background-position-x: 0;
+  }
 }
 
 #menu h2 {
@@ -467,7 +478,7 @@ div#menu {
 }
 
 .right {
-  margin: 0.4em 0em 0.1em 20em;
+  margin: .4em 0 .1em 20em;
   font-size: 2vmin;
 }
 
@@ -496,11 +507,9 @@ div#menu {
 
 .lang {
   position: relative;
-  padding-top: 0.5em;
   cursor: pointer;
-  padding: 0.7em 0em;
+  padding: .7em 0;
   width: 9em;
-
   white-space: nowrap;
   margin-top: 5px;
   border-radius: 20px;
@@ -516,7 +525,7 @@ div#menu {
 
 #pause {
   position: absolute;
-  padding: 0.5em;
+  padding: .5em;
   font-size: 2.5em;
   line-height: 1em;
   color: #aaa;
@@ -527,30 +536,31 @@ div#menu {
   0% {
     transform: translateY(1em) scale(0);
   }
+
   80% {
     transform: translateY(0) scale(0.8, 1.2);
   }
+
   85% {
     transform: translateY(0) scale(0.8, 1.2);
   }
+
   100% {
     transform: translateY(0) scale(1);
   }
 }
-
-/* sliders */
 
 .switch {
   position: relative;
   display: inline-block;
   width: 8em;
   height: 3.4em;
-  font-size: 0.4em;
-  top: -0.9em;
+  font-size: .4em;
+  top: -.9em;
 }
 
 .switch input {
-  display:none;
+  display: none;
 }
 
 .slider {
@@ -569,21 +579,20 @@ div#menu {
   content: "";
   height: 1.7em;
   width: 1.7em;
-  left: 0.4em;
-  bottom: 0.3em;
-  background-color: white;
+  left: .4em;
+  bottom: .3em;
+  background-color: #fff;
   transition: .2s;
 }
 
-input:checked + .slider {
-  background-color: #9670c7;;
+input:checked+.slider {
+  background-color: #9670c7;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(2.85em);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 10px;
 }
@@ -591,5 +600,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 10px;
 }
-
-/* end sliders */

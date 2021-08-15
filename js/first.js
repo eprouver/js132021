@@ -22,6 +22,7 @@ const makeGames = () => {
   clear();
   pause = false;
   games = [];
+
   // "Tutorial"
   if (!tutorial) {
     // small board for tutorial

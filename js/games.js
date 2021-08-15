@@ -93,7 +93,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
     },
     * nt(critA, critB, row) {
       yield* this.a(critA, critB, row);
-      yield* this.a(critB, critA, row);
+      yield* this.b(critA, critB, row);
     },
   };
 
