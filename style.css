@@ -213,7 +213,7 @@ span[data-option="7"] {
 }
 
 span[data-option="8"] {
-  background: #fb4e4e;
+  background: #b775ff;
 }
 
 #wb {
@@ -236,6 +236,10 @@ span[data-option="8"] {
   font-size: 2.5em;
 }
 
+.end #wb * {
+ display: none;
+}
+
 .end #wb:before, .end #wb:after {
   color: #fff;
   animation: fadeOn 1s 1 forwards;
@@ -252,10 +256,6 @@ span[data-option="8"] {
 .end #wb:after {
   content: attr(data-msg);
   font-size: 2em;
-}
-
-.end #wb * {
-  display: none;
 }
 
 #wb h1 {
@@ -283,7 +283,9 @@ h3 {
 }
 
 .clue span {
-  pointer-events: none;
+pointer-events: none;
+width: 75vmin;
+height: 75vmin;
 }
 
 #wb span {
@@ -362,57 +364,6 @@ button.clue {
   width: 50% !important;
   min-width: auto;
   line-height: 1.5em;
-}
-
-@media screen and (min-width: 1000px), (screen-spanning: single-fold-horizontal), (orientation: landscape) {
-  #wb {
-    height: 100vh;
-    padding-right: 53vw;
-    border: none;
-  }
-
-  .mrow td.draggable {
-    padding: 4px;
-    font-size: 1.25em;
-  }
-
-  #matrix {
-    width: 50.5vw;
-    right: 0;
-    border: none;
-    box-shadow: none;
-    height: 100vh;
-    padding-top: 15vw;
-    border-left: 1px solid #aaaa;
-    bottom: auto;
-    top: 0;
-  }
-
-  #matrix table {
-    margin: 0 auto;
-    bottom: 0.5em;
-  }
-
-  span[data-option="0"] {
-    font-size: 2vmin !important;
-  }
-
-  button.clue {
-    min-width: 80%;
-  }
-
-  .end #wb:before {
-    font-size: 6em;
-  }
-
-  .end #wb:before {
-    margin-top: 25vh;
-  }
-
-  th.person {
-    font-size: 4vw;
-    animation: sib .5s ease both;
-  }
 }
 
 .loading:after {
@@ -610,4 +561,86 @@ input:checked+.slider:before {
 
 .slider.round:before {
   border-radius: 10px;
+}
+
+svg {
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  display: none;
+}
+
+.end svg {
+  display: block;
+}
+
+.path {
+  stroke-dashoffset: 400;
+  animation: dash 3s linear forwards 1;
+  stroke-linecap: round;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1800;
+  }
+  100% {
+    stroke-dashoffset: -1800;
+  }
+}
+
+
+@media screen and (min-width: 1000px), (screen-spanning: single-fold-horizontal), (orientation: landscape) {
+  #wb {
+    height: 100vh;
+    padding-right: 53vw;
+    border: none;
+  }
+
+  .mrow td.draggable {
+    padding: 4px;
+    font-size: 1.25em;
+  }
+
+  #matrix {
+    width: 50.5vw;
+    right: 0;
+    border: none;
+    box-shadow: none;
+    height: 100vh;
+    padding-top: 15vw;
+    border-left: 1px solid #aaaa;
+    bottom: auto;
+    top: 0;
+  }
+
+  #matrix table {
+    margin: 0 auto;
+    bottom: 0.5em;
+  }
+
+  span[data-option="0"] {
+    font-size: 2vmin !important;
+  }
+
+  button.clue {
+    min-width: 80%;
+  }
+
+  .end #wb:before {
+    font-size: 6em;
+  }
+
+  .end #wb:before {
+    margin-top: 25vh;
+  }
+
+  th.person {
+    font-size: 4vw;
+    animation: sib .5s ease both;
+  }
+
+  svg {
+    height: 100%;
+  }
 }
