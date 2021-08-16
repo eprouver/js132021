@@ -205,7 +205,7 @@ let clueTime, levelTime;
 const setupWorkbook = () => {
   clueTime = (sound ? 6000 : 800);
   levelTime = (sound ? 2000 : 7000);
-  const tutorial = currentGame.slotNum === 1 ? 7000 : 0;
+  const tutorial = currentGame.slotNum === 1 ? (sound ? 7000 : 4000) : 0;
 
   let clues = 0;
   currentGame.levels.forEach((level, i, arr) => {
