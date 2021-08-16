@@ -23,27 +23,22 @@ const makeGames = () => {
   pause = false;
   games = [];
 
-  // "Tutorial"
+  // tutorial first first
   if (!tutorial) {
     // small board for tutorial
     addGame(1, 2);
-    tutorial = true;
-    timeout(() => {
-      // Ramping Difficulty
-      for (let slot = 2; slot < 5; slot++) {
-        for (let cat = 2; cat < 5; cat++) {
-          addGame(~~slot, ~~cat);
-        }
-      }
-    }, 1000);
-  } else {
-    sfx([1.77, , 202, .07, .14, .48, , .43, -4.8, , -5, .06, .16, , , , .14, .76]);
+  }
+  timeout(() => {
+    // Ramping Difficulty
     for (let slot = 2; slot < 5; slot++) {
-      for (let cat = 2; cat < 5; cat++) {
+      for (let cat = 2; cat < 5; cat++){
         addGame(~~slot, ~~cat);
       }
     }
-  }
+  }, !tutorial ? 1000 : 0);
+
+ tutorial = true;
+
 
   startNewGame();
 };

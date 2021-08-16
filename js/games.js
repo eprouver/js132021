@@ -39,7 +39,6 @@ const addGame = (slotNum = 2, catNum = 2) => {
     return R;
   }
 
-  const clueTypes = options.clueTypes;
   let categories = options.categories;
   let categoryNames = options.categoryNames;
   let slotNames = options.slotNames;
@@ -92,8 +91,25 @@ const addGame = (slotNum = 2, catNum = 2) => {
       }
     },
     * nt(critA, critB, row) {
-      yield* this.a(critA, critB, row);
-      yield* this.b(critA, critB, row);
+      for (const i of [...Array(row.length - 1).keys()]) {
+        if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
+          const newRow = JSON.parse(JSON.stringify(row));
+          newRow[i] = Object.assign({}, row[i], critA);
+          newRow[i + 1] = Object.assign({}, row[i + 1], critB);
+          yield newRow;
+        }
+      }
+
+      critB = [critA, critA = critB][0];
+
+      for (const i of [...Array(row.length - 1).keys()]) {
+        if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
+          const newRow = JSON.parse(JSON.stringify(row));
+          newRow[i] = Object.assign({}, row[i], critA);
+          newRow[i + 1] = Object.assign({}, row[i + 1], critB);
+          yield newRow;
+        }
+      }
     },
   };
 
@@ -167,7 +183,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
       };
     };
 
-    switch (type || ~~(Math.random() * clueTypes.length)) {
+    switch (type || sample([... Array(options.clueTypes.length)].map((a,i) => i).concat([4,4]))) {
       case 0:
         data = pickConstraint();
         constraint = {};
@@ -175,7 +191,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         data = pickConstraint(data.key);
         constraint[data.key] = data.data;
         newConstraint = {
-          type: clueTypes[0],
+          type: options.clueTypes[0],
           data: [constraint, {data: []}],
         }
         break;
@@ -187,7 +203,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
           index: ~~(Math.random() * row.length)
         };
         newConstraint = {
-          type: clueTypes[1],
+          type: options.clueTypes[1],
           data: [constraint, constraint2],
         };
         break;
@@ -198,7 +214,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         constraint[data.key] = data.data[0];
         constraint2[data.key] = data.data[1];
         newConstraint = {
-          type: clueTypes[2],
+          type: options.clueTypes[2],
           data: [constraint, constraint2],
         };
         break;
@@ -209,7 +225,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         constraint[data.key] = data.data[0];
         constraint2[data.key] = data.data[1];
         newConstraint = {
-          type: clueTypes[3],
+          type: options.clueTypes[3],
           data: [constraint2, constraint],
         };
         break;
@@ -221,7 +237,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         constraint2 = {};
         constraint2[data.key] = data.data;
         newConstraint = {
-          type: clueTypes[4],
+          type: options.clueTypes[4],
           data: [constraint, constraint2],
         }
         break;

@@ -36,7 +36,7 @@ const options = {
   en: {
     attempts: 'Attempts',
     wellDone: 'Well Done!',
-    solvable: 'Solvable.',
+    solvable: 'Possible Solution.',
     empty: 'space',
     noMore: 'No more clues.',
     tutorial: 'Tutorial: Use the prompts. Fill in the spaces.  Then 👍',
@@ -134,19 +134,19 @@ const sampleSize = (size, list, collected = []) => size < 1 || list.length < 1 ?
   sampleSize(size - 1, list.slice(1), [...collected, list[0]]) :
   sampleSize(size, list.slice(1), collected));
 
-  // random skin tone?
-  const stMod = [
-    '\u{1f3fb}',
-    '\u{1f3fc}',
-    '\u{1f3fd}',
-    '\u{1f3fe}',
-    '\u{1f3ff}',
-  ];
+// random skin tone?
+const stMod = [
+  '\u{1f3fb}',
+  '\u{1f3fc}',
+  '\u{1f3fd}',
+  '\u{1f3fe}',
+  '\u{1f3ff}',
+];
 
-  const gMod = [
-    '👩',
-    '👨',
-  ];
+const gMod = [
+  '👩',
+  '👨',
+];
 const gMod2 = ['♂️','♀️'];
 
 const findSkin = new RegExp("\ud83c[\udffb-\udfff]", "g");

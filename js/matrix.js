@@ -43,7 +43,7 @@ const createMatrix = () => {
     labelRow = ce('tr');
     labelRow.classList.add('mrow');
     spacer = ce('th');
-    spacer.innerHTML = currentGame.categoryNames[i]
+    spacer.innerHTML = currentGame.categoryNames[i];
     labelRow.appendChild(spacer);
 
     const clickOptions = [options[options.lang].empty, ...r];
@@ -70,9 +70,7 @@ const createMatrix = () => {
 
   labelRow = ce('tr');
   labelRow.classList.add('mrow');
-  const attempt = ce('td');
-  attempt.innerHTML = `${options[options.lang].attempts}: <h2>0</h2>`;
-  labelRow.appendChild(attempt);
+  labelRow.appendChild(ce('td'));
 
   const checker = ce('button');
   checker.classList.add('clue');
@@ -95,13 +93,11 @@ const createMatrix = () => {
         startNewGame();
       }, 3000);
     }
-
-    attempt.innerHTML = `${options[options.lang].attempts}: <h2>${currentGame.attempts}</h2>`;
   };
   checker.innerText = '👍';
 
   spacer = ce('td');
-  spacer.setAttribute('colspan', currentGame.slotNum);
+  spacer.setAttribute('colspan', currentGame.slotNum );
   spacer.appendChild(checker);
   labelRow.appendChild(spacer);
 
