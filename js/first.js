@@ -67,3 +67,23 @@ const startNewGame = () => {
     setupWorkbook(currentGame);
   }, 500);
 };
+
+function scroller(event){
+  switch(event.deltaMode){
+    case 0: 		//DOM_DELTA_PIXEL		Chrome
+      wb.scrollTop+=event.deltaY
+      wb.scrollLeft+=event.deltaX
+      break;
+    case 1: 		//DOM_DELTA_LINE		Firefox
+      wb.scrollTop+=15*event.deltaY
+      wb.scrollLeft+=15*event.deltaX
+      break;
+    case 2: 		//DOM_DELTA_PAGE
+      wb.scrollTop+=0.03*event.deltaY
+      wb.scrollLeft+=0.03*event.deltaX
+      break;
+  }
+  event.stopPropagation();
+}
+
+document.onwheel = scroller;

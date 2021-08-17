@@ -39,9 +39,8 @@ body {
   box-shadow: inset 0 0 0 0.25em #282828;
 }
 
-.night .title {
-  -webkit-text-stroke: 3px #ccc;
-  background-color: #ccc;
+.night .title .bl {
+  -webkit-text-stroke: 3px #999;
 }
 
 #cont {
@@ -107,7 +106,7 @@ th.person.bigger span {
 th.person span {
   position: absolute;
   margin-left: -.5em;
-  bottom: -.2em;
+  bottom: 0;
   font-size: 2em;
 }
 
@@ -131,7 +130,6 @@ td.draggable {
   background: #fff;
   border-radius: 1.4em;
   box-shadow: inset 0 0 0 0.25em #d6d6d6;
-  filter: url(#glitch);
 }
 
 td.draggable span {
@@ -226,7 +224,8 @@ span[data-option="8"] {
   text-align: center;
   font-size: 2.6vmin;
   height: 60vh;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   padding: 5vh 0 40vh 3vw;
   transition: background-color .25s ease;
   transform-style: preserve-3d;
@@ -239,7 +238,7 @@ span[data-option="8"] {
   background: #444;
   transition: all .5s ease;
   min-height: 50vh;
-  font-size: 2.5em;
+  font-size: 2.2em;
 }
 
 .end #wb * {
@@ -401,17 +400,8 @@ div#menu {
 }
 
 .title {
-  display: block;
-  margin: auto;
-  font-size: 11vw;
   line-height: 1;
-
-
-
-}
-
-.title span {
-  font-size: 1em;
+  font-size: 8vw;
   font-family: Georgia;
   font-weight: 700;
   background-clip: text;
@@ -419,15 +409,10 @@ div#menu {
   color: rgba(100, 100, 100, 0.5);
   background-image: url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>🧑🏾‍🏭👨🏿‍🎓👩🏼‍🚒🧝🏻‍♀️👩🏾‍✈️👰🏽🧙🏼‍♂️💂🏿🧕🏿</text></svg>");
   -webkit-text-stroke: 3px #444;
-  background-size: 250% 100%;
+  background-size: 120% 100%;
   animation: bg 60s linear infinite alternate;
   transform: scaleX(1.25);
-  background-position-y: 25em;
-
-}
-
-.title .bl {
-  filter:url("#glitch");
+  background-position-y: 0em;
 }
 
 @keyframes bg {

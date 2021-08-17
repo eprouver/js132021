@@ -220,11 +220,11 @@ const setupWorkbook = () => {
         timeout(() => {
           note.classList.add('clue');
           note.classList.remove('loading');
-          note.innerHTML = `<br/><br/><h3>${options[options.lang].solvable}</h3>`;
+          note.innerHTML = `<br/><br/><h3>${options[options.lang].solvable}</h3><br/><br/>`;
           say(options[options.lang].solvable);
           workbook.appendChild(note);
           extraClueButton();
-        }, clueTime * level.rewardClues.length - 1);
+        }, clueTime * level.rewardClues.length - 1 + 2000);
       }
     }, clues * clueTime + tutorial + (i * levelTime));
 
@@ -239,23 +239,3 @@ const setupWorkbook = () => {
     workbook.appendChild(nnote());
   }
 };
-
-function scroller(event){
-  switch(event.deltaMode){
-    case 0: 		//DOM_DELTA_PIXEL		Chrome
-      wb.scrollTop+=event.deltaY
-      wb.scrollLeft+=event.deltaX
-      break;
-    case 1: 		//DOM_DELTA_LINE		Firefox
-      wb.scrollTop+=15*event.deltaY
-      wb.scrollLeft+=15*event.deltaX
-      break;
-    case 2: 		//DOM_DELTA_PAGE
-      wb.scrollTop+=0.03*event.deltaY
-      wb.scrollLeft+=0.03*event.deltaX
-      break;
-  }
-  event.stopPropagation();
-}
-
-document.onwheel = scroller;

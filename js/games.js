@@ -162,14 +162,13 @@ const addGame = (slotNum = 2, catNum = 2) => {
       const note = ce('div');
       note.classList.add('clue');
       note.innerHTML = `<h3>${options[options.lang].noMore}</h3>`;
-      sfx([4, , 25, .01, .19, .61, 1, 2.68, .7, .5, , , .12, .9, , .4, .48, .52, .04, .33]);
       workbook.appendChild(note);
       return;
     }
 
     let data;
-    let constraint;
-    let constraint2;
+    let constraint = {};
+    let constraint2 = {};
     let newConstraint;
 
     const pickConstraint = (not = '', size = 1) => {
@@ -183,10 +182,9 @@ const addGame = (slotNum = 2, catNum = 2) => {
       };
     };
 
-    switch (type || sample([... Array(options.clueTypes.length)].map((a,i) => i).concat([4,4]))) {
+    switch (type || sample([... Array(options.clueTypes.length)].map((a,i) => i))) {
       case 0:
         data = pickConstraint();
-        constraint = {};
         constraint[data.key] = data.data;
         data = pickConstraint(data.key);
         constraint[data.key] = data.data;
@@ -197,7 +195,6 @@ const addGame = (slotNum = 2, catNum = 2) => {
         break;
       case 1:
         data = pickConstraint();
-        constraint = {};
         constraint[data.key] = data.data;
         constraint2 = {
           index: ~~(Math.random() * row.length)
@@ -209,8 +206,6 @@ const addGame = (slotNum = 2, catNum = 2) => {
         break;
       case 2:
         data = pickConstraint('', 2);
-        constraint = {};
-        constraint2 = {};
         constraint[data.key] = data.data[0];
         constraint2[data.key] = data.data[1];
         newConstraint = {
@@ -220,8 +215,6 @@ const addGame = (slotNum = 2, catNum = 2) => {
         break;
       case 3:
         data = pickConstraint('', 2);
-        constraint = {};
-        constraint2 = {};
         constraint[data.key] = data.data[0];
         constraint2[data.key] = data.data[1];
         newConstraint = {
@@ -231,10 +224,8 @@ const addGame = (slotNum = 2, catNum = 2) => {
         break;
       case 4:
         data = pickConstraint();
-        constraint = {};
         constraint[data.key] = data.data;
         data = pickConstraint(data.key);
-        constraint2 = {};
         constraint2[data.key] = data.data;
         newConstraint = {
           type: options.clueTypes[4],

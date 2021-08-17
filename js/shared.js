@@ -92,10 +92,10 @@ const lang = (e, play = true) => {
       options.categoryNames = ['len', 'kalama musi', 'musi utala', 'olin', 'kili', 'soweli', 'moku', 'pilin'];
     break;
     case 'fr':
-      options.categoryNames = ['le vêtement', 'l\'instrument', 'le sport', 'le cœur', 'la fruit', 'l\'animal', 'la bouffe', 'le sentiment'];
+      options.categoryNames = ['le vêtement', 'l\'instrument', 'le sport', 'le cœur', 'le fruit', 'l\'animal', 'la bouffe', 'le sentiment'];
     break;
     case 'es':
-      options.categoryNames = ['la ropa', 'el instrumento', 'la deporte', 'la corazón', 'la fruta', 'el animal', 'la comida', 'el sentimiento'];
+      options.categoryNames = ['la ropa', 'el instrumento', 'el deporte', 'el corazón', 'la fruta', 'el animal', 'la comida', 'el sentimiento'];
     break;
     case 'zh-CN':
       options.categoryNames = ['衣服','仪器','运动','心脏','水果','动物','食物','心情'];
