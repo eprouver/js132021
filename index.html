@@ -81,6 +81,30 @@
     </div>
     <div id="pause" onclick="pauseGame()">☰</div>
 
+    <div id="root" style="display:none">
+      <h1><span>🗂️</span> <span id="cf">Case Files</span> <span>🗂️</span></h1>
+    <div id="mod">
+      <div class="root-col">
+       <h1 id="ch">Choose</h1>
+       <label for="people" id="peplabel">People:</label>
+       <input type="number" id="people" name="people" min="2" max="5" value="3">
+       <label for="cats" id="catlabel">Categories:</label>
+       <input type="number" id="cats" name="cats" min="2" max="5" value="3">
+       <button class="clue" onclick="chooseGame()">👍</button>
+      </div>
+      <div class="root-col">
+        <h1 id="create">Create</h1>
+        <p><span>5 x 5 =></span> <span id="com2"></span></p>
+        <button class="clue">👍</button>
+        <h2 id="com">Community</h2>
+        <div id="com-list">
+        </div>
+      </div>
+    </div>
+    <div>
+    <button id="nc" class="clue" onclick="root.style.display = 'none'; startNewGame()"></button>
+  </div>
+    </div>
 
   </div>
 
@@ -90,6 +114,7 @@
   <script src="./js/workbook.js"></script>
   <script src="./js/matrix.js"></script>
   <script src="./js/games.js"></script>
+  <script src="./js/files.js"></script>
 </body>
 
 </html>

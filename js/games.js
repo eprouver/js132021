@@ -62,12 +62,12 @@ const addGame = (slotNum = 2, catNum = 2) => {
   const clueCheck = {
     * ti(critA, critB, row) {
       for (const i of [...Array(row.length).keys()])
-        yield* this.tiai(critA, {index: i}, row);
+        yield* this.tiai(critA, {i}, row);
     },
     * tiai(critA, critB, row) {
-      if (canBe(row[critB.index], critA)) {
+      if (canBe(row[critB.i], critA)) {
         const newRow = JSON.parse(JSON.stringify(row));
-        newRow[critB.index] = Object.assign({}, row[critB.index], critA);
+        newRow[critB.i] = Object.assign({}, row[critB.i], critA);
         yield newRow;
       }
     },
@@ -198,7 +198,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         data = pickConstraint();
         constraint[data.key] = data.data;
         constraint2 = {
-          index: ~~(Math.random() * row.length)
+          i: ~~(Math.random() * row.length)
         };
         newConstraint = {
           type: options.clueTypes[1],

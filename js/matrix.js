@@ -82,7 +82,7 @@ const createMatrix = () => {
       workbook.scroll(0,0);
       cont.classList.add('end');
       say(options[options.lang].wellDone);
-      sfx(sounds.win);
+      sfx([1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]);
       pause = true;
       timeout(() => {
         pause = false;

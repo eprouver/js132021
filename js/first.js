@@ -3,10 +3,9 @@ const pauseGame = () => {
   say('')
   pause = true;
   games = [];
+  clear();
   menu.style.display = 'flex';
-  workbook.innerHTML = '';
   cont.classList.remove('end');
-  matrix.innerHTML = '';
   timeouts.forEach(t => clearTimeout(t));
 }
 
@@ -39,11 +38,22 @@ const makeGames = () => {
 
  tutorial = true;
 
-
+  files = 0;
   startNewGame();
 };
 
+let files = 0;
+
 const startNewGame = (game) => {
+  if (!game) {
+    files += 1;
+    if (files % options.files === 0) {
+      showChoose();
+      files = 1;
+      return;
+    }
+  }
+
   workbook.setAttribute('data-msg', `${options[options.lang].wellDone}`);
   clear();
   if (currentGame && games.length < 4) {

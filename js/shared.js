@@ -8,19 +8,22 @@ const timeouts = [];
 const cont = document.getElementById('cont');
 const workbook = document.getElementById('wb');
 const matrix = document.getElementById('matrix');
+const root = document.getElementById('root');
+
+// get value
+const gi = (id, or = 3) => parseInt(document.getElementById(id).value) || or;
+// replace text
+const fi = (id, txt) => document.getElementById(id).innerText = txt;
+// create element
+const ce = s => document.createElement(s);
 
 const timeout = (func, time) => {
   timeouts.push(setTimeout(func, time));
 };
 
-const ce = s => document.createElement(s);
-
-const sounds = {
-  win: [1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]
-}
-
 const options = {
   lang: 'en',
+  files: 5,
   clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
   categories: [
     ['👓', '👕', '👘', '🎩', '👠', '🧤', '🧣', '👒', '🧢', '👟', '🩳'],
@@ -41,6 +44,12 @@ const options = {
     noMore: 'No more clues.',
     tutorial: 'Tutorial: Use the prompts. Fill in the spaces.  Then 👍',
     newCase: 'New Case!',
+    p: 'People',
+    c: 'Categories',
+    ch: 'Choose',
+    cr: 'Create',
+    com: 'Community',
+    ff: 'Case Files',
   },
   tp: {
     attempts: 'nanpa alasa',
@@ -50,6 +59,12 @@ const options = {
     noMore: 'pona ala',
     tutorial: 'kama sona: sina kute e toki pi wile sona. tempo pini la sina luka e 👍',
     newCase: 'utala sin',
+    p: 'jan',
+    c: 'ilo',
+    ch: 'pana',
+    cr: 'sin',
+    com: 'kulupu',
+    ff: 'utala mani',
   },
   fr: {
     attempts: 'Essai #',
@@ -59,6 +74,12 @@ const options = {
     noMore: 'Indices terminés.',
     tutorial: 'Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍',
     newCase: 'Nouveau Mystère!',
+    p : 'nombre de personnes',
+    c : 'Catégories',
+    ch: 'Choisir',
+    cr : 'Créer',
+    com : 'Communauté',
+    ff : 'Fichiers',
   },
   es: {
     attempts: 'Prueba #',
@@ -67,7 +88,13 @@ const options = {
     empty: 'espacio',
     noMore: 'No más pistas.',
     tutorial: 'Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍',
-    newCase: 'Nuevo Misterio!'
+    newCase: 'Nuevo Misterio!',
+    p: 'Gente',
+    c: 'Categorías',
+    ch: 'Elegir',
+    cr: 'Crear',
+    com: 'Comunidad',
+    ff: 'Archivos',
   },
   'zh-CN': {
     attempts: '猜测 ＃',
@@ -77,6 +104,12 @@ const options = {
     noMore: '没有了',
     tutorial: '教程：使用线索并完成信息。 终于摸了👍',
     newCase: '新谜底!',
+    p: '人数',
+    c: '类别数',
+    ch: '选择',
+    cr: '创建',
+    com: '社区',
+    ff: '文件',
   },
 };
 

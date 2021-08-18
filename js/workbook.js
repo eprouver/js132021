@@ -19,7 +19,7 @@ const wordClues = clue => {
         return `la persona con ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.data[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.data[1].index]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `<span class="person">${currentGame.slotNames[clue.data[1].i]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
       break;
       case 'b':
         return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> está a la derecha de ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
@@ -38,7 +38,7 @@ const wordClues = clue => {
         return `la personne avec ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.data[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.data[1].index]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `<span class="person">${currentGame.slotNames[clue.data[1].i]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
       break;
       case 'b':
         return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> est à droite de ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
@@ -57,7 +57,7 @@ const wordClues = clue => {
         return `有 <span data-option="${option}">${clue.data[0][keys[0]]}</span> ${keys[0]} 的人, 也有 <span data-option="${option2}">${clue.data[0][keys[1]]}</span> 的${keys[1]}  `
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.data[1].index]}</span> 有 <span data-option="${option}">${clue.data[0][keys[0]]}</span> 的${keys[0]}`;
+        return `<span class="person">${currentGame.slotNames[clue.data[1].i]}</span> 有 <span data-option="${option}">${clue.data[0][keys[0]]}</span> 的${keys[0]}`;
       break;
       case 'b':
         return `${keys2[0]} <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> 在 ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span> 的右边`;
@@ -75,7 +75,7 @@ const wordClues = clue => {
         return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, kin jo e ${keys[1]}  <span data-option="${option2}">${clue.data[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `jan <span class="person">${currentGame.slotNames[clue.data[1].index]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `jan <span class="person">${currentGame.slotNames[clue.data[1].i]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
       break;
       case 'b':
         return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> li lon poka pini e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
@@ -94,7 +94,7 @@ const wordClues = clue => {
         return `The one with ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, also has ${keys[1]}  <span data-option="${option2}">${clue.data[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.data[1].index]}</span>has ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `<span class="person">${currentGame.slotNames[clue.data[1].i]}</span>has ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
       break;
       case 'a':
         return `One left of ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>,
@@ -116,7 +116,7 @@ const showClueArr = (arr, div) => {
   arr.map(wordClues).forEach((clue, i) => {
       const note = ce('div');
       note.classList.add('waiting')
-      note.innerHTML = '<div>✉️</div>';
+      note.innerHTML = '<div>🔍</div>';
       workbook.appendChild(note);
     timeout(() => {
       note.classList.remove('waiting');
@@ -189,7 +189,7 @@ const extraClueButton = () => {
     checker.parentNode.removeChild(checker);
     currentGame.extraClue();
   };
-  checker.innerText = '📩';
+  checker.innerText = '+ 🔍';
   for (let i = 0; i < 3; i++) {
     const spacer = ce('br');
     workbook.appendChild(spacer);
@@ -224,7 +224,7 @@ const setupWorkbook = () => {
         timeout(() => {
           note.classList.add('clue');
           note.classList.remove('loading');
-          note.innerHTML = `<br/><br/><h3>${options[options.lang].solvable}</h3><br/><br/>`;
+          note.innerHTML = `<br/><h3>${options[options.lang].solvable}</h3>`;
           say(options[options.lang].solvable);
           workbook.appendChild(note);
           extraClueButton();
