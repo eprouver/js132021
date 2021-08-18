@@ -20,6 +20,10 @@ body {
   font-family: Georgia, sans-serif;
 }
 
+button, span, td.draggable, .tutorial, .lang {
+  border-radius: 0.2em;
+}
+
 #menu, #matrix, #wb, html, body {
   background: #fff;
   color: #696969;
@@ -36,7 +40,6 @@ body {
 
 .night td.draggable {
   background: #444;
-  box-shadow: inset 0 0 0 0.25em #282828;
 }
 
 .night .title .bl {
@@ -64,11 +67,13 @@ body {
 
 #matrix table {
   font-size: 2vmin;
-  border-collapse: collapse;
+  border-collapse: separate;
   width: 100%;
   table-layout: fixed;
   transition: all 1s ease;
   position: relative;
+  border-spacing: 0.25em;
+  top: -0.25em;
 }
 
 .end #matrix table {
@@ -95,6 +100,7 @@ th {
 th.person {
   font-size: 7vmin;
   animation: sib .5s ease both;
+  top: 0.4em;
 }
 
 th.person.bigger span {
@@ -121,23 +127,20 @@ col {
 .mrow td {
   text-align: center;
   position: relative;
-  padding: 7px;
 }
 
 td.draggable {
   cursor: pointer;
   position: relative;
   background: #fff;
-  border-radius: 1.4em;
-  box-shadow: inset 0 0 0 0.25em #d6d6d6;
 }
 
 td.draggable span {
   display: inline-block;
-  border-radius: .3em;
-  padding: 0 10px;
   font-size: 3em;
   color: #9c9c9c;
+  max-width: 100%;
+  min-width: 1.3em;
 }
 
 span {
@@ -185,7 +188,7 @@ span.incorrect:before {
 
 span[data-option="0"] {
   font-size: 2vmin !important;
-  padding: 16.5px !important;
+  padding: 1.9em 0 !important;
 }
 
 span[data-option="1"] {
@@ -265,6 +268,11 @@ span[data-option="8"] {
 
 #wb h1 {
   font-size: 2em;
+  animation: 0.2s ease alternate 1 fadeOn;
+}
+
+.waiting {
+  font-size: 2em;
   animation: 1s ease alternate infinite growOn;
 }
 
@@ -274,7 +282,6 @@ span[data-option="8"] {
   color: #267b9c;
   width: 80%;
   margin: 0 auto;
-  border-radius: .45em;
   animation: fadeOn 1s 1 forwards;
 }
 
@@ -283,7 +290,7 @@ h3 {
 }
 
 .clue {
-  animation: 1s ease forwards 1 growOn;
+  animation: 1s ease both 1 growOn;
   line-height: 2.55em;
 }
 
@@ -294,7 +301,6 @@ height: 75vmin;
 }
 
 #wb span {
-  border-radius: .4em;
   padding: 5px 10px;
 }
 
@@ -359,7 +365,6 @@ button.clue {
   padding: 0;
   animation: 1s ease forwards 1 fadeOn;
   border: 1px solid #b7b7b7;
-  border-radius: 0.4em;
   box-shadow: 0 0 2px #444;
   background: #f7f7f736;
   text-shadow: 0 0 4px #000;
@@ -386,7 +391,7 @@ button.clue {
 }
 
 div#menu {
-  position: absolute;
+  position: fixed;
   background: #fff;
   text-align: center;
   display: flex;
@@ -472,7 +477,6 @@ div#menu {
   width: 9em;
   white-space: nowrap;
   margin-top: 5px;
-  border-radius: 20px;
 }
 
 .set {
@@ -490,6 +494,8 @@ div#menu {
   line-height: 1em;
   color: #aaa;
   z-index: 1;
+  right: 0;
+  cursor: pointer;
 }
 
 @keyframes sib {
@@ -596,7 +602,6 @@ svg {
   }
 
   .mrow td.draggable {
-    padding: 4px;
     font-size: 1.25em;
   }
 
@@ -614,7 +619,7 @@ svg {
 
   #matrix table {
     margin: 0 auto;
-    bottom: 0.5em;
+    top: 0em;
   }
 
   span[data-option="0"] {

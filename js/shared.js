@@ -40,6 +40,7 @@ const options = {
     empty: 'space',
     noMore: 'No more clues.',
     tutorial: 'Tutorial: Use the prompts. Fill in the spaces.  Then 👍',
+    newCase: 'New Case!',
   },
   tp: {
     attempts: 'nanpa alasa',
@@ -48,6 +49,7 @@ const options = {
     empty: 'ala',
     noMore: 'pona ala',
     tutorial: 'kama sona: sina kute e toki pi wile sona. tempo pini la sina luka e 👍',
+    newCase: 'utala sin',
   },
   fr: {
     attempts: 'Essai #',
@@ -56,6 +58,7 @@ const options = {
     empty: 'espace',
     noMore: 'Indices terminés.',
     tutorial: 'Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍',
+    newCase: 'Nouveau Mystère!',
   },
   es: {
     attempts: 'Prueba #',
@@ -64,6 +67,7 @@ const options = {
     empty: 'espacio',
     noMore: 'No más pistas.',
     tutorial: 'Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍',
+    newCase: 'Nuevo Misterio!'
   },
   'zh-CN': {
     attempts: '猜测 ＃',
@@ -72,6 +76,7 @@ const options = {
     empty: '空白',
     noMore: '没有了',
     tutorial: '教程：使用线索并完成信息。 终于摸了👍',
+    newCase: '新谜底!',
   },
 };
 
@@ -155,11 +160,12 @@ const findGender2 = new RegExp(gMod2.join('|'), "g");
 const randSkinTone = (string) => string.replace(findSkin, sample(stMod));
 const randGender = (string) => string.replace(findGender, sample(gMod)).replace(findGender2, sample(gMod2));
 
+let det;
 const newDet = () => {
-  const det = randSkinTone(randGender('🕵🏼‍♂️'));
+  det = randSkinTone(randGender('🕵🏼‍♂️'));
   document.getElementById('det').innerText = det;
   document.title = `${det} Blanks - Reduce the space`;
-  workbook.setAttribute('data-flair', `${randSkinTone(randGender('🕵🏼‍♂️'))}`);
+  workbook.setAttribute('data-flair', `${det}`);
 }
 
 newDet();

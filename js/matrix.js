@@ -87,8 +87,7 @@ const createMatrix = () => {
       pause = true;
       timeout(() => {
         pause = false;
-        workbook.innerHTML = '';
-        timeouts.forEach(t => clearTimeout(t));
+        workbook.innerHTML = ``;
         selectNewVoice();
         startNewGame();
       }, 3000);

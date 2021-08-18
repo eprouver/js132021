@@ -44,7 +44,6 @@ const makeGames = () => {
 };
 
 const startNewGame = () => {
-  newDet();
   workbook.setAttribute('data-msg', `${options[options.lang].wellDone}`);
   clear();
   if (currentGame && games.length < 4) {

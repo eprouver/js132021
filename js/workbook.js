@@ -7,7 +7,7 @@ const wordClues = clue => {
   const keys2 = Object.keys(clue.data[1] || {});
   let option, option2, option3;
 
-  option = currentGame.categories[currentGame.categoryNames.indexOf(keys[0])].indexOf(clue.data[0][keys[0]]) + 1;
+  option = (currentGame.categories[currentGame.categoryNames.indexOf(keys[0])] || []).indexOf(clue.data[0][keys[0]]) + 1;
   option2 = (currentGame.categories[currentGame.categoryNames.indexOf(keys[1])] || []).indexOf(clue.data[0][keys[1]]) + 1;
   if (keys2.length)
   option3 = (currentGame.categories[currentGame.categoryNames.indexOf(keys2[0])] || []).indexOf(clue.data[1][keys2[0]]) + 1;
@@ -116,15 +116,18 @@ const showClueArr = (arr, div) => {
   arr.map(wordClues).forEach((clue, i) => {
       const note = ce('div');
       note.classList.add('waiting')
-      note.innerHTML = '<h1>✉️</h1>';
+      note.innerHTML = '<div>✉️</div>';
       workbook.appendChild(note);
     timeout(() => {
-      note.classList.add('clue');
       note.classList.remove('waiting');
-      note.onclick = (e) => { say(e.target.innerText.replace(findSkin, '')) };
-      note.innerHTML = clue;
-      sfx([2,0,60,.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
-      say(note.innerText.replace(findSkin, ''));
+      note.innerHTML = '';
+      timeout(() => {
+        note.onclick = (e) => { say(e.target.innerText.replace(findSkin, '')) };
+        note.innerHTML = clue;
+        note.classList.add('clue');
+        sfx([2,0,60,.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
+        say(note.innerText.replace(findSkin, ''));
+      }, 100);
     }, clueTime * (i + (sound ? 0 : 1)));
   });
 
@@ -203,9 +206,10 @@ const nnote = () =>  {
 
 let clueTime, levelTime;
 const setupWorkbook = () => {
+  timeouts.forEach(t => clearTimeout(t));
   clueTime = (sound ? 6000 : 800);
   levelTime = (sound ? 2000 : 7000);
-  const tutorial = currentGame.slotNum === 1 ? (sound ? 7000 : 4000) : 0;
+  const tutorial = currentGame.slotNum === 1 ? (sound ? 7000 : 4000) : (sound ? 2500 : 1000);
 
   let clues = 0;
   currentGame.levels.forEach((level, i, arr) => {
@@ -231,11 +235,16 @@ const setupWorkbook = () => {
     clues += level.rewardClues.length;
   });
 
-  if (tutorial > 0) {
-    const note = ce('div');
+  const note = ce('div');
+  if (currentGame.slotNum === 1) {
     note.innerHTML = `<div class="tutorial">${options[options.lang].tutorial}</div>`;
     say(options[options.lang].tutorial);
-    workbook.appendChild(note);
-    workbook.appendChild(nnote());
+  } else {
+    newDet();
+    note.innerHTML = `<h1><span>${det}</span> ${options[options.lang].newCase}</h1>`;
+    say(options[options.lang].newCase);
   }
+
+  workbook.appendChild(note);
+  workbook.appendChild(nnote());
 };
