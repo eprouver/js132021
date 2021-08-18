@@ -47,9 +47,9 @@ let files = 0;
 const startNewGame = (game) => {
   if (!game) {
     files += 1;
-    if (files % options.files === 0) {
+    if (files > options.files) {
       showChoose();
-      files = 1;
+      files = 0;
       return;
     }
   }

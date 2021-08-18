@@ -72,7 +72,7 @@ const wordClues = clue => {
     case 'tp':
     switch(clue.type) {
       case 'ti':
-        return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, kin jo e ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
+        return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> li jo e ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
       break;
       case 'tiai':
         return `jan <span class="person">${currentGame.slotNames[clue.d[1].i]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;

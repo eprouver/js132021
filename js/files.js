@@ -115,7 +115,7 @@ let subGame;
   }
 
   const list = document.getElementById('com-list');
-  messages.filter(m => m.text[0] === '{').forEach(m => {
+  sampleSize(20, messages.filter(m => m.text[0] === '{')).forEach(m => {
     const gg = ce('div');
     gg.innerHTML = `<div class="sub-game"><span>5x5</span> - ${m.sender}: <span>👍</span></div>`;
     gg.onclick = () => { clear(); root.style.display = 'none'; startNewGame(deser(m.text)); }
