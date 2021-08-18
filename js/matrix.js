@@ -33,13 +33,13 @@ const createMatrix = () => {
     }
 
     sfx([.7,.45,82.40689,,,.02,,3,35,,-150 + ((options.indexOf(current) + 1) * 100),-0.06,,,,,,.5,.03,.21]);
-    userBoard[slot][category] = { data: current, span };
+    userBoard[slot][category] = { d: current, span };
     span.innerText = current;
     span.classList.remove('correct','incorrect');
     span.setAttribute('data-option', options.indexOf(current));
   };
 
-  currentGame.categories.forEach((r, i) => {
+  currentGame.cats.forEach((r, i) => {
     labelRow = ce('tr');
     labelRow.classList.add('mrow');
     spacer = ce('th');
@@ -54,7 +54,7 @@ const createMatrix = () => {
       const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
       newSpan.innerText = clickOptions[0];
-      userBoard[slot][currentGame.categoryNames[i]] = { data: options[options.lang].empty, span: newSpan };
+      userBoard[slot][currentGame.categoryNames[i]] = { d: options[options.lang].empty, span: newSpan };
       newCol.onclick = (e) => {
         re(newSpan, clickOptions, slot, currentGame.categoryNames[i]);
       };

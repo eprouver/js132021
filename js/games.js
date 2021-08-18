@@ -40,7 +40,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
     return R;
   }
 
-  let categories = options.categories;
+  let cats = options.cats;
   let categoryNames = options.categoryNames;
   let slotNames = options.slotNames;
 
@@ -49,7 +49,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
   const select = sampleSize(catNum, [...Array(categoryNames.length).keys()]);
 
   categoryNames = categoryNames.filter((a, i) => select.indexOf(i) !== -1);
-  categories = categories.filter((a, i) => select.indexOf(i) !== -1).map(e => sampleSize(slotNum + 2, e));
+  cats = cats.filter((a, i) => select.indexOf(i) !== -1).map(e => sampleSize(slotNum + 2, e));
 
   const maxFill = catNum * slotNum;
 
@@ -135,7 +135,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
 
   function* findSolution(remainingConstraints, row) {
     remainingConstraints = remainingConstraints.map(c => {
-      return typeof c === 'function' ? c : (s) => clueCheck[c.type](c.data[0], c.data[1], s)
+      return typeof c === 'function' ? c : (s) => clueCheck[c.type](c.d[0], c.d[1], s)
     });
     if (remainingConstraints.length === 0) {
       if (findDupes(row)) {
@@ -176,73 +176,73 @@ const addGame = (slotNum = 2, catNum = 2) => {
       const key = sample(categoryNames.filter(a => a !== not));
       const obj = {};
       obj.key = key;
-      const category = categories[categoryNames.indexOf(key)];
+      const category = cats[categoryNames.indexOf(key)];
       return {
         key,
-        data: size === 1 ? sample(category) : sampleSize(size, category)
+        d: size === 1 ? sample(category) : sampleSize(size, category)
       };
     };
 
     switch (type || sample([... Array(options.clueTypes.length)].map((a,i) => i))) {
       case 0:
         data = pickConstraint();
-        constraint[data.key] = data.data;
+        constraint[data.key] = data.d;
         data = pickConstraint(data.key);
-        constraint[data.key] = data.data;
+        constraint[data.key] = data.d;
         newConstraint = {
           type: options.clueTypes[0],
-          data: [constraint, {data: []}],
+          d: [constraint, {d: []}],
         }
         break;
       case 1:
         data = pickConstraint();
-        constraint[data.key] = data.data;
+        constraint[data.key] = data.d;
         constraint2 = {
           i: ~~(Math.random() * row.length)
         };
         newConstraint = {
           type: options.clueTypes[1],
-          data: [constraint, constraint2],
+          d: [constraint, constraint2],
         };
         break;
       case 2:
         data = pickConstraint('', 2);
-        constraint[data.key] = data.data[0];
-        constraint2[data.key] = data.data[1];
+        constraint[data.key] = data.d[0];
+        constraint2[data.key] = data.d[1];
         newConstraint = {
           type: options.clueTypes[2],
-          data: [constraint, constraint2],
+          d: [constraint, constraint2],
         };
         break;
       case 3:
         data = pickConstraint('', 2);
-        constraint[data.key] = data.data[0];
-        constraint2[data.key] = data.data[1];
+        constraint[data.key] = data.d[0];
+        constraint2[data.key] = data.d[1];
         newConstraint = {
           type: options.clueTypes[3],
-          data: [constraint2, constraint],
+          d: [constraint2, constraint],
         };
         break;
       case 4:
         data = pickConstraint();
-        constraint[data.key] = data.data;
+        constraint[data.key] = data.d;
         data = pickConstraint(data.key);
-        constraint2[data.key] = data.data;
+        constraint2[data.key] = data.d;
         newConstraint = {
           type: options.clueTypes[4],
-          data: [constraint, constraint2],
+          d: [constraint, constraint2],
         }
         break;
     }
 
-    if (attemptedConstraints.some(a => checkToString(a) === checkToString(newConstraint.data))) {
+    if (attemptedConstraints.some(a => checkToString(a) === checkToString(newConstraint.d))) {
       // console.log('KICKING ALREADY USED CONSTRAINT');
       requestAnimationFrame(() => {
         addConstraint(type, ++depth, callback);
       });
       return;
     }
-    attemptedConstraints.push(newConstraint.data);
+    attemptedConstraints.push(newConstraint.d);
     callback(newConstraint);
   };
 
@@ -345,9 +345,8 @@ const addGame = (slotNum = 2, catNum = 2) => {
         chunkedSteps.forEach((step, act) => {
           step.forEach((level, scene) => {
             levels.push({
-              chore: 'add chore',
               reward: scene === step.length - 1 ? true : false,
-              correctBoards: stepTest[act].solution,
+              cb: stepTest[act].solution.length === 1 ? stepTest[act].solution: '',
               rewardClues: level,
             });
           });
@@ -368,7 +367,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
           setupGame: () => {
             createMatrix();
           },
-          categories,
+          cats,
           categoryNames,
           slotNames,
           attempts: 0,

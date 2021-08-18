@@ -3,108 +3,108 @@
 // options.slotNames
 
 const wordClues = clue => {
-  const keys = Object.keys(clue.data[0]);
-  const keys2 = Object.keys(clue.data[1] || {});
+  const keys = Object.keys(clue.d[0]);
+  const keys2 = Object.keys(clue.d[1] || {});
   let option, option2, option3;
 
-  option = (currentGame.categories[currentGame.categoryNames.indexOf(keys[0])] || []).indexOf(clue.data[0][keys[0]]) + 1;
-  option2 = (currentGame.categories[currentGame.categoryNames.indexOf(keys[1])] || []).indexOf(clue.data[0][keys[1]]) + 1;
+  option = (currentGame.cats[currentGame.categoryNames.indexOf(keys[0])] || []).indexOf(clue.d[0][keys[0]]) + 1;
+  option2 = (currentGame.cats[currentGame.categoryNames.indexOf(keys[1])] || []).indexOf(clue.d[0][keys[1]]) + 1;
   if (keys2.length)
-  option3 = (currentGame.categories[currentGame.categoryNames.indexOf(keys2[0])] || []).indexOf(clue.data[1][keys2[0]]) + 1;
+  option3 = (currentGame.cats[currentGame.categoryNames.indexOf(keys2[0])] || []).indexOf(clue.d[1][keys2[0]]) + 1;
 
   switch(options.lang) {
     case 'es':
     switch(clue.type) {
       case 'ti':
-        return `la persona con ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.data[0][keys[1]]}</span>`
+        return `la persona con ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.data[1].i]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> está a la derecha de ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la derecha de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> está a la izquierda de ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la izquierda de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> está cerca de ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está cerca de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
     case 'fr':
     switch(clue.type) {
       case 'ti':
-        return `la personne avec ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.data[0][keys[1]]}</span>`
+        return `la personne avec ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.data[1].i]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> est à droite de ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à droite de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> est à gauche de ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à gauche de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> est a coté de ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est a coté de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
     case 'zh-CN':
     switch(clue.type) {
       case 'ti':
-        return `有 <span data-option="${option}">${clue.data[0][keys[0]]}</span> ${keys[0]} 的人, 也有 <span data-option="${option2}">${clue.data[0][keys[1]]}</span> 的${keys[1]}  `
+        return `有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有 <span data-option="${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}  `
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.data[1].i]}</span> 有 <span data-option="${option}">${clue.data[0][keys[0]]}</span> 的${keys[0]}`;
+        return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span> 有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
       break;
       case 'b':
-        return `${keys2[0]} <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> 在 ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span> 的右边`;
+        return `${keys2[0]} <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的右边`;
       break;
       case 'a':
-        return `${keys2[0]} <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> 在 ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span> 的左边`;
+        return `${keys2[0]} <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的左边`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> 就在 ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span> 的旁边`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> 就在 ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的旁边`;
       break;
     }
     case 'tp':
     switch(clue.type) {
       case 'ti':
-        return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, kin jo e ${keys[1]}  <span data-option="${option2}">${clue.data[0][keys[1]]}</span>`
+        return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, kin jo e ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `jan <span class="person">${currentGame.slotNames[clue.data[1].i]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `jan <span class="person">${currentGame.slotNames[clue.d[1].i]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> li lon poka pini e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pini e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> li lon poka open e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka open e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span> li lon poka e ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
     default:
     switch(clue.type) {
       case 'ti':
-        return `The one with ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, also has ${keys[1]}  <span data-option="${option2}">${clue.data[0][keys[1]]}</span>`
+        return `The one with ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, also has ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.data[1].i]}</span>has ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>`;
+        return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>has ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `One left of ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>,
-        is ${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}`;
+        return `One left of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>,
+        is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}`;
       break;
       case 'b':
-        return `One right of ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span>`;
+        return `One right of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
       break;
       case 'nt':
-        return `Next to ${keys[0]}  <span data-option="${option}">${clue.data[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.data[1][keys2[0]]}</span>`;
+        return `Next to ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
       break;
     }
     break;
@@ -144,17 +144,17 @@ const scoreMatrix = () => {
 
   //if (currentGame.level === currentGame.levels.length - 1) {
     // player is on last level check entire board
-    const finalBoard = currentGame.levels[currentGame.levels.length -1].correctBoards[0];
+    const finalBoard = currentGame.levels[currentGame.levels.length -1].cb[0];
     let cleared = true;
     for(let col = 0; col < currentGame.slotNum; col++) {
-      for(let row = 0; row < currentGame.categories.length; row++) {
+      for(let row = 0; row < currentGame.cats.length; row++) {
         const user = userBoard[col][currentGame.categoryNames[row]];
         user.span.classList.remove('correct,incorrect');
-        if (user.data === options[options.lang].empty){
+        if (user.d === options[options.lang].empty){
           cleared = false;
           continue;
         }
-        if (finalBoard[col][currentGame.categoryNames[row]] === user.data) {
+        if (finalBoard[col][currentGame.categoryNames[row]] === user.d) {
           timeout(() => {
             user.span.classList.add('correct');
             user.span.classList.remove('incorrect');
@@ -173,7 +173,7 @@ const scoreMatrix = () => {
     }
 
     return cleared;
-  // } else if (currentGame.levels[currentGame.level].correctBoards.length === 1) {
+  // } else if (currentGame.levels[currentGame.level].cb.length === 1) {
   //   // puzzle has only one solution - but might not be filled in
   //
   // } else {
