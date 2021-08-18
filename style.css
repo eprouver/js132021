@@ -21,7 +21,7 @@ body {
 }
 
 button, span, td.draggable, .tutorial, .lang {
-  border-radius: 0.2em;
+  border-radius: 0.25em;
 }
 
 #menu, #matrix, #wb, html, body {
@@ -57,7 +57,7 @@ button, span, td.draggable, .tutorial, .lang {
   bottom: 0;
   width: 100%;
   min-height: 40vh;
-  padding: 20px;
+  padding: 0.5em;
   background: #d6d6d6;
   display: flex;
   box-shadow: 0 0 114px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 0, 0, 0.4);
@@ -66,7 +66,7 @@ button, span, td.draggable, .tutorial, .lang {
 }
 
 #matrix table {
-  font-size: 2vmin;
+  font-size: 2.5vmin;
   border-collapse: separate;
   width: 100%;
   table-layout: fixed;
@@ -94,7 +94,6 @@ button, span, td.draggable, .tutorial, .lang {
 th {
   position: relative;
   pointer-events: none;
-  padding: 1px;
 }
 
 th.person {
@@ -103,7 +102,7 @@ th.person {
   top: 0.4em;
 }
 
-th.person.bigger span {
+.end th.person span {
   transition: .1s ease all;
   transform: scale(1.5);
   transform-origin: 50% 1.1em;
@@ -141,6 +140,7 @@ td.draggable span {
   color: #9c9c9c;
   max-width: 100%;
   min-width: 1.3em;
+  margin: 0.1em 0;
 }
 
 span {
@@ -182,13 +182,9 @@ span.incorrect:before {
   z-index: 10;
 }
 
-.draggable.dragging span {
-  transform: scale(2) translateY(-10px);
-}
-
 span[data-option="0"] {
   font-size: 2vmin !important;
-  padding: 1.9em 0 !important;
+  padding: 1.6em 0 !important;
 }
 
 span[data-option="1"] {
@@ -225,16 +221,13 @@ span[data-option="8"] {
 
 #wb {
   text-align: center;
-  font-size: 2.6vmin;
+  font-size: 2.5vmin;
   height: 60vh;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 5vh 0 40vh 3vw;
   transition: background-color .25s ease;
-  transform-style: preserve-3d;
-  perspective: 1200px;
   background: #fff;
-  perspective-origin: bottom;
 }
 
 .end #wb {
@@ -291,17 +284,15 @@ h3 {
 
 .clue {
   animation: 1s ease both 1 growOn;
-  line-height: 2.55em;
+  line-height: 2.75em;
 }
 
 .clue span {
-pointer-events: none;
-width: 75vmin;
-height: 75vmin;
-}
-
-#wb span {
-  padding: 5px 10px;
+  pointer-events: none;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  line-height: 1.5em;
 }
 
 .clue.hideMe {
@@ -356,7 +347,7 @@ height: 75vmin;
   }
 
   100% {
-    transform: scale(1);
+    transform: scale(1.1);
   }
 }
 
@@ -416,7 +407,7 @@ div#menu {
   -webkit-text-stroke: 3px #444;
   background-size: 120% 100%;
   animation: bg 60s linear infinite alternate;
-  transform: scaleX(1.25);
+  transform: scaleX(1.05);
   background-position-y: 0em;
 }
 
@@ -618,12 +609,9 @@ svg {
   }
 
   #matrix table {
+    font-size: 2vmin;
     margin: 0 auto;
     top: 0em;
-  }
-
-  span[data-option="0"] {
-    font-size: 2vmin !important;
   }
 
   button.clue {
@@ -646,5 +634,9 @@ svg {
   svg {
     height: 100%;
     width: 50%;
+  }
+
+  span[data-option="0"] {
+    padding: 2.2em 0 !important;
   }
 }

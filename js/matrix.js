@@ -78,7 +78,6 @@ const createMatrix = () => {
     if (scoreMatrix()) {
       checker.parentNode.parentNode.parentNode.removeChild(checker.parentNode.parentNode);
       workbook.innerHTML = '';
-      [...document.querySelectorAll('th.person')].forEach((p, i) => p.classList.add('bigger'));
 
       workbook.scroll(0,0);
       cont.classList.add('end');

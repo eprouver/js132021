@@ -1,4 +1,5 @@
 const addGame = (slotNum = 2, catNum = 2) => {
+  return new Promise(function(resolve, reject){
   let row,
     constraints,
     prevSolution,
@@ -358,7 +359,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
           levels = levels.slice(levels.length - 1)
         }
 
-        games.push({
+        resolve({
           slotNum,
           catNum,
           levels,
@@ -379,4 +380,5 @@ const addGame = (slotNum = 2, catNum = 2) => {
   }
 
   addAndCheck(1);
+});
 };
