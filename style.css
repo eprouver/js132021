@@ -22,7 +22,7 @@ margin:0;
 overflow:hidden
 }
 
-button,span,td.draggable,.tutorial,.lang,input {
+button,span,td.draggable,.tutorial,.lang,input,.sub-game {
 border-radius:.25em
 }
 
@@ -664,8 +664,8 @@ width:100%
 background:rgba(255,255,255,0.5);
 border:1px solid #ccc;
 margin-top:1em;
-min-height:17em;
-overflow-x:scroll
+height:17.5em;
+overflow-y:scroll
 }
 
 .root-col {
@@ -693,4 +693,13 @@ width:3em
 
 .night .root-col:before {
 background:#2e2e2e
+}
+
+.sub-game {
+  font-size: 1.5em;
+  border: 1px solid #ccc;
+  margin: 0.5em;
+  padding: 0.5em;
+  cursor: pointer;
+  background:rgba(0,0,0,0.15);
 }

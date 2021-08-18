@@ -41,14 +41,14 @@ const addGame = (slotNum = 2, catNum = 2) => {
   }
 
   let cats = options.cats;
-  let categoryNames = options.categoryNames;
+  let cNms = options.cNms;
   let slotNames = options.slotNames;
 
   slotNames = sampleSize(slotNum, slotNames).map(f => randSkinTone(f)).map(f => randGender(f));
 
-  const select = sampleSize(catNum, [...Array(categoryNames.length).keys()]);
+  const select = sampleSize(catNum, [...Array(cNms.length).keys()]);
 
-  categoryNames = categoryNames.filter((a, i) => select.indexOf(i) !== -1);
+  cNms = cNms.filter((a, i) => select.indexOf(i) !== -1);
   cats = cats.filter((a, i) => select.indexOf(i) !== -1).map(e => sampleSize(slotNum + 2, e));
 
   const maxFill = catNum * slotNum;
@@ -173,10 +173,10 @@ const addGame = (slotNum = 2, catNum = 2) => {
     let newConstraint;
 
     const pickConstraint = (not = '', size = 1) => {
-      const key = sample(categoryNames.filter(a => a !== not));
+      const key = sample(cNms.filter(a => a !== not));
       const obj = {};
       obj.key = key;
-      const category = cats[categoryNames.indexOf(key)];
+      const category = cats[cNms.indexOf(key)];
       return {
         key,
         d: size === 1 ? sample(category) : sampleSize(size, category)
@@ -345,16 +345,15 @@ const addGame = (slotNum = 2, catNum = 2) => {
         chunkedSteps.forEach((step, act) => {
           step.forEach((level, scene) => {
             levels.push({
-              reward: scene === step.length - 1 ? true : false,
               cb: stepTest[act].solution.length === 1 ? stepTest[act].solution: '',
-              rewardClues: level,
+              rwc: level,
             });
           });
         });
 
         // reduce to one level
         if (constraints.length <= 3) {
-          levels[levels.length - 1].rewardClues = levels.map(l => l.rewardClues).reduce((o, n) => o.concat(n));
+          levels[levels.length - 1].rwc = levels.map(l => l.rwc).reduce((o, n) => o.concat(n));
           levels = levels.slice(levels.length - 1)
         }
 
@@ -364,11 +363,8 @@ const addGame = (slotNum = 2, catNum = 2) => {
           levels,
           extraClue: addAndCheck,
           clues: constraints,
-          setupGame: () => {
-            createMatrix();
-          },
           cats,
-          categoryNames,
+          cNms,
           slotNames,
           attempts: 0,
         });

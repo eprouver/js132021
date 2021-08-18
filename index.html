@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./style.css" rel="stylesheet">
   <title>🕵🏾‍♂️ Blanks - Reduce the space</title>
+  <script src="https://cdn.jsdelivr.net/gh/nearprotocol/near-api-js/dist/near-api-js.js"></script>
   <meta name="monetization" content="$ilp.uphold.com/njQnNZy68WNK">
 </head>
 
@@ -61,9 +62,8 @@
       <button class="clue" onclick="makeGames()">👍</button>
     </div>
 
-    <div class="dec">
-      <h3><span>espace</span><span>vacio</span><span>空白</span><span>ala</span></p>
-      </h3>
+    <div class="dec" id="near">
+      <h3><a>Click to sign into NEAR wallet.</a></h3>
     </div>
   </div>
 
@@ -95,7 +95,7 @@
       <div class="root-col">
         <h1 id="create">Create</h1>
         <p><span>5 x 5 =></span> <span id="com2"></span></p>
-        <button class="clue">👍</button>
+        <button class="clue" onclick="subGame()">👍</button>
         <h2 id="com">Community</h2>
         <div id="com-list">
         </div>

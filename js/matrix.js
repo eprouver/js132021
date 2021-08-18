@@ -43,7 +43,7 @@ const createMatrix = () => {
     labelRow = ce('tr');
     labelRow.classList.add('mrow');
     spacer = ce('th');
-    spacer.innerHTML = currentGame.categoryNames[i];
+    spacer.innerHTML = currentGame.cNms[i];
     labelRow.appendChild(spacer);
 
     const clickOptions = [options[options.lang].empty, ...r];
@@ -54,9 +54,9 @@ const createMatrix = () => {
       const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
       newSpan.innerText = clickOptions[0];
-      userBoard[slot][currentGame.categoryNames[i]] = { d: options[options.lang].empty, span: newSpan };
+      userBoard[slot][currentGame.cNms[i]] = { d: options[options.lang].empty, span: newSpan };
       newCol.onclick = (e) => {
-        re(newSpan, clickOptions, slot, currentGame.categoryNames[i]);
+        re(newSpan, clickOptions, slot, currentGame.cNms[i]);
       };
       newCol.appendChild(newSpan);
       labelRow.appendChild(newCol);

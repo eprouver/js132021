@@ -70,7 +70,7 @@ const startNewGame = (game) => {
   currentGame = game || games.shift();
   sfx([, , -62, .02, .03, .23, , 10.8, 5.8, , 200, -0.07, , .3, 2, , , 1.3, .13, .3]);
 
-  currentGame.setupGame();
+  createMatrix();
   cont.classList.remove('end');
   timeout(() => {
     setupWorkbook(currentGame);

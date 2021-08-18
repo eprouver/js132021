@@ -23,7 +23,7 @@ const timeout = (func, time) => {
 
 const options = {
   lang: 'en',
-  files: 5,
+  files: 3,
   clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
   cats: [
     ['👓', '👕', '👘', '🎩', '👠', '🧤', '🧣', '👒', '🧢', '👟', '🩳'],
@@ -127,19 +127,19 @@ const lang = (e, play = true) => {
 
   switch (options.lang) {
     case 'tp':
-      options.categoryNames = ['len', 'kalama musi', 'musi utala', 'olin', 'kili', 'soweli', 'moku', 'pilin'];
+      options.cNms = ['len', 'kalama musi', 'musi utala', 'olin', 'kili', 'soweli', 'moku', 'pilin'];
     break;
     case 'fr':
-      options.categoryNames = ['le vêtement', 'l\'instrument', 'le sport', 'le cœur', 'le fruit', 'l\'animal', 'la bouffe', 'le sentiment'];
+      options.cNms = ['le vêtement', 'l\'instrument', 'le sport', 'le cœur', 'le fruit', 'l\'animal', 'la bouffe', 'le sentiment'];
     break;
     case 'es':
-      options.categoryNames = ['la ropa', 'el instrumento', 'el deporte', 'el corazón', 'la fruta', 'el animal', 'la comida', 'el sentimiento'];
+      options.cNms = ['la ropa', 'el instrumento', 'el deporte', 'el corazón', 'la fruta', 'el animal', 'la comida', 'el sentimiento'];
     break;
     case 'zh-CN':
-      options.categoryNames = ['衣服','仪器','运动','心脏','水果','动物','食物','心情'];
+      options.cNms = ['衣服','仪器','运动','心脏','水果','动物','食物','心情'];
     break;
     default:
-      options.categoryNames = ['clothes', 'instrument', 'sport', 'heart', 'fruit', 'animal', 'food', 'mood'];
+      options.cNms = ['clothes', 'instrument', 'sport', 'heart', 'fruit', 'animal', 'food', 'mood'];
     break;
   }
 }

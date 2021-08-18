@@ -7,10 +7,10 @@ const wordClues = clue => {
   const keys2 = Object.keys(clue.d[1] || {});
   let option, option2, option3;
 
-  option = (currentGame.cats[currentGame.categoryNames.indexOf(keys[0])] || []).indexOf(clue.d[0][keys[0]]) + 1;
-  option2 = (currentGame.cats[currentGame.categoryNames.indexOf(keys[1])] || []).indexOf(clue.d[0][keys[1]]) + 1;
+  option = (currentGame.cats[currentGame.cNms.indexOf(keys[0])] || []).indexOf(clue.d[0][keys[0]]) + 1;
+  option2 = (currentGame.cats[currentGame.cNms.indexOf(keys[1])] || []).indexOf(clue.d[0][keys[1]]) + 1;
   if (keys2.length)
-  option3 = (currentGame.cats[currentGame.categoryNames.indexOf(keys2[0])] || []).indexOf(clue.d[1][keys2[0]]) + 1;
+  option3 = (currentGame.cats[currentGame.cNms.indexOf(keys2[0])] || []).indexOf(clue.d[1][keys2[0]]) + 1;
 
   switch(options.lang) {
     case 'es':
@@ -148,13 +148,13 @@ const scoreMatrix = () => {
     let cleared = true;
     for(let col = 0; col < currentGame.slotNum; col++) {
       for(let row = 0; row < currentGame.cats.length; row++) {
-        const user = userBoard[col][currentGame.categoryNames[row]];
+        const user = userBoard[col][currentGame.cNms[row]];
         user.span.classList.remove('correct,incorrect');
         if (user.d === options[options.lang].empty){
           cleared = false;
           continue;
         }
-        if (finalBoard[col][currentGame.categoryNames[row]] === user.d) {
+        if (finalBoard[col][currentGame.cNms[row]] === user.d) {
           timeout(() => {
             user.span.classList.add('correct');
             user.span.classList.remove('incorrect');
@@ -182,6 +182,7 @@ const scoreMatrix = () => {
 }
 
 const extraClueButton = () => {
+  if (!currentGame.extraClue) return;
   const checker = ce('button');
   checker.classList.add('clue');
   checker.onclick = () => {
@@ -215,7 +216,7 @@ const setupWorkbook = () => {
   currentGame.levels.forEach((level, i, arr) => {
     timeout(() => {
       currentGame.level = i;
-      showClueArr(level.rewardClues, i < arr.length - 1);
+      showClueArr(level.rwc, i < arr.length - 1);
 
       // if it's the last level still show the ellipse
       if (currentGame.level === arr.length - 1) {
@@ -228,11 +229,11 @@ const setupWorkbook = () => {
           say(options[options.lang].solvable);
           workbook.appendChild(note);
           extraClueButton();
-        }, clueTime * level.rewardClues.length - 1 + 2000);
+        }, clueTime * level.rwc.length - 1 + 2000);
       }
     }, clues * clueTime + tutorial + (i * levelTime));
 
-    clues += level.rewardClues.length;
+    clues += level.rwc.length;
   });
 
   const note = ce('div');
