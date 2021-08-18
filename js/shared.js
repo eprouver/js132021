@@ -23,7 +23,7 @@ const timeout = (func, time) => {
 
 const options = {
   lang: 'en',
-  files: 3,
+  files: 5,
   clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
   cats: [
     ['👓', '👕', '👘', '🎩', '👠', '🧤', '🧣', '👒', '🧢', '👟', '🩳'],
