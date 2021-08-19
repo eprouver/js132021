@@ -71,7 +71,7 @@ let subGame;
   const link = document.getElementById('near');
 
   if(wallet.isSignedIn()) {
-    link.innerHTML = '<h3>You\'re signed into NEAR wallet.';
+    link.innerHTML = 'You\'re signed into NEAR.';
   }
 
   link.onclick = () => {

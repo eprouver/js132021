@@ -225,10 +225,11 @@ const setupWorkbook = () => {
           note.classList.add('clue');
           note.classList.remove('loading');
           note.innerHTML = `<br/><h3>${options[options.lang].solvable}</h3>`;
+          options.t = false;
           say(options[options.lang].solvable);
           workbook.appendChild(note);
           extraClueButton();
-        }, clueTime * level.rwc.length - 1 + 2000);
+        }, clueTime * level.rwc.length - 1 + 5000);
       }
     }, clues * clueTime + tutorial + (i * levelTime));
 

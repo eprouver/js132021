@@ -66,6 +66,7 @@ const startNewGame = (game) => {
     timeout(startNewGame, 500);
     return;
   }
+  options.t = true;
   selectNewVoice();
   currentGame = game || games.shift();
   sfx([, , -62, .02, .03, .23, , 10.8, 5.8, , 200, -0.07, , .3, 2, , , 1.3, .13, .3]);
@@ -96,3 +97,8 @@ function scroller(event){
 }
 
 document.onwheel = scroller;
+
+if (document.monetization && document.monetization.state) {
+  document.getElementById('mon-files').style.display = 'inline-block';
+  document.getElementById('coil').innerHTML = 'You\'re signed into COIL.';
+}

@@ -21,6 +21,11 @@ margin:0;
 overflow:hidden
 }
 
+a {
+color: inherit;
+text-decoration: none
+}
+
 button,span,td.draggable,.tutorial,.lang,input,.sub-game {
 border-radius:.25em
 }
@@ -402,8 +407,8 @@ line-height:1;
 animation:bg 60s linear infinite alternate;
 background-clip:text;
 background-image:url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>🧑🏾‍🏭👨🏿‍🎓👩🏼‍🚒🧝🏻‍♀️👩🏾‍✈️👰🏽🧙🏼‍♂️💂🏿🧕🏿</text></svg>");
-background-position-y:0;
-background-size:280% 100%;
+background-position-y:2em;
+background-size:280% 80%;
 color:rgba(100,100,100,0.5)
 }
 
@@ -423,10 +428,10 @@ font-size:3.35vmin
 }
 
 #menu button {
-font-size:8vmin;
-margin-top:1em;
-min-width:auto;
-width:50%!important
+font-size: 8vmin;
+min-width: auto;
+width: 30% !important;
+margin: 0.5em
 }
 
 .right {
@@ -597,7 +602,8 @@ height:100vh;
 padding-top:15vw;
 right:0;
 top:0;
-width:50.5vw
+width:50.5vw;
+overflow-y: scroll
 }
 
 #matrix table {
@@ -733,4 +739,14 @@ background:#2e2e2e
   to{
     transform: translateX(0);
   }
+}
+
+#hun {
+position: absolute;
+font-size: 2.5vw;
+max-width: 50%;
+text-align: left;
+top: 0.5em;
+line-height: 0.5;
+letter-spacing: -0.3em
 }

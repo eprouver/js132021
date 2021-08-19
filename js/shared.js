@@ -23,7 +23,7 @@ const timeout = (func, time) => {
 
 const options = {
   lang: 'en',
-  files: 5,
+  files: 6,
   clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
   cats: [
     ['👓', '👕', '👘', '🎩', '👠', '🧤', '🧣', '👒', '🧢', '👟', '🩳'],
@@ -43,7 +43,7 @@ const options = {
     noMore: 'No more clues.',
     tutorial: 'Tutorial: Use the prompts. Fill in the spaces.  Then 👍',
     newCase: 'New Case!',
-    p: 'People #',
+    p: '# of People',
     c: '# of Categories',
     ch: 'Choose',
     cr: 'Create',
@@ -97,7 +97,7 @@ const options = {
     solvable: '可以完成',
     empty: '空白',
     noMore: '没有了',
-    tutorial: '教程：使用线索并完成信息。 终于摸了👍',
+    tutorial: '教程：使用线索并完成信息。 然后单击 👍。',
     newCase: '新谜底!',
     p: '人数',
     c: '类别数',
