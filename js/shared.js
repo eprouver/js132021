@@ -60,7 +60,7 @@ const options = {
     p: 'jan',
     c: 'kulupu ilo',
     ch: 'o pana',
-    cr: 'sin',
+    cr: 'o sin',
     com: 'kulupu',
     ff: 'utala mute',
   },
