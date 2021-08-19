@@ -183,7 +183,8 @@ const addGame = (slotNum = 2, catNum = 2) => {
       };
     };
 
-    switch (type || sample([... Array(options.clueTypes.length)].map((a,i) => i))) {
+    // balance types of clues by adding more of that #
+    switch (type || sample([0, 0, 0, 1, 2, 2, 3, 3, 4])) {
       case 0:
         data = pickConstraint();
         constraint[data.key] = data.d;
