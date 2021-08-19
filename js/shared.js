@@ -32,7 +32,7 @@ const options = {
     ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤎', '💔'],
     ['🍇', '🍉', '🍊', '🍎', '🥝', '🥥', '🍐', '🍑', '🍒', '🍋'],
     ['🐒', '🐕', '🦝', '🐈', '🦓', '🐄', '🐖', '🐪', '🦒','🐘', '🐁', '🐇', '🐿️', '🦨', '🦘'],
-    ['🥯', '🍟', '🍔', '🍕', '🧀', '🍜', '🍦', '🍩', '🍿', '🥐', '🌮', '🍣'],
+    ['🥯', '🍟', '🍔', '🍕', '🧀', '🍜', '🍦', '🍩', '🍿', '🥐', '🌮', '🍣', '🍚'],
     ['😍', '😎', '👿', '🤔', '😓', '😷', '🥺', '😡', '🤪', '😀', '🥶', '🥱'],
   ],
   slotNames: ['🧟‍♂️','🦹🏽‍♂️','🦸🏽‍♂️','🧛🏽‍♂️','👷🏻‍♂️', '👨🏽‍🎨', '👨🏿‍💼','👨🏻‍🔧', '👨🏾‍⚕️', '👨🏼‍🌾', '🧑🏻‍⚖️', '👨🏾‍🔬', '👨🏼‍🎤', '👨🏽‍🚀', '👮🏽‍♂️', '👩🏽‍🍳', '🧕🏼', '💂🏽‍♂️', '🧙🏼‍♂️', '👰🏻', '👩🏼‍✈️', '🧝🏽‍♂️', '👨🏾‍🚒', '👩🏽‍🎓', '👩🏼‍🏭'],
@@ -52,14 +52,14 @@ const options = {
   },
   tp: {
     wellDone: 'pona!',
-    solvable: 'ken li pini',
+    solvable: 'ken pali',
     empty: 'ala',
-    noMore: 'pona ala',
-    tutorial: 'kama sona: sina kute e toki pi wile sona. tempo pini la sina luka e 👍',
+    noMore: 'pini',
+    tutorial: 'kama sona: o kute e toki pi wile sona. tenpo pini la o luka e 👍',
     newCase: 'utala sin',
     p: 'jan',
-    c: 'ilo kulupu',
-    ch: 'pana',
+    c: 'kulupu ilo',
+    ch: 'o pana',
     cr: 'sin',
     com: 'kulupu',
     ff: 'utala mute',
@@ -76,7 +76,7 @@ const options = {
     ch: 'Choisir',
     cr : 'Créer',
     com : 'Communauté',
-    ff : 'Fichiers',
+    ff : 'Fichiers de Mystères',
   },
   es: {
     wellDone: '¡Bien Hecho!',
@@ -90,7 +90,7 @@ const options = {
     ch: 'Elegir',
     cr: 'Crear',
     com: 'Comunidad',
-    ff: 'Archivos',
+    ff: 'Archivos de Misterios',
   },
   'zh-CN': {
     wellDone: '做得好!',
@@ -104,7 +104,7 @@ const options = {
     ch: '选择',
     cr: '创建',
     com: '社区',
-    ff: '文件',
+    ff: '神秘档案',
   },
 };
 
@@ -131,7 +131,7 @@ const lang = (e, play = true) => {
       options.cNms = ['la ropa', 'el instrumento', 'el deporte', 'el corazón', 'la fruta', 'el animal', 'la comida', 'el sentimiento'];
     break;
     case 'zh-CN':
-      options.cNms = ['衣服','仪器','运动','心脏','水果','动物','食物','心情'];
+      options.cNms = ['衣服','乐器','运动','心脏','水果','动物','食物','心情'];
     break;
     default:
       options.cNms = ['clothes', 'instrument', 'sport', 'heart', 'fruit', 'animal', 'food', 'mood'];
@@ -234,4 +234,9 @@ let say = (m) => {
   speechSynthesis.speak(msg);
 };
 
-const chooseGame = () => { clear(); root.style.display = 'none'; addGame(gi('people'), gi('cats')).then(g => startNewGame(g)); };
+const chooseGame = () => {
+  clear();
+  workbook.appendChild(nnote());
+  root.style.display = 'none';
+  addGame(gi('people'), gi('cats')).then(g => startNewGame(g));
+};

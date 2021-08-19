@@ -345,7 +345,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         chunkedSteps.forEach((step, act) => {
           step.forEach((level, scene) => {
             levels.push({
-              cb: stepTest[act].solution.length === 1 ? stepTest[act].solution: '',
+              cb:  stepTest[act].solution,
               rwc: level,
             });
           });

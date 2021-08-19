@@ -620,6 +620,10 @@ animation:sib .5s ease both;
 font-size:4vw
 }
 
+.end th.person {
+top:0em;
+}
+
 svg {
 height:100%;
 width:50%
@@ -703,4 +707,30 @@ background:#2e2e2e
   padding: 0.5em;
   cursor: pointer;
   background:rgba(0,0,0,0.15);
+}
+
+.left-e{
+  animation: 0.5s ease left-e forwards;
+}
+
+.right-e{
+  animation: 0.5s ease right-e forwards;
+}
+
+@keyframes left-e {
+  from{
+    transform: translateX(-1000px);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
+@keyframes right-e {
+  from{
+    transform: translateX(1000px);
+  }
+  to{
+    transform: translateX(0);
+  }
 }

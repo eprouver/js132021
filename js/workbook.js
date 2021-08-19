@@ -16,7 +16,7 @@ const wordClues = clue => {
     case 'es':
     switch(clue.type) {
       case 'ti':
-        return `la persona con ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
+        return `la persona con ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
       break;
       case 'tiai':
         return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
@@ -35,7 +35,7 @@ const wordClues = clue => {
     case 'fr':
     switch(clue.type) {
       case 'ti':
-        return `la personne avec ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
+        return `la personne avec ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
       break;
       case 'tiai':
         return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
@@ -54,7 +54,7 @@ const wordClues = clue => {
     case 'zh-CN':
     switch(clue.type) {
       case 'ti':
-        return `有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有 <span data-option="${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}  `
+        return `有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有 <span data-option="${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}`;
       break;
       case 'tiai':
         return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span> 有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
@@ -72,19 +72,19 @@ const wordClues = clue => {
     case 'tp':
     switch(clue.type) {
       case 'ti':
-        return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> li jo e ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
+        return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> li jo e ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span> kin`
       break;
       case 'tiai':
         return `jan <span class="person">${currentGame.slotNames[clue.d[1].i]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pini e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pini pi ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka open e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka open pi ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pi ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
@@ -97,8 +97,7 @@ const wordClues = clue => {
         return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>has ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `One left of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>,
-        is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}`;
+        return `One left of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}`;
       break;
       case 'b':
         return `One right of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;

@@ -99,6 +99,7 @@ let subGame;
   subGame = () => {
     if(wallet.isSignedIn()) {
       clear();
+      workbook.appendChild(nnote());
       root.style.display = 'none';
       addGame(5,5).then(g => {
         contract.addMessage({ text: JSON.stringify(g), gas: 100000000000000});
