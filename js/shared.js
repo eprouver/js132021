@@ -192,7 +192,7 @@ let det;
 const newDet = () => {
   det = randSkinTone(randGender('🕵🏼‍♂️'));
   document.getElementById('det').innerText = det;
-  document.title = `${det} Blanks - Reduce the space`;
+  document.title = `Blank ${det} - Reduce the space`;
   workbook.setAttribute('data-flair', `${det}`);
 }
 

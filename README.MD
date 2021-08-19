@@ -1,11 +1,11 @@
-# Blanks 🕵🏻‍♂️
+# Blank 🕵🏻‍♂️
 > Fill in the empty spaces.
 > Reduce the space between us.
 
 Created for the [js13k](https://js13kgames.com/) competition 2021
 
 # Gameplay
-Blanks 🕵🏻‍♂️ is a puzzle game where random cases are generated in the browser.
+Blank 🕵🏻‍♂️ is a puzzle game where random cases are generated in the browser.
 The user must read the clues to fill in the empty spaces and solve the case.
 
 Periodically the user gets the 'case files' screen where they can choose the size of their next case or play one of the community cases submitted to the NEXT blockchain.
