@@ -6,10 +6,10 @@ const showChoose = () => {
   say(options[options.lang].ff);
   fi('nc', options[options.lang].newCase);
   fi('cf', options[options.lang].ff);
-  fi('ch', options[options.lang].ch);
+  fi('ch', `${options[options.lang].ch} ${options[options.lang].newCase}`);
   fi('peplabel', options[options.lang].p);
   fi('catlabel', options[options.lang].c);
-  fi('create', options[options.lang].cr);
+  fi('create', `${options[options.lang].cr} ${options[options.lang].newCase}`);
   fi('com', options[options.lang].com);
   fi('com2', options[options.lang].com);
 }
