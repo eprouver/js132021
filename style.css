@@ -22,10 +22,6 @@ color: inherit;
 text-decoration: none
 }
 
-.clue {
-  filter: url(#rip)
-}
-
 button,span,td.draggable,.tutorial,.lang,input,.sub-game {
 border-radius:.25em
 }
@@ -41,7 +37,8 @@ color:#fff
 }
 
 .night #matrix {
-background:#282828
+background:#282828;
+background-image: url(bg.svg) !important;
 }
 
 .night .title .bl {
@@ -54,7 +51,7 @@ flex-direction:column
 }
 
 #matrix {
-background:#d6d6d6;
+background:#eee;
 border-top:none;
 bottom:0;
 box-shadow:0 0 114px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.4);
@@ -84,8 +81,7 @@ width:80%
 
 .end #matrix table .draggable {
 background:transparent;
-box-shadow:none;
-filter:none
+box-shadow:none
 }
 
 th {
@@ -476,7 +472,7 @@ padding:0 50px
 }
 
 #pause {
-color:#aaa;
+color:#bbb;
 cursor:pointer;
 font-size:2.5em;
 line-height:1em;
@@ -484,6 +480,10 @@ padding:.5em;
 position:absolute;
 right:0;
 z-index:1
+}
+
+.night #pause {
+  color: #444;
 }
 
 @keyframes sib {
