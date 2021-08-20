@@ -227,8 +227,9 @@ let say = (m) => {
   speechSynthesis.cancel();
   const msg = new SpeechSynthesisUtterance();
   msg.voice = voice;
-  msg.volume = 3;
-  msg.rate = 1;
+  // msg.volume = 1;
+  // msg.pitch = 1.1;
+  // msg.rate = 1;
   msg.text = m.replace(new RegExp("cœur|corazón|heart", "g"), '');
   msg.lang = options.lang;
   speechSynthesis.speak(msg);

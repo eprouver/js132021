@@ -225,11 +225,12 @@ const setupWorkbook = () => {
           note.classList.add('clue');
           note.classList.remove('loading');
           note.innerHTML = `<br/><h3>${options[options.lang].solvable}</h3>`;
-          options.t = false;
+          // options.t = false;
           say(options[options.lang].solvable);
           workbook.appendChild(note);
           extraClueButton();
-        }, clueTime * level.rwc.length - 1 + 5000);
+        // }, clueTime * level.rwc.length - 1 + (currentGame.slotNum + currentGame.catNum) * 500);
+        }, clueTime * level.rwc.length - 1 + 3000);
       }
     }, clues * clueTime + tutorial + (i * levelTime));
 

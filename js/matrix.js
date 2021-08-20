@@ -81,12 +81,13 @@ const createMatrix = () => {
 
       workbook.scroll(0,0);
       cont.classList.add('end');
-      say(options[options.lang].wellDone + (options.t ? '... 100%': ''));
-      if (options.t) {
-        document.getElementById('hun').innerHTML = document.getElementById('hun').innerHTML + '🎖️';
-      } else {
-        document.getElementById('hun').innerHTML = '';
-      }
+      say(options[options.lang].wellDone);
+      // say(options[options.lang].wellDone + (options.t ? '... 100%': ''));
+      // if (options.t) {
+      //   document.getElementById('hun').innerHTML = document.getElementById('hun').innerHTML + '🎖️';
+      // } else {
+      //   document.getElementById('hun').innerHTML = '';
+      // }
       sfx([1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]);
       pause = true;
       timeout(() => {

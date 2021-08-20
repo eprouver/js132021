@@ -1,11 +1,3 @@
-html,body {
-height:100vh;
-letter-spacing:-.06em;
-overflow:hidden;
-text-align:center;
-text-rendering:geometricPrecision
-}
-
 * {
 -webkit-tap-highlight-color:transparent;
 -webkit-touch-callout:none;
@@ -15,9 +7,13 @@ padding:0;
 user-select:none
 }
 
-body {
+html,body {
+height:100vh;
+letter-spacing:-.06em;
+overflow:hidden;
+text-align:center;
+text-rendering:geometricPrecision;
 font-family:Georgia,sans-serif;
-margin:0;
 overflow:hidden
 }
 
@@ -26,11 +22,15 @@ color: inherit;
 text-decoration: none
 }
 
+.clue {
+  filter: url(#rip)
+}
+
 button,span,td.draggable,.tutorial,.lang,input,.sub-game {
 border-radius:.25em
 }
 
-#menu,#matrix,#wb,html,body,#root {
+#menu, #matrix, #wb, html, body, #root, input {
 background:#fff;
 color:#696969
 }
@@ -48,7 +48,7 @@ background:#282828
 -webkit-text-stroke:3px #999
 }
 
-#cont,#root {
+#cont,#root,#menu {
 display:flex;
 flex-direction:column
 }
@@ -178,45 +178,44 @@ overflow:hidden;
 z-index:10
 }
 
-span[data-option="0"] {
+[data-option="0"] {
 font-size:2vmin!important;
 padding:1.6em 0!important
 }
 
-span[data-option="1"] {
+[data-option="1"] {
 background:#7FDBFF
 }
 
-span[data-option="2"] {
+[data-option="2"] {
 background:#ff9a43
 }
 
-span[data-option="3"],.lang.selected {
+[data-option="3"],.lang.selected {
 background:#81da7b
 }
 
-span[data-option="4"] {
+[data-option="4"] {
 background:#ffeb6c
 }
 
-span[data-option="5"] {
+[data-option="5"] {
 background:#ff95e8
 }
 
-span[data-option="6"] {
+[data-option="6"] {
 background:#0074D9
 }
 
-span[data-option="7"] {
+[data-option="7"] {
 background:#3D9970
 }
 
-span[data-option="8"] {
+[data-option="8"] {
 background:#b775ff
 }
 
 #wb {
-background:#fff;
 font-size:2.5vmin;
 height:60vh;
 overflow-x:hidden;
@@ -381,10 +380,7 @@ width:2em
 }
 }
 
-div#menu,#root {
-background:#fff;
-display:flex;
-flex-direction:column;
+#menu,#root {
 height:100vh;
 justify-content:space-around;
 padding:20px 0;
@@ -663,12 +659,12 @@ justify-content:space-around
 }
 
 input {
-border:1px solid #ccc;
-font-size:2em;
-margin-bottom:1em;
-padding:1em;
-text-align:center;
-width:100%
+border: 1px solid #ccc;
+font-size: 3em;
+margin-bottom: 1em;
+padding: 0.1em;
+text-align: center;
+width: 100%;
 }
 
 #com-list {
@@ -741,7 +737,7 @@ background:#2e2e2e
   }
 }
 
-#hun {
+/* #hun {
 position: absolute;
 font-size: 2.5vw;
 max-width: 50%;
@@ -749,4 +745,4 @@ text-align: left;
 top: 0.5em;
 line-height: 0.5;
 letter-spacing: -0.3em
-}
+} */
