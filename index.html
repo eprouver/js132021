@@ -95,7 +95,7 @@
        <input type="number" id="cats" name="cats" min="2" max="5" value="3">
        <button class="clue" onclick="chooseGame()">👍</button>
       </div>
-      <div class="root-col right-e">
+      <div class="root-col">
         <h1 id="create">Create</h1>
         <p><span>5 x 5 =></span> <span id="com2"></span></p>
         <button class="clue" onclick="subGame()">👍</button>
@@ -103,9 +103,13 @@
         <div id="com-list">
         </div>
       </div>
+
+      <div class="root-col right-e">
+        <button id="nc" class="clue" onclick="root.style.display = 'none'; startNewGame()"></button>
+      </div>
     </div>
     <div>
-    <button id="nc" class="clue" onclick="root.style.display = 'none'; startNewGame()"></button>
+
   </div>
     </div>
 

@@ -8,25 +8,25 @@ user-select:none
 }
 
 html,body {
+font-family:Georgia,sans-serif;
 height:100vh;
 letter-spacing:-.06em;
 overflow:hidden;
+overflow:hidden;
 text-align:center;
-text-rendering:geometricPrecision;
-font-family:Georgia,sans-serif;
-overflow:hidden
+text-rendering:geometricPrecision
 }
 
 a {
-color: inherit;
-text-decoration: none
+color:inherit;
+text-decoration:none
 }
 
 button,span,td.draggable,.tutorial,.lang,input,.sub-game {
 border-radius:.25em
 }
 
-#menu, #matrix, #wb, html, body, #root, input {
+#menu,#matrix,#wb,html,body,#root,input {
 background:#fff;
 color:#696969
 }
@@ -37,8 +37,7 @@ color:#fff
 }
 
 .night #matrix {
-background:#282828;
-background-image: url(bg.svg) !important;
+background:#282828
 }
 
 .night .title .bl {
@@ -390,7 +389,7 @@ z-index:10
 font-family:Georgia;
 font-size:8vw;
 font-weight:700;
-line-height:1;
+line-height:1
 }
 
 .title .bl {
@@ -420,10 +419,10 @@ font-size:3.35vmin
 }
 
 #menu button {
-font-size: 8vmin;
-min-width: auto;
-width: 30% !important;
-margin: 0.5em
+font-size:8vmin;
+margin:.5em;
+min-width:auto;
+width:30%!important
 }
 
 .right {
@@ -483,7 +482,7 @@ z-index:1
 }
 
 .night #pause {
-  color: #444;
+color:#444
 }
 
 @keyframes sib {
@@ -578,6 +577,116 @@ stroke-dashoffset:-1800
 }
 }
 
+
+#root {
+animation:.5s fadeOn 1 ease;
+font-size:1.6vmin
+}
+
+#root label {
+display:inline-block;
+font-size:1.5em;
+padding:.5em
+}
+
+#root button {
+color:#aaa;
+margin:.5em 0;
+text-shadow:none
+}
+
+#mod {
+display: flex;
+flex-direction: column;
+overflow: scroll;
+justify-content: end;
+padding-top: 2em
+}
+
+input {
+border:1px solid #ccc;
+font-size:3em;
+margin-bottom:1em;
+padding:.1em;
+text-align:center;
+width:100%
+}
+
+#com-list {
+background:rgba(255,255,255,0.5);
+border:1px solid #ccc;
+height:17.5em;
+margin-top:1em;
+overflow-y:scroll
+}
+
+.root-col {
+  background: rgba(0,0,0,0.1);
+  border: 1px solid #aaa;
+  padding: 2vmin 2vmin;
+  position: relative;
+  width: 60vw;
+  margin: 1em auto;
+  min-height: 57vmin;
+  animation:.5s ease left-e forwards
+}
+
+.root-col:before {
+background:#e5e5e5;
+border:1px solid #aaa;
+border-bottom:none;
+border-top-left-radius:.5em;
+border-top-right-radius:.5em;
+content:'🔍';
+font-size: 2.5em;
+height:1em;
+left:.25em;
+position:absolute;
+top:-1em;
+width:3em
+}
+
+.night .root-col:before {
+background:#2e2e2e
+}
+
+.sub-game {
+background:rgba(0,0,0,0.15);
+border:1px solid #ccc;
+cursor:pointer;
+font-size:1.5em;
+margin:.5em;
+padding:.5em
+}
+
+.left-e {
+animation:.5s ease left-e forwards
+}
+
+.right-e {
+animation:.5s ease right-e forwards
+}
+
+@keyframes left-e {
+from {
+transform:translateX(-1000px)
+}
+
+to {
+transform:translateX(0)
+}
+}
+
+@keyframes right-e {
+from {
+transform:translateX(1000px)
+}
+
+to {
+transform:translateX(0)
+}
+}
+
 @media screen and (min-width: 1000px),(screen-spanning: single-fold-horizontal),(orientation: landscape) {
 #wb {
 border:none;
@@ -595,11 +704,11 @@ border-left:1px solid #aaaa;
 bottom:auto;
 box-shadow:none;
 height:100vh;
+overflow-y:scroll;
 padding-top:15vw;
 right:0;
 top:0;
-width:50.5vw;
-overflow-y: scroll
+width:50.5vw
 }
 
 #matrix table {
@@ -623,7 +732,7 @@ font-size:4vw
 }
 
 .end th.person {
-top:0em;
+top:0
 }
 
 svg {
@@ -634,115 +743,21 @@ width:50%
 span[data-option="0"] {
 padding:2.2em 0!important
 }
-}
-
-#root {
-animation:.5s fadeOn 1 ease;
-font-size:1.6vmin
-}
-
-#root label {
-display:inline-block;
-font-size:1.5em;
-padding:.5em
-}
-
-#root button {
-color:#aaa;
-margin:.5em 0;
-text-shadow:none
-}
 
 #mod {
-display:flex;
-justify-content:space-around
-}
-
-input {
-border: 1px solid #ccc;
-font-size: 3em;
-margin-bottom: 1em;
-padding: 0.1em;
-text-align: center;
-width: 100%;
-}
-
-#com-list {
-background:rgba(255,255,255,0.5);
-border:1px solid #ccc;
-margin-top:1em;
-height:17.5em;
-overflow-y:scroll
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .root-col {
-background:rgba(0,0,0,0.1);
-border:1px solid #aaa;
-padding:2vmin 5vmin;
-position:relative;
-width:45vw
+  margin: 1em;
+  animation:none;
+}
+.left-e {
+animation:.5s ease left-e forwards
 }
 
-.root-col:before {
-background:#e5e5e5;
-border:1px solid #aaa;
-border-bottom:none;
-border-top-left-radius:.5em;
-border-top-right-radius:.5em;
-content:'🔍';
-font-size:3em;
-height:1em;
-left:.25em;
-position:absolute;
-top:-1em;
-width:3em
+.right-e {
+animation:.5s ease right-e forwards
 }
-
-.night .root-col:before {
-background:#2e2e2e
 }
-
-.sub-game {
-  font-size: 1.5em;
-  border: 1px solid #ccc;
-  margin: 0.5em;
-  padding: 0.5em;
-  cursor: pointer;
-  background:rgba(0,0,0,0.15);
-}
-
-.left-e{
-  animation: 0.5s ease left-e forwards;
-}
-
-.right-e{
-  animation: 0.5s ease right-e forwards;
-}
-
-@keyframes left-e {
-  from{
-    transform: translateX(-1000px);
-  }
-  to{
-    transform: translateX(0);
-  }
-}
-
-@keyframes right-e {
-  from{
-    transform: translateX(1000px);
-  }
-  to{
-    transform: translateX(0);
-  }
-}
-
-/* #hun {
-position: absolute;
-font-size: 2.5vw;
-max-width: 50%;
-text-align: left;
-top: 0.5em;
-line-height: 0.5;
-letter-spacing: -0.3em
-} */
