@@ -92,25 +92,27 @@ const addGame = (slotNum = 2, catNum = 2) => {
       }
     },
     * nt(critA, critB, row) {
-      for (const i of [...Array(row.length - 1).keys()]) {
-        if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
-          const newRow = JSON.parse(JSON.stringify(row));
-          newRow[i] = Object.assign({}, row[i], critA);
-          newRow[i + 1] = Object.assign({}, row[i + 1], critB);
-          yield newRow;
-        }
-      }
-
-      critB = [critA, critA = critB][0];
-
-      for (const i of [...Array(row.length - 1).keys()]) {
-        if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
-          const newRow = JSON.parse(JSON.stringify(row));
-          newRow[i] = Object.assign({}, row[i], critA);
-          newRow[i + 1] = Object.assign({}, row[i + 1], critB);
-          yield newRow;
-        }
-      }
+      yield* this.a(critA, critB, row);
+      yield* this.a(critB, critA, row);
+      // for (const i of [...Array(row.length - 1).keys()]) {
+      //   if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
+      //     const newRow = JSON.parse(JSON.stringify(row));
+      //     newRow[i] = Object.assign({}, row[i], critA);
+      //     newRow[i + 1] = Object.assign({}, row[i + 1], critB);
+      //     yield newRow;
+      //   }
+      // }
+      //
+      // critB = [critA, critA = critB][0];
+      //
+      // for (const i of [...Array(row.length - 1).keys()]) {
+      //   if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
+      //     const newRow = JSON.parse(JSON.stringify(row));
+      //     newRow[i] = Object.assign({}, row[i], critA);
+      //     newRow[i + 1] = Object.assign({}, row[i + 1], critB);
+      //     yield newRow;
+      //   }
+      // }
     },
   };
 
@@ -150,21 +152,18 @@ const addGame = (slotNum = 2, catNum = 2) => {
     }
   }
 
-  const findSolutions = () => {
+  const findSolutions = (consts) => {
     const solutions = [];
-    for (const rowSolution of findSolution(constraints, row)) {
+    for (const rowSolution of findSolution(consts, row)) {
       solutions.push(rowSolution);
     }
+
     return solutions.filter(a => a);
   };
 
   const addConstraint = (type = null, depth, callback) => {
     if (depth > 100) {
-      const note = ce('div');
-      note.classList.add('clue');
-      note.innerHTML = `<h3>${options[options.lang].noMore}</h3>`;
-      workbook.appendChild(note);
-      return;
+      return callback(false);
     }
 
     let data;
@@ -184,7 +183,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
     };
 
     // balance types of clues by adding more of that #
-    switch (type || sample([0, 0, 0, 1, 2, 2, 3, 3, 4])) {
+    switch (type || sample([0, 0, 0, 1, 2, 2, 3, 3, 4, 4])) {
       case 0:
         data = pickConstraint();
         constraint[data.key] = data.d;
@@ -272,21 +271,33 @@ const addGame = (slotNum = 2, catNum = 2) => {
     currentStep = [];
   };
 
-  const addAndCheck = (type = null, depth = 0) => {
+  const addAndCheck = (type = null, depth = 0, print = false) => {
     const constraint = addConstraint(type, depth, (constraint) => {
+      if (!constraint) {
+        if (print) {
+          const note = ce('div');
+          note[cl].add('clue');
+          note.innerHTML = `<h3>${options[options.lang].noMore}</h3>`;
+          workbook.appendChild(note);
+        }
+        return;
+      }
+
       constraints.push(constraint);
-      let solution = findSolutions();
+      let solution = findSolutions(constraints);
 
       // constraint breaks the game, pop it off
       if (solution == false || !solution[0]) {
         constraints.pop();
-        addAndCheck(null, ++depth);
+        addAndCheck(null, ++depth, print);
         return;
       }
 
       const currentLength = solution[0].reduce((a, b) => {
         return a + Object.keys(b).length
       }, 0);
+
+      currentStep.push(constraint);
       if ((solution.reduce((a, b) => a.concat(b), []).some(obj => [Object, Array].includes((obj || {}).constructor) &&
             !Object.entries((obj || {})).length) ||
           currentLength === prevSolution) && prevSolution < maxFill) {
@@ -297,9 +308,8 @@ const addGame = (slotNum = 2, catNum = 2) => {
           addAndCheck();
           return;
         }
-        currentStep.push(constraint);
         requestAnimationFrame(() => {
-          addAndCheck();
+          addAndCheck(null, 0, print);
         });
         return;
       }
@@ -307,32 +317,38 @@ const addGame = (slotNum = 2, catNum = 2) => {
 
       if (!everyObject) {
         // chapter one make sure every object has at least one key
-        currentStep.push(constraint);
         firstFill(solution);
         requestAnimationFrame(() => {
-          addAndCheck();
+          addAndCheck(null, 0, print);
         });
         return;
       } else if (everyObject && prevSolution < maxFill) {
         // chapter 2 make sure clues indicate one possible arrangement
-        currentStep.push(constraint);
         if (prevSolution > Math.min(firstOffering + slotNum, firstOffering + catNum)) {
           firstSolution(solution);
         }
         requestAnimationFrame(() => {
-          addAndCheck();
+          addAndCheck(null, 0, print);
         });
         return;
       } else {
         // chapter 3 make sure all selections are indicated by clues
         // console.log(`******* ALL ${ prevSolution } selections, ${solution.length} arrangement, ${constraints.length} clues`);
+
+        if (!iareEquals(solution[0], findSolutions(constraints.reverse())[0])) {
+          console.log(iareEquals(solution[0], findSolutions(constraints.reverse())[0]), solution[0], findSolutions(constraints.reverse())[0]);
+          requestAnimationFrame(() => {
+            addAndCheck(null, 0, print);
+          });
+          return;
+        }
+
         stepTest.push({
           solution,
           selections: prevSolution
         });
         // console.log('filled board', solution[0]);
         if (!solutionFound) {
-          currentStep.push(constraint);
           steps.push(currentStep.slice(0));
           solutionFound = true;
         } else {
@@ -362,7 +378,9 @@ const addGame = (slotNum = 2, catNum = 2) => {
           slotNum,
           catNum,
           levels,
-          extraClue: addAndCheck,
+          extraClue: () => {
+            addAndCheck(null, 0, true);
+          },
           clues: constraints,
           cats,
           cNms,

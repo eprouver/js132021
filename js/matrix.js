@@ -18,7 +18,7 @@ const createMatrix = () => {
 
   currentGame.slotNames.forEach(col => {
     const newCol = ce('th');
-    newCol.classList.add('person');
+    newCol[cl].add('person');
     newCol.innerHTML = `<span>${col}</span>`;
     labelRow.appendChild(newCol)
   });
@@ -35,13 +35,13 @@ const createMatrix = () => {
     sfx([.7,.45,82.40689,,,.02,,3,35,,-150 + ((options.indexOf(current) + 1) * 100),-0.06,,,,,,.5,.03,.21]);
     userBoard[slot][category] = { d: current, span };
     span.innerText = current;
-    span.classList.remove('correct','incorrect');
+    span[cl].remove('correct','incorrect');
     span.setAttribute('data-option', options.indexOf(current));
   };
 
   currentGame.cats.forEach((r, i) => {
     labelRow = ce('tr');
-    labelRow.classList.add('mrow');
+    labelRow[cl].add('mrow');
     spacer = ce('th');
     spacer.innerHTML = currentGame.cNms[i];
     labelRow.appendChild(spacer);
@@ -49,7 +49,7 @@ const createMatrix = () => {
     const clickOptions = [options[options.lang].empty, ...r];
     currentGame.slotNames.forEach((col, slot) => {
       const newCol = ce('td');
-      newCol.classList.add('draggable');
+      newCol[cl].add('draggable');
 
       const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
@@ -65,28 +65,28 @@ const createMatrix = () => {
     table.appendChild(labelRow);
 
     labelRow = ce('tr');
-    labelRow.classList.add('mrow');
+    labelRow[cl].add('mrow');
   });
 
   labelRow = ce('tr');
-  labelRow.classList.add('mrow');
+  labelRow[cl].add('mrow');
   labelRow.appendChild(ce('td'));
 
   const checker = ce('button');
-  checker.classList.add('clue');
+  checker[cl].add('clue');
   checker.onclick = () => {
     if (scoreMatrix()) {
       checker.parentNode.parentNode.parentNode.removeChild(checker.parentNode.parentNode);
       workbook.innerHTML = '';
 
       workbook.scroll(0,0);
-      cont.classList.add('end');
+      cont[cl].add('end');
       say(options[options.lang].wellDone);
       // say(options[options.lang].wellDone + (options.t ? '... 100%': ''));
       // if (options.t) {
-      //   document.getElementById('hun').innerHTML = document.getElementById('hun').innerHTML + '🎖️';
+      //   document[ge]('hun').innerHTML = document[ge]('hun').innerHTML + '🎖️';
       // } else {
-      //   document.getElementById('hun').innerHTML = '';
+      //   document[ge]('hun').innerHTML = '';
       // }
       sfx([1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]);
       pause = true;

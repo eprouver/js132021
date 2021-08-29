@@ -5,15 +5,15 @@ let games = [];
 const shuffle = (arr) => arr.sort(() => .5 - Math.random());
 const timeouts = [];
 
-const cont = document.getElementById('cont');
-const workbook = document.getElementById('wb');
-const matrix = document.getElementById('matrix');
-const root = document.getElementById('root');
+const cont = document[ge]('cont');
+const workbook = document[ge]('wb');
+const matrix = document[ge]('matrix');
+const root = document[ge]('root');
 
 // get value
-const gi = (id, or = 3) => parseInt(document.getElementById(id).value) || or;
+const gi = (id, or = 3) => parseInt(document[ge](id).value) || or;
 // replace text
-const fi = (id, txt) => document.getElementById(id).innerText = txt;
+const fi = (id, txt) => document[ge](id).innerText = txt;
 // create element
 const ce = s => document.createElement(s);
 
@@ -21,9 +21,25 @@ const timeout = (func, time) => {
   timeouts.push(setTimeout(func, time));
 };
 
+const iareEquals = (a, b) => {
+  for(let i = 0; i < a.length; i++) {
+    for(var key in a[i]) {
+        if(!(key in b[i]) || a[i][key] !== b[i][key]) {
+            return false;
+        }
+    }
+    for(var key in b[i]) {
+        if(!(key in a[i]) || a[i][key] !== b[i][key]) {
+            return false;
+        }
+    }
+  }
+  return true;
+};
+
 const options = {
   lang: 'en',
-  files: 6,
+  files: 8,
   clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
   cats: [
     ['👓', '👕', '👘', '🎩', '👠', '🧤', '🧣', '👒', '🧢', '👟', '🩳'],
@@ -113,7 +129,7 @@ const lang = (e, play = true) => {
   if (play) {
     sfx([.7,.45,82.40689,,,.02,,3,35,,-150,-0.06,,,,,,.5,.03,.21]);
     if (e.target) {
-      e.target.classList.add('selected');
+      e.target[cl].add('selected');
       e = e ? e.target.getAttribute('id') : 'en';
     }
   }
@@ -143,7 +159,7 @@ lang('en', false);
 
 [...document.getElementsByClassName('lang')].forEach((button, i, arr) => {
   button.addEventListener('click', (e) => {
-    arr.forEach(a => a.classList.remove('selected'));
+    arr.forEach(a => a[cl].remove('selected'));
     lang(e);
   });
 });
@@ -191,8 +207,8 @@ const randGender = (string) => string.replace(findGender, sample(gMod)).replace(
 let det;
 const newDet = () => {
   det = randSkinTone(randGender('🕵🏼‍♂️'));
-  document.getElementById('det').innerText = det;
-  document.title = `Blank ${det} - Reduce the space`;
+  document[ge]('det').innerText = det;
+  document.title = `BLANKS ${det} - Reduce the space`;
   workbook.setAttribute('data-flair', `${det}`);
 }
 

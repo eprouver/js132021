@@ -111,19 +111,19 @@ const wordClues = clue => {
 };
 
 const showClueArr = (arr, div) => {
-  [...document.getElementsByClassName('loading')].forEach(c => c.classList.remove('loading'));
+  [...document.getElementsByClassName('loading')].forEach(c => c[cl].remove('loading'));
   arr.map(wordClues).forEach((clue, i) => {
       const note = ce('div');
-      note.classList.add('waiting')
+      note[cl].add('waiting')
       note.innerHTML = '<div>🔍</div>';
       workbook.appendChild(note);
     timeout(() => {
-      note.classList.remove('waiting');
+      note[cl].remove('waiting');
       note.innerHTML = '';
       timeout(() => {
         note.onclick = (e) => { say(e.target.innerText.replace(findSkin, '')) };
         note.innerHTML = clue;
-        note.classList.add('clue');
+        note[cl].add('clue');
         sfx([2,0,60,.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
         say(note.innerText.replace(findSkin, ''));
       }, 100);
@@ -148,21 +148,21 @@ const scoreMatrix = () => {
     for(let col = 0; col < currentGame.slotNum; col++) {
       for(let row = 0; row < currentGame.cats.length; row++) {
         const user = userBoard[col][currentGame.cNms[row]];
-        user.span.classList.remove('correct,incorrect');
+        user.span[cl].remove('correct,incorrect');
         if (user.d === options[options.lang].empty){
           cleared = false;
           continue;
         }
         if (finalBoard[col][currentGame.cNms[row]] === user.d) {
           timeout(() => {
-            user.span.classList.add('correct');
-            user.span.classList.remove('incorrect');
+            user.span[cl].add('correct');
+            user.span[cl].remove('incorrect');
           }, (row + col) * 100)
 
         } else {
           timeout(() => {
-            user.span.classList.remove('correct');
-            user.span.classList.add('incorrect');
+            user.span[cl].remove('correct');
+            user.span[cl].add('incorrect');
             sfx([1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06]);
           }, (row + col) * 100)
 
@@ -183,7 +183,7 @@ const scoreMatrix = () => {
 const extraClueButton = () => {
   if (!currentGame.extraClue) return;
   const checker = ce('button');
-  checker.classList.add('clue');
+  checker[cl].add('clue');
   checker.onclick = () => {
     sfx([3,,22,,.14,.08,1,2.8,4,-0.7,-300,,,1.9,,.5,.01,.75,.01]);
     checker.parentNode.removeChild(checker);
@@ -199,7 +199,7 @@ const extraClueButton = () => {
 
 const nnote = () =>  {
   const n = ce('div');
-  n.classList.add('clue');
+  n[cl].add('clue');
   n.innerHTML = '<h3 class="loading">&nbsp;</h3>';
   return n;
 }
@@ -222,8 +222,8 @@ const setupWorkbook = () => {
         const note = nnote();
         workbook.appendChild(note);
         timeout(() => {
-          note.classList.add('clue');
-          note.classList.remove('loading');
+          note[cl].add('clue');
+          note[cl].remove('loading');
           note.innerHTML = `<br/><h3>${options[options.lang].solvable}</h3>`;
           // options.t = false;
           say(options[options.lang].solvable);

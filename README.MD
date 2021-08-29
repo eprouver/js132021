@@ -1,11 +1,11 @@
-# Blank 🕵🏻‍♂️
+# BLANKS 🕵🏻‍♂️
 > Fill in the empty spaces.
 > Reduce the space between us.
 
 Created for the [js13k](https://js13kgames.com/) competition 2021
 
 # Gameplay
-Blank 🕵🏻‍♂️  &nbsp; is a puzzle game in the style of the zebra puzzle.  The cases are randomly generated in the browser and get progressively more difficult. The player must read the clues to fill in the empty spaces and solve the case.
+BLANKS 🕵🏻‍♂️  &nbsp; is a puzzle game in the style of the zebra puzzle.  The cases are randomly generated in the browser and get progressively more difficult. The player must read the clues to fill in the empty spaces and solve the case.
 
 Periodically the player gets the 'case files' screen where they can choose the size of their next case or play one of the community cases submitted to the NEXT blockchain.
 

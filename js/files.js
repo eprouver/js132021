@@ -1,7 +1,7 @@
 const showChoose = () => {
   clear();
   timeouts.forEach(t => clearTimeout(t));
-  cont.classList.remove('end');
+  cont[cl].remove('end');
   root.style.display = 'flex';
   say(options[options.lang].ff);
   fi('nc', options[options.lang].newCase);
@@ -68,7 +68,7 @@ let subGame;
   const wallet = new WalletConnection(near);
   const account = await wallet.account();
 
-  const link = document.getElementById('near');
+  const link = document[ge]('near');
 
   if(wallet.isSignedIn()) {
     link.innerHTML = 'You\'re signed into NEAR.';
@@ -115,7 +115,7 @@ let subGame;
     }
   }
 
-  const list = document.getElementById('com-list');
+  const list = document[ge]('com-list');
   sampleSize(20, messages.filter(m => m.text[0] === '{')).forEach(m => {
     const gg = ce('div');
     gg.innerHTML = `<div class="sub-game"><span>5x5</span> - ${m.sender}: <span>👍</span></div>`;

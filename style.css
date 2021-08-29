@@ -40,6 +40,12 @@ color:#fff
 background:#282828
 }
 
+.night button.clue, button.clue:active {
+  border:1px solid #b7b7b7;
+  box-shadow:0 0 2px #444;
+  top: 4px;
+}
+
 .night .title .bl {
 -webkit-text-stroke:3px #999
 }
@@ -348,8 +354,8 @@ transform:scale(1.1)
 button.clue {
 animation:1s ease forwards 1 fadeOn;
 background:#f7f7f736;
-border:1px solid #b7b7b7;
-box-shadow:0 0 2px #444;
+border: 1px solid #d8d8d8;
+box-shadow: 0 0 2px #444, 0 6px 3px #ffffff, 0 6px 3px #656565;
 color:#aaa;
 cursor:pointer;
 font-size:3em;
@@ -358,7 +364,9 @@ line-height:1.5em;
 min-width:40vmin;
 min-width:auto;
 padding:0;
-width:50%!important
+width:50%!important;
+position: relative;
+transition: box-shadow 0.1s ease;
 }
 
 .loading:after {
@@ -621,14 +629,18 @@ overflow-y:scroll
 }
 
 .root-col {
-  background: rgba(0,0,0,0.1);
-  border: 1px solid #aaa;
-  padding: 2vmin 2vmin;
-  position: relative;
-  width: 60vw;
-  margin: 1em auto;
-  min-height: 57vmin;
-  animation:.5s ease left-e forwards
+background: rgba(0,0,0,0.1);
+border: 1px solid #aaa;
+padding: 2vmin 2vmin;
+position: relative;
+width: 60vw;
+margin: 1em auto;
+min-height: 57vmin;
+animation:.5s ease left-e forwards;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center
 }
 
 .root-col:before {

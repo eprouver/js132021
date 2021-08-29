@@ -1,11 +1,13 @@
-const menu = document.getElementById('menu');
+const ge = 'getElementById';
+const cl = 'classList';
+const menu = document[ge]('menu');
 const pauseGame = () => {
   say('')
   pause = true;
   games = [];
   clear();
   menu.style.display = 'flex';
-  cont.classList.remove('end');
+  cont[cl].remove('end');
   timeouts.forEach(t => clearTimeout(t));
 }
 
@@ -72,7 +74,7 @@ const startNewGame = (game) => {
   sfx([, , -62, .02, .03, .23, , 10.8, 5.8, , 200, -0.07, , .3, 2, , , 1.3, .13, .3]);
 
   createMatrix();
-  cont.classList.remove('end');
+  cont[cl].remove('end');
   timeout(() => {
     setupWorkbook(currentGame);
   }, 500);
@@ -99,6 +101,6 @@ function scroller(event){
 document.onwheel = scroller;
 
 if (document.monetization && document.monetization.state) {
-  document.getElementById('mon-files').style.display = 'inline-block';
-  document.getElementById('coil').innerHTML = 'You\'re signed into COIL.';
+  document[ge]('mon-files').style.display = 'inline-block';
+  document[ge]('coil').innerHTML = 'You\'re signed into COIL.';
 }
