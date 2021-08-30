@@ -5,17 +5,17 @@ let games = [];
 const shuffle = (arr) => arr.sort(() => .5 - Math.random());
 const timeouts = [];
 
-const cont = document[ge]('cont');
-const workbook = document[ge]('wb');
-const matrix = document[ge]('matrix');
-const root = document[ge]('root');
+const cont = d[ge]('cont');
+const workbook = d[ge]('wb');
+const matrix = d[ge]('matrix');
+const root = d[ge]('root');
 
 // get value
-const gi = (id, or = 3) => parseInt(document[ge](id).value) || or;
+const gi = (id, or = 3) => parseInt(d[ge](id).value) || or;
 // replace text
-const fi = (id, txt) => document[ge](id).innerText = txt;
+const fi = (id, txt) => d[ge](id).innerText = txt;
 // create element
-const ce = s => document.createElement(s);
+const ce = s => d.createElement(s);
 
 const timeout = (func, time) => {
   timeouts.push(setTimeout(func, time));
@@ -55,7 +55,6 @@ const options = {
   en: {
     wellDone: 'Well Done!',
     solvable: 'Possible Solution.',
-    empty: 'space',
     noMore: 'No more clues.',
     tutorial: 'Tutorial: Use the prompts. Fill in the spaces.  Then 👍',
     newCase: 'New Case!',
@@ -69,7 +68,6 @@ const options = {
   tp: {
     wellDone: 'pona!',
     solvable: 'ken pali',
-    empty: 'ala',
     noMore: 'pini',
     tutorial: 'kama sona: o kute e toki pi wile sona. tenpo pini la o luka e 👍',
     newCase: 'utala sin',
@@ -83,7 +81,6 @@ const options = {
   fr: {
     wellDone: 'Bien Joué!',
     solvable: 'Résolution Possible.',
-    empty: 'espace',
     noMore: 'Indices terminés.',
     tutorial: 'Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍',
     newCase: 'Nouveau Mystère!',
@@ -97,7 +94,6 @@ const options = {
   es: {
     wellDone: '¡Bien Hecho!',
     solvable: 'Resolución Posible.',
-    empty: 'espacio',
     noMore: 'No más pistas.',
     tutorial: 'Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍',
     newCase: 'Nuevo Misterio!',
@@ -111,7 +107,6 @@ const options = {
   'zh-CN': {
     wellDone: '做得好!',
     solvable: '可以完成',
-    empty: '空白',
     noMore: '没有了',
     tutorial: '教程：使用线索并完成信息。 然后单击 👍。',
     newCase: '新谜底!',
@@ -157,7 +152,7 @@ const lang = (e, play = true) => {
 
 lang('en', false);
 
-[...document.getElementsByClassName('lang')].forEach((button, i, arr) => {
+[...d.getElementsByClassName('lang')].forEach((button, i, arr) => {
   button.addEventListener('click', (e) => {
     arr.forEach(a => a[cl].remove('selected'));
     lang(e);
@@ -207,8 +202,8 @@ const randGender = (string) => string.replace(findGender, sample(gMod)).replace(
 let det;
 const newDet = () => {
   det = randSkinTone(randGender('🕵🏼‍♂️'));
-  document[ge]('det').innerText = det;
-  document.title = `BLANKS ${det} - Reduce the space`;
+  d[ge]('det').innerText = det;
+  d.title = `BLANKS ${det} - Reduce the space`;
   workbook.setAttribute('data-flair', `${det}`);
 }
 

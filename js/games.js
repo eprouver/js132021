@@ -336,7 +336,6 @@ const addGame = (slotNum = 2, catNum = 2) => {
         // console.log(`******* ALL ${ prevSolution } selections, ${solution.length} arrangement, ${constraints.length} clues`);
 
         if (!iareEquals(solution[0], findSolutions(constraints.reverse())[0])) {
-          console.log(iareEquals(solution[0], findSolutions(constraints.reverse())[0]), solution[0], findSolutions(constraints.reverse())[0]);
           requestAnimationFrame(() => {
             addAndCheck(null, 0, print);
           });

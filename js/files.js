@@ -68,7 +68,7 @@ let subGame;
   const wallet = new WalletConnection(near);
   const account = await wallet.account();
 
-  const link = document[ge]('near');
+  const link = d[ge]('near');
 
   if(wallet.isSignedIn()) {
     link.innerHTML = 'You\'re signed into NEAR.';
@@ -115,7 +115,7 @@ let subGame;
     }
   }
 
-  const list = document[ge]('com-list');
+  const list = d[ge]('com-list');
   sampleSize(20, messages.filter(m => m.text[0] === '{')).forEach(m => {
     const gg = ce('div');
     gg.innerHTML = `<div class="sub-game"><span>5x5</span> - ${m.sender}: <span>👍</span></div>`;

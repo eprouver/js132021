@@ -1,6 +1,7 @@
 const ge = 'getElementById';
 const cl = 'classList';
-const menu = document[ge]('menu');
+const d = document;
+const menu = d[ge]('menu');
 const pauseGame = () => {
   say('')
   pause = true;
@@ -98,9 +99,9 @@ function scroller(event){
   event.stopPropagation();
 }
 
-document.onwheel = scroller;
+d.onwheel = scroller;
 
-if (document.monetization && document.monetization.state) {
-  document[ge]('mon-files').style.display = 'inline-block';
-  document[ge]('coil').innerHTML = 'You\'re signed into COIL.';
+if (d.monetization && d.monetization.state) {
+  d[ge]('mon-files').style.display = 'inline-block';
+  d[ge]('coil').innerHTML = 'You\'re signed into COIL.';
 }

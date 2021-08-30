@@ -111,7 +111,7 @@ const wordClues = clue => {
 };
 
 const showClueArr = (arr, div) => {
-  [...document.getElementsByClassName('loading')].forEach(c => c[cl].remove('loading'));
+  [...d.getElementsByClassName('loading')].forEach(c => c[cl].remove('loading'));
   arr.map(wordClues).forEach((clue, i) => {
       const note = ce('div');
       note[cl].add('waiting')
@@ -149,7 +149,7 @@ const scoreMatrix = () => {
       for(let row = 0; row < currentGame.cats.length; row++) {
         const user = userBoard[col][currentGame.cNms[row]];
         user.span[cl].remove('correct,incorrect');
-        if (user.d === options[options.lang].empty){
+        if (user.d === '␣'){
           cleared = false;
           continue;
         }

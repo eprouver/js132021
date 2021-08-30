@@ -46,15 +46,15 @@ const createMatrix = () => {
     spacer.innerHTML = currentGame.cNms[i];
     labelRow.appendChild(spacer);
 
-    const clickOptions = [options[options.lang].empty, ...r];
+    const clickOptions = ['␣', ...r];
     currentGame.slotNames.forEach((col, slot) => {
       const newCol = ce('td');
       newCol[cl].add('draggable');
 
       const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
-      newSpan.innerText = clickOptions[0];
-      userBoard[slot][currentGame.cNms[i]] = { d: options[options.lang].empty, span: newSpan };
+      newSpan.innerHTML = clickOptions[0];
+      userBoard[slot][currentGame.cNms[i]] = { d: '␣', span: newSpan };
       newCol.onclick = (e) => {
         re(newSpan, clickOptions, slot, currentGame.cNms[i]);
       };
@@ -84,9 +84,9 @@ const createMatrix = () => {
       say(options[options.lang].wellDone);
       // say(options[options.lang].wellDone + (options.t ? '... 100%': ''));
       // if (options.t) {
-      //   document[ge]('hun').innerHTML = document[ge]('hun').innerHTML + '🎖️';
+      //   d[ge]('hun').innerHTML = d[ge]('hun').innerHTML + '🎖️';
       // } else {
-      //   document[ge]('hun').innerHTML = '';
+      //   d[ge]('hun').innerHTML = '';
       // }
       sfx([1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]);
       pause = true;
