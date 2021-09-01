@@ -62,7 +62,7 @@ const startNewGame = (game) => {
   if (currentGame && games.length < 4) {
     // Add new random game
     let total = 9;
-    const one = ~~(Math.random() * 4 + 3);
+    const one = new Date%4 + 3;
     addGame(one, total - one).then((g) => games.push(g));
   }
   if (games.length === 0) {

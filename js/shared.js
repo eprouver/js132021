@@ -164,12 +164,12 @@ const checkToString = (arr) => arr.map(o => {
 }).flat().sort().join();
 
 const randBetween = (min, max) => {
-  return ~~(Math.random() * (max - min + 1) + min);
+  return new Date%(max - min + 1) + min;
 };
 
 const sample = arr => {
   const len = arr == null ? 0 : arr.length
-  return len ? arr[Math.floor(Math.random() * len)] : undefined
+  return len ? arr[new Date%len] : undefined
 };
 
 const sampleSize = (size, list, collected = []) => size < 1 || list.length < 1 ?

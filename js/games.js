@@ -34,7 +34,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
     var R = [];
     let chunkSize;
     for (var i = 0, len = arr.length; i < len; i += chunkSize) {
-      chunkSize = Math.max(1, ~~(Math.random() * slotNum + 1), ~~(Math.random() * catNum + 1));
+      chunkSize = Math.max(1, new Date%(slotNum + 1), new Date%(catNum + 1));
       R.push(arr.slice(i, i + chunkSize));
     }
     return R;
@@ -198,7 +198,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         data = pickConstraint();
         constraint[data.key] = data.d;
         constraint2 = {
-          i: ~~(Math.random() * row.length)
+          i: new Date%row.length
         };
         newConstraint = {
           type: options.clueTypes[1],
@@ -356,7 +356,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
           extraClueButton();
           return;
         }
-        //create chuncked Steps
+        //create chunked Steps
         const chunkedSteps = steps.map(arr => chunk(arr));
         chunkedSteps.forEach((step, act) => {
           step.forEach((level, scene) => {
