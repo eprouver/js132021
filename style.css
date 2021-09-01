@@ -1,7 +1,7 @@
 * {
 -webkit-tap-highlight-color:transparent;
 -webkit-touch-callout:none;
--webkit-backface-visibility: hidden;
+-webkit-backface-visibility:hidden;
 -webkit-transform:translate3d(0,0,0);
 box-sizing:border-box;
 margin:0;
@@ -10,8 +10,8 @@ user-select:none
 }
 
 html,body {
-font-family:Georgia,sans-serif;
-height:100vh;
+font-family: Georgia, Times New Roman, serif;
+height:100%;
 letter-spacing:-.06em;
 overflow:hidden;
 overflow:hidden;
@@ -42,10 +42,10 @@ color:#fff
 background:#282828
 }
 
-.night button.clue, button.clue:active, #matrix button.clue:active, .night #matrix button {
-  border:1px solid #b7b7b7;
-  box-shadow:0 0 2px #444;
-  top: 7px;
+.night button.clue,button.clue:active,#matrix button.clue:active,.night #matrix button {
+border:1px solid #b7b7b7;
+box-shadow:0 0 2px #444;
+top:7px
 }
 
 .night .title .bl {
@@ -53,13 +53,13 @@ background:#282828
 }
 
 #cont,#root,#menu {
-height: 100vh;
+height:100%;
 display:flex;
 flex-direction:column
 }
 
 #matrix {
-background: radial-gradient(circle, rgb(238,238,238) 70%, rgb(196,196,196) 100%);
+background:radial-gradient(circle,#eee 70%,#c4c4c4 100%);
 border-top:none;
 bottom:0;
 box-shadow:0 0 114px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.4);
@@ -141,7 +141,7 @@ font-size:3em;
 margin:.1em 0;
 max-width:100%;
 min-width:1.3em;
-transition: transform 0.05s linear;
+transition:transform .05s linear
 }
 
 span {
@@ -182,17 +182,17 @@ overflow:hidden;
 z-index:10
 }
 
-[data-option="0"], [data-option="0"]:after {
-  opacity: 0.5;
+[data-option="0"],[data-option="0"]:after {
+opacity:.5
 }
 
 [data-option="0"]:after {
-  content: '?';
-  position: absolute;
-  left: 0.725em;
-  font-size: 0.7em;
-  top: 0.3em;
-  font-weight: bold;
+content:'?';
+position:absolute;
+left:.725em;
+font-size:.7em;
+top:.3em;
+font-weight:700
 }
 
 [data-option="1"] {
@@ -236,8 +236,8 @@ padding:5vh 0 40vh 3vw;
 transition:background-color .25s ease
 }
 
-#cont:not(.end) #wb > *, #cont:not(.end) td.draggable span {
-filter: drop-shadow(1px 7px 3px rgba(0,0,0,0.06))
+#cont:not(.end) #wb > *,#cont:not(.end) td.draggable span {
+filter:drop-shadow(1px 7px 3px rgba(0,0,0,0.06))
 }
 
 .end #wb {
@@ -369,8 +369,8 @@ transform:scale(2.5)
 button.clue {
 animation:1s ease forwards 1 fadeOn;
 background:#f7f7f736;
-border: 1px solid #b3b3b3;
-box-shadow: 0 0 1px #1b1b1b, 0 6px 3px #eee, 0 7px 1px 1px #8c8c8c, 0 10px 6px rgb(0 0 0 / 19%);
+border:1px solid #b3b3b3;
+box-shadow:0 0 1px #1b1b1b,0 6px 3px #eee,0 7px 1px 1px #8c8c8c,0 10px 6px rgb(0 0 0 / 19%);
 color:#aaa;
 cursor:pointer;
 font-size:3em;
@@ -378,9 +378,9 @@ font-size:5vmin;
 line-height:1.5em;
 min-width:40vmin;
 min-width:auto;
-padding:0;
-width:50%!important;
-position: relative;
+padding:0 .25em;
+width:60%;
+position:relative
 }
 
 .loading:after {
@@ -398,7 +398,7 @@ width:2em
 }
 
 #menu,#root {
-height:100vh;
+height:100%;
 justify-content:space-around;
 padding:20px 0;
 position:fixed;
@@ -443,7 +443,7 @@ font-size:3.35vmin
 font-size:8vmin;
 margin:.5em;
 min-width:auto;
-width:30%!important
+width:40%
 }
 
 .right {
@@ -598,7 +598,6 @@ stroke-dashoffset:-1800
 }
 }
 
-
 #root {
 animation:.5s fadeOn 1 ease;
 font-size:1.6vmin
@@ -617,11 +616,11 @@ text-shadow:none
 }
 
 #mod {
-display: flex;
-flex-direction: column;
-overflow: scroll;
-justify-content: end;
-padding-top: 2em
+display:flex;
+flex-direction:column;
+overflow:scroll;
+justify-content:end;
+padding-top:2em
 }
 
 input {
@@ -642,18 +641,18 @@ overflow-y:scroll
 }
 
 .root-col {
-background: rgba(0,0,0,0.1);
-border: 1px solid #aaa;
-padding: 2vmin 2vmin;
-position: relative;
-width: 60vw;
-margin: 1em auto;
-min-height: 57vmin;
+background:rgba(0,0,0,0.1);
+border:1px solid #aaa;
+padding:2vmin;
+position:relative;
+width:60vw;
+margin:1em auto;
+min-height:57vmin;
 animation:.5s ease left-e forwards;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-align-items: center
+display:flex;
+flex-direction:column;
+justify-content:space-around;
+align-items:center
 }
 
 .root-col:before {
@@ -663,7 +662,7 @@ border-bottom:none;
 border-top-left-radius:.5em;
 border-top-right-radius:.5em;
 content:'🔍';
-font-size: 2.5em;
+font-size:2.5em;
 height:1em;
 left:.25em;
 position:absolute;
@@ -715,7 +714,7 @@ transform:translateX(0)
 @media screen and (min-width: 1000px),(screen-spanning: single-fold-horizontal),(orientation: landscape) {
 #wb {
 border:none;
-height:100vh;
+height:100%;
 padding-right:53vw
 }
 
@@ -728,7 +727,7 @@ border:none;
 border-left:1px solid #aaaa;
 bottom:auto;
 box-shadow:none;
-height:100vh;
+height:100%;
 overflow-y:scroll;
 padding-top:15vw;
 right:0;
@@ -737,7 +736,7 @@ width:50.5vw
 }
 
 #matrix button {
-  box-shadow: 0 0 1px #1b1b1b, 0 6px 3px #c8c8c8, 0 7px 1px 1px #8c8c8c, 0 10px 6px rgb(0 0 0 / 19%);
+box-shadow:0 0 1px #1b1b1b,0 6px 3px #c8c8c8,0 7px 1px 1px #8c8c8c,0 10px 6px rgb(0 0 0 / 19%)
 }
 
 #matrix table {
@@ -757,12 +756,12 @@ margin-top:25vh
 
 th.person {
 animation:sib .5s ease both;
-text-shadow: 0 0 4px rgba(0,0,0,0.75);
+text-shadow:0 0 4px rgba(0,0,0,0.75);
 font-size:4vw
 }
 
 .end th.person {
-text-shadow: none;
+text-shadow:none;
 top:0
 }
 
@@ -772,18 +771,19 @@ width:50%
 }
 
 span[data-option="0"] {
-padding:0.09em 0!important
+padding:.09em 0!important
 }
 
 #mod {
-  flex-direction: row;
-  justify-content: space-around;
+flex-direction:row;
+justify-content:space-around
 }
 
 .root-col {
-  margin: 1em;
-  animation:none;
+margin:1em;
+animation:none
 }
+
 .left-e {
 animation:.5s ease left-e forwards
 }

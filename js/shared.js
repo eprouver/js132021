@@ -39,7 +39,7 @@ const iareEquals = (a, b) => {
 
 const options = {
   lang: 'en',
-  files: 8,
+  files: 16,
   clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
   cats: [
     ['👓', '👕', '👘', '🎩', '👠', '🧤', '🧣', '👒', '🧢', '👟', '🩳'],
