@@ -1,5 +1,6 @@
 const ge = 'getElementById';
 const cl = 'classList';
+const ac = 'appendChild';
 const d = document;
 const menu = d[ge]('menu');
 const pauseGame = () => {
@@ -42,42 +43,42 @@ const makeGames = () => {
  tutorial = true;
 
   files = 0;
-  startNewGame();
+  sng();
 };
 
 let files = 0;
 
-const startNewGame = (game) => {
+const sng = (game) => {
   if (!game) {
     files += 1;
-    if (files > options.files) {
+    if (files > opt.files) {
       showChoose();
       files = 0;
       return;
     }
   }
 
-  workbook.setAttribute('data-msg', `${options[options.lang].wellDone}`);
-  clear();
-  if (currentGame && games.length < 4) {
-    // Add new random game
-    let total = 9;
-    const one = new Date%4 + 3;
-    addGame(one, total - one).then((g) => games.push(g));
-  }
-  if (games.length === 0) {
-    timeout(startNewGame, 500);
+  curG = game || games.shift();
+  // Tutorial
+  if (!curG && games.length === 0) {
+    timeout(sng, 500);
     return;
   }
-  options.t = true;
+
+  workbook.setAttribute('data-msg', `${opt[opt.lang].wellDone}`);
+  clear();
+  if (games.length < 4) {
+    // Add new random game
+    addGame(~~(Math.random() * 4) + 2, ~~(Math.random() * 4) + 2).then((g) => games.push(g));
+  }
+  opt.t = true;
   selectNewVoice();
-  currentGame = game || games.shift();
   sfx([, , -62, .02, .03, .23, , 10.8, 5.8, , 200, -0.07, , .3, 2, , , 1.3, .13, .3]);
 
   createMatrix();
   cont[cl].remove('end');
   timeout(() => {
-    setupWorkbook(currentGame);
+    setupWorkbook(curG);
   }, 500);
 };
 

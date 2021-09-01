@@ -2,67 +2,67 @@ let userBoard = [];
 
 const createMatrix = () => {
   userBoard = [];
-  for (let i = 0; i < currentGame.slotNum; i++) {
+  for (let i = 0; i < curG.sNum; i++) {
     userBoard.push({});
   }
   // why does this make one object by reference
-  // userBoard = Array(currentGame.slotNum).fill(new Object());
+  // userBoard = Array(curG.sNum).fill(new Object());
 
   const table = ce('table');
   const col = ce('col');
   col.setAttribute('span', 1);
-  table.appendChild(col);
+  table[ac](col);
   let labelRow = ce('tr');
   let spacer = ce('td');
-  labelRow.appendChild(spacer);
+  labelRow[ac](spacer);
 
-  currentGame.slotNames.forEach(col => {
+  curG.slotNames.forEach(col => {
     const newCol = ce('th');
     newCol[cl].add('person');
     newCol.innerHTML = `<span>${col}</span>`;
-    labelRow.appendChild(newCol)
+    labelRow[ac](newCol)
   });
 
-  table.appendChild(labelRow);
+  table[ac](labelRow);
 
-  const re = (span, options, slot, category) => {
+  const re = (span, opt, slot, category) => {
     let current = span.innerText;
-    current = options[options.indexOf(current) + 1];
+    current = opt[opt.indexOf(current) + 1];
     if (!current) {
-      current = options[0]
+      current = opt[0]
     }
 
-    sfx([.7,.45,82.40689,,,.02,,3,35,,-150 + ((options.indexOf(current) + 1) * 100),-0.06,,,,,,.5,.03,.21]);
+    sfx([.7,.45,82.40689,,,.02,,3,35,,-150 + ((opt.indexOf(current) + 1) * 100),-0.06,,,,,,.5,.03,.21]);
     userBoard[slot][category] = { d: current, span };
     span.innerText = current;
     span[cl].remove('correct','incorrect');
-    span.setAttribute('data-option', options.indexOf(current));
+    span.setAttribute('data-option', opt.indexOf(current));
   };
 
-  currentGame.cats.forEach((r, i) => {
+  curG.cats.forEach((r, i) => {
     labelRow = ce('tr');
     labelRow[cl].add('mrow');
     spacer = ce('th');
-    spacer.innerHTML = currentGame.cNms[i];
-    labelRow.appendChild(spacer);
+    spacer.innerHTML = curG.cNms[i];
+    labelRow[ac](spacer);
 
-    const clickOptions = ['␣', ...r];
-    currentGame.slotNames.forEach((col, slot) => {
+    const clickopt = ['␣', ...r];
+    curG.slotNames.forEach((col, slot) => {
       const newCol = ce('td');
       newCol[cl].add('draggable');
 
       const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
-      newSpan.innerHTML = clickOptions[0];
-      userBoard[slot][currentGame.cNms[i]] = { d: '␣', span: newSpan };
+      newSpan.innerHTML = clickopt[0];
+      userBoard[slot][curG.cNms[i]] = { d: '␣', span: newSpan };
       newCol.onclick = (e) => {
-        re(newSpan, clickOptions, slot, currentGame.cNms[i]);
+        re(newSpan, clickopt, slot, curG.cNms[i]);
       };
-      newCol.appendChild(newSpan);
-      labelRow.appendChild(newCol);
+      newCol[ac](newSpan);
+      labelRow[ac](newCol);
     });
 
-    table.appendChild(labelRow);
+    table[ac](labelRow);
 
     labelRow = ce('tr');
     labelRow[cl].add('mrow');
@@ -70,7 +70,7 @@ const createMatrix = () => {
 
   labelRow = ce('tr');
   labelRow[cl].add('mrow');
-  labelRow.appendChild(ce('td'));
+  labelRow[ac](ce('td'));
 
   const checker = ce('button');
   checker[cl].add('clue');
@@ -81,9 +81,9 @@ const createMatrix = () => {
 
       workbook.scroll(0,0);
       cont[cl].add('end');
-      say(options[options.lang].wellDone);
-      // say(options[options.lang].wellDone + (options.t ? '... 100%': ''));
-      // if (options.t) {
+      say(opt[opt.lang].wellDone);
+      // say(opt[opt.lang].wellDone + (opt.t ? '... 100%': ''));
+      // if (opt.t) {
       //   d[ge]('hun').innerHTML = d[ge]('hun').innerHTML + '🎖️';
       // } else {
       //   d[ge]('hun').innerHTML = '';
@@ -95,19 +95,19 @@ const createMatrix = () => {
         workbook.innerHTML = ``;
         timeouts.forEach(t => clearTimeout(t));
         selectNewVoice();
-        startNewGame();
+        sng();
       }, 3000);
     }
   };
   checker.innerText = '👍';
 
   spacer = ce('td');
-  spacer.setAttribute('colspan', currentGame.slotNum );
-  spacer.appendChild(checker);
-  labelRow.appendChild(spacer);
+  spacer.setAttribute('colspan', curG.sNum );
+  spacer[ac](checker);
+  labelRow[ac](spacer);
 
-  table.appendChild(labelRow);
+  table[ac](labelRow);
 
-  matrix.appendChild(table);
+  matrix[ac](table);
 
 };

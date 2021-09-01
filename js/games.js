@@ -1,5 +1,5 @@
-const addGame = (slotNum = 2, catNum = 2) => {
-  return new Promise(function(resolve, reject){
+const addGame = (sNum = 2, catNum = 2) => {
+  return new Promise(function(resolve){
   let row,
     constraints,
     prevSolution,
@@ -14,7 +14,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
     stepTest;
 
   const reset = () => {
-    row = [...Array(slotNum)].map(a => ({}));
+    row = [...Array(sNum)].map(a => ({}));
     constraints = [];
     prevSolution = 0;
     steps = [];
@@ -34,24 +34,24 @@ const addGame = (slotNum = 2, catNum = 2) => {
     var R = [];
     let chunkSize;
     for (var i = 0, len = arr.length; i < len; i += chunkSize) {
-      chunkSize = Math.max(1, new Date%(slotNum + 1), new Date%(catNum + 1));
+      chunkSize = Math.max(1, ~~(Math.random() * sNum) + 1, ~~(Math.random() * catNum) + 1);
       R.push(arr.slice(i, i + chunkSize));
     }
     return R;
   }
 
-  let cats = options.cats;
-  let cNms = options.cNms;
-  let slotNames = options.slotNames;
+  let cats = opt.cats;
+  let cNms = opt.cNms;
+  let slotNames = opt.slotNames;
 
-  slotNames = sampleSize(slotNum, slotNames).map(f => randSkinTone(f)).map(f => randGender(f));
+  slotNames = sampleSize(sNum, slotNames).map(f => randSkinTone(f)).map(f => randGender(f));
 
   const select = sampleSize(catNum, [...Array(cNms.length).keys()]);
 
   cNms = cNms.filter((a, i) => select.indexOf(i) !== -1);
-  cats = cats.filter((a, i) => select.indexOf(i) !== -1).map(e => sampleSize(slotNum + 2, e));
+  cats = cats.filter((a, i) => select.indexOf(i) !== -1).map(e => sampleSize(sNum + 2, e));
 
-  const maxFill = catNum * slotNum;
+  const maxFill = catNum * sNum;
 
   const canBe = (slot, criteria) => {
     for (const key of Object.keys(criteria))
@@ -93,7 +93,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
     },
     * nt(critA, critB, row) {
       yield* this.a(critA, critB, row);
-      yield* this.a(critB, critA, row);
+      yield* this.b(critA, critB, row);
       // for (const i of [...Array(row.length - 1).keys()]) {
       //   if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
       //     const newRow = JSON.parse(JSON.stringify(row));
@@ -183,14 +183,14 @@ const addGame = (slotNum = 2, catNum = 2) => {
     };
 
     // balance types of clues by adding more of that #
-    switch (type || sample([0, 0, 0, 1, 2, 2, 3, 3, 4, 4])) {
+    switch (type || sample([0, 0, 0, 1, 2, 2, 3, 3, 4, 4, 4])) {
       case 0:
         data = pickConstraint();
         constraint[data.key] = data.d;
         data = pickConstraint(data.key);
         constraint[data.key] = data.d;
         newConstraint = {
-          type: options.clueTypes[0],
+          type: opt.clueTypes[0],
           d: [constraint, {d: []}],
         }
         break;
@@ -198,10 +198,10 @@ const addGame = (slotNum = 2, catNum = 2) => {
         data = pickConstraint();
         constraint[data.key] = data.d;
         constraint2 = {
-          i: new Date%row.length
+          i: ~~(Math.random() * row.length)
         };
         newConstraint = {
-          type: options.clueTypes[1],
+          type: opt.clueTypes[1],
           d: [constraint, constraint2],
         };
         break;
@@ -210,7 +210,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         constraint[data.key] = data.d[0];
         constraint2[data.key] = data.d[1];
         newConstraint = {
-          type: options.clueTypes[2],
+          type: opt.clueTypes[2],
           d: [constraint, constraint2],
         };
         break;
@@ -219,7 +219,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         constraint[data.key] = data.d[0];
         constraint2[data.key] = data.d[1];
         newConstraint = {
-          type: options.clueTypes[3],
+          type: opt.clueTypes[3],
           d: [constraint2, constraint],
         };
         break;
@@ -229,7 +229,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         data = pickConstraint(data.key);
         constraint2[data.key] = data.d;
         newConstraint = {
-          type: options.clueTypes[4],
+          type: opt.clueTypes[4],
           d: [constraint, constraint2],
         }
         break;
@@ -277,8 +277,8 @@ const addGame = (slotNum = 2, catNum = 2) => {
         if (print) {
           const note = ce('div');
           note[cl].add('clue');
-          note.innerHTML = `<h3>${options[options.lang].noMore}</h3>`;
-          workbook.appendChild(note);
+          note.innerHTML = `<h3>${opt[opt.lang].noMore}</h3>`;
+          workbook[ac](note);
         }
         return;
       }
@@ -302,7 +302,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
             !Object.entries((obj || {})).length) ||
           currentLength === prevSolution) && prevSolution < maxFill) {
         // empty objects, or fewer than all selections indicated
-        if (constraints.length > row.length * 8) {
+        if (constraints.length > row.length * 9) {
           // console.log('TOO MANY CLUES, STARTING OVER');
           reset();
           addAndCheck();
@@ -324,7 +324,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         return;
       } else if (everyObject && prevSolution < maxFill) {
         // chapter 2 make sure clues indicate one possible arrangement
-        if (prevSolution > Math.min(firstOffering + slotNum, firstOffering + catNum)) {
+        if (prevSolution > Math.min(firstOffering + sNum, firstOffering + catNum)) {
           firstSolution(solution);
         }
         requestAnimationFrame(() => {
@@ -334,10 +334,17 @@ const addGame = (slotNum = 2, catNum = 2) => {
       } else {
         // chapter 3 make sure all selections are indicated by clues
         // console.log(`******* ALL ${ prevSolution } selections, ${solution.length} arrangement, ${constraints.length} clues`);
+        const rev = findSolutions(constraints.map(c => {
+          if (c.type === 'nt') {
+              c.d = c.d.reverse();
+          }
+          return c;
+        }).reverse())[0];
 
-        if (!iareEquals(solution[0], findSolutions(constraints.reverse())[0])) {
+        if (!rev || !iareEquals(solution[0], rev)) {
           requestAnimationFrame(() => {
-            addAndCheck(null, 0, print);
+            // console.log('reverse check failed');
+            addAndCheck(1, 0, print);
           });
           return;
         }
@@ -374,7 +381,7 @@ const addGame = (slotNum = 2, catNum = 2) => {
         }
 
         resolve({
-          slotNum,
+          sNum,
           catNum,
           levels,
           extraClue: () => {

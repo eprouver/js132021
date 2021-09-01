@@ -3,20 +3,20 @@ const showChoose = () => {
   timeouts.forEach(t => clearTimeout(t));
   cont[cl].remove('end');
   root.style.display = 'flex';
-  say(options[options.lang].ff);
-  fi('nc', options[options.lang].newCase);
-  fi('cf', options[options.lang].ff);
-  fi('ch', `${options[options.lang].ch} ${options[options.lang].newCase}`);
-  fi('peplabel', options[options.lang].p);
-  fi('catlabel', options[options.lang].c);
-  fi('create', `${options[options.lang].cr} ${options[options.lang].newCase}`);
-  fi('com', options[options.lang].com);
-  fi('com2', options[options.lang].com);
+  say(opt[opt.lang].ff);
+  fi('nc', opt[opt.lang].newCase);
+  fi('cf', opt[opt.lang].ff);
+  fi('ch', `${opt[opt.lang].ch} ${opt[opt.lang].newCase}`);
+  fi('peplabel', opt[opt.lang].p);
+  fi('catlabel', opt[opt.lang].c);
+  fi('create', `${opt[opt.lang].cr} ${opt[opt.lang].newCase}`);
+  fi('com', opt[opt.lang].com);
+  fi('com2', opt[opt.lang].com);
 }
 
 // serialize
 const ser = g => {
-  delete g.slotNum;
+  delete g.sNum;
   delete g.catNum;
   delete g.attempts;
   let ss = JSON.stringify(g)
@@ -31,7 +31,7 @@ const deser = g => {
   let ss = JSON.parse(g);
   ss.cNms.forEach((n, i) => g = g.replace(new RegExp(`b${i}b`, 'g'), n));
   g = JSON.parse(g);
-  g.slotNum = g.slotNames.length;
+  g.sNum = g.slotNames.length;
   g.catNum = g.cNms.length;
   g.attempts = 0;
 
@@ -99,11 +99,11 @@ let subGame;
   subGame = () => {
     if(wallet.isSignedIn()) {
       clear();
-      workbook.appendChild(nnote());
+      workbook[ac](nnote());
       root.style.display = 'none';
       addGame(5,5).then(g => {
         contract.addMessage({ text: JSON.stringify(g), gas: 100000000000000});
-        startNewGame(g);
+        sng(g);
       });
     } else {
       var r = confirm("Going to NEAR to log in.");
@@ -119,7 +119,7 @@ let subGame;
   sampleSize(20, messages.filter(m => m.text[0] === '{')).forEach(m => {
     const gg = ce('div');
     gg.innerHTML = `<div class="sub-game"><span>5x5</span> - ${m.sender}: <span>👍</span></div>`;
-    gg.onclick = () => { clear(); root.style.display = 'none'; startNewGame(deser(m.text)); }
-    list.appendChild(gg);
+    gg.onclick = () => { clear(); root.style.display = 'none'; sng(deser(m.text)); }
+    list[ac](gg);
   });
 })(window);

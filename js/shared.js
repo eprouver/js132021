@@ -1,4 +1,4 @@
-let currentGame;
+let curG;
 let sound = true;
 let pause = false;
 let games = [];
@@ -37,7 +37,7 @@ const iareEquals = (a, b) => {
   return true;
 };
 
-const options = {
+const opt = {
   lang: 'en',
   files: 16,
   clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
@@ -48,13 +48,13 @@ const options = {
     ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤎', '💔'],
     ['🍇', '🍉', '🍊', '🍎', '🥝', '🥥', '🍐', '🍑', '🍒', '🍋'],
     ['🐒', '🐕', '🦝', '🐈', '🦓', '🐄', '🐖', '🐪', '🦒','🐘', '🐁', '🐇', '🐿️', '🦨', '🦘'],
-    ['🥯', '🍟', '🍔', '🍕', '🧀', '🍜', '🍦', '🍩', '🍿', '🥐', '🌮', '🍣', '🍚'],
+    ['🥯', '🍟', '🍔', '🍕', '🧀', '🍜', '🍦', '🍩', '🍿', '🥐', '🌮', '🍣'],
     ['😍', '😎', '👿', '🤔', '😓', '😷', '🥺', '😡', '🤪', '😀', '🥶', '🥱'],
   ],
   slotNames: ['🧟‍♂️','🦹🏽‍♂️','🦸🏽‍♂️','🧛🏽‍♂️','👷🏻‍♂️', '👨🏽‍🎨', '👨🏿‍💼','👨🏻‍🔧', '👨🏾‍⚕️', '👨🏼‍🌾', '🧑🏻‍⚖️', '👨🏾‍🔬', '👨🏼‍🎤', '👨🏽‍🚀', '👮🏽‍♂️', '👩🏽‍🍳', '🧕🏼', '💂🏽‍♂️', '🧙🏼‍♂️', '👰🏻', '👩🏼‍✈️', '🧝🏽‍♂️', '👨🏾‍🚒', '👩🏽‍🎓', '👩🏼‍🏭'],
   en: {
     wellDone: 'Well Done!',
-    solvable: 'Possible Solution.',
+    solvable: 'Possible Solution',
     noMore: 'No more clues.',
     tutorial: 'Tutorial: Use the prompts. Fill in the spaces.  Then 👍',
     newCase: 'New Case!',
@@ -80,7 +80,7 @@ const options = {
   },
   fr: {
     wellDone: 'Bien Joué!',
-    solvable: 'Résolution Possible.',
+    solvable: 'Résolution Possible',
     noMore: 'Indices terminés.',
     tutorial: 'Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍',
     newCase: 'Nouveau Mystère!',
@@ -93,7 +93,7 @@ const options = {
   },
   es: {
     wellDone: '¡Bien Hecho!',
-    solvable: 'Resolución Posible.',
+    solvable: 'Resolución Posible',
     noMore: 'No más pistas.',
     tutorial: 'Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍',
     newCase: 'Nuevo Misterio!',
@@ -129,23 +129,23 @@ const lang = (e, play = true) => {
     }
   }
 
-  options.lang = e;
+  opt.lang = e;
 
-  switch (options.lang) {
+  switch (opt.lang) {
     case 'tp':
-      options.cNms = ['len', 'kalama musi', 'musi utala', 'olin', 'kili', 'soweli', 'moku', 'pilin'];
+      opt.cNms = ['len', 'kalama musi', 'musi utala', 'olin', 'kili', 'soweli', 'moku', 'pilin'];
     break;
     case 'fr':
-      options.cNms = ['le vêtement', 'l\'instrument', 'le sport', 'le cœur', 'le fruit', 'l\'animal', 'la bouffe', 'le sentiment'];
+      opt.cNms = ['le vêtement', 'l\'instrument', 'le sport', 'le cœur', 'le fruit', 'l\'animal', 'la bouffe', 'le sentiment'];
     break;
     case 'es':
-      options.cNms = ['la ropa', 'el instrumento', 'el deporte', 'el corazón', 'la fruta', 'el animal', 'la comida', 'el sentimiento'];
+      opt.cNms = ['la ropa', 'el instrumento', 'el deporte', 'el corazón', 'la fruta', 'el animal', 'la comida', 'el sentimiento'];
     break;
     case 'zh-CN':
-      options.cNms = ['衣服','乐器','运动','心脏','水果','动物','食物','心情'];
+      opt.cNms = ['衣服','乐器','运动','心脏','水果','动物','食物','心情'];
     break;
     default:
-      options.cNms = ['clothes', 'instrument', 'sport', 'heart', 'fruit', 'animal', 'food', 'mood'];
+      opt.cNms = ['clothes', 'instrument', 'sport', 'heart', 'fruit', 'animal', 'food', 'mood'];
     break;
   }
 }
@@ -163,13 +163,9 @@ const checkToString = (arr) => arr.map(o => {
   return Object.keys(o).concat(Object.values(o))
 }).flat().sort().join();
 
-const randBetween = (min, max) => {
-  return new Date%(max - min + 1) + min;
-};
-
 const sample = arr => {
   const len = arr == null ? 0 : arr.length
-  return len ? arr[new Date%len] : undefined
+  return len ? arr[~~(Math.random() * len)] : undefined
 };
 
 const sampleSize = (size, list, collected = []) => size < 1 || list.length < 1 ?
@@ -215,8 +211,8 @@ const selectNewVoice = () => {
 
   voice = window.speechSynthesis
     .getVoices()
-    .filter((voice) => voice.lang.indexOf(options.lang) > -1);
-  voice = voice[randBetween(0, voice.length)];
+    .filter((voice) => voice.lang.indexOf(opt.lang) > -1);
+  voice = voice[new Date%voice.length];
 
   if (!voice) {
     timeout(selectNewVoice, 1000);
@@ -231,7 +227,7 @@ const sfx = (d) => {
 }
 
 let say = (m) => {
-  if (options.lang === 'tp') return;
+  if (opt.lang === 'tp') return;
   if (!sound) return;
   if (pause) return;
   selectNewVoice();
@@ -242,13 +238,13 @@ let say = (m) => {
   // msg.pitch = 1.1;
   // msg.rate = 1;
   msg.text = m.replace(new RegExp("cœur|corazón|heart", "g"), '');
-  msg.lang = options.lang;
+  msg.lang = opt.lang;
   speechSynthesis.speak(msg);
 };
 
 const chooseGame = () => {
   clear();
-  workbook.appendChild(nnote());
+  workbook[ac](nnote());
   root.style.display = 'none';
-  addGame(gi('people'), gi('cats')).then(g => startNewGame(g));
+  addGame(gi('people'), gi('cats')).then(g => sng(g));
 };

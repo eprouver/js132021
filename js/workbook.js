@@ -1,25 +1,25 @@
 // workbook
 //['ti', 'tiai', 'a', 'b', 'nt']
-// options.slotNames
+// opt.slotNames
 
 const wordClues = clue => {
   const keys = Object.keys(clue.d[0]);
   const keys2 = Object.keys(clue.d[1] || {});
   let option, option2, option3;
 
-  option = (currentGame.cats[currentGame.cNms.indexOf(keys[0])] || []).indexOf(clue.d[0][keys[0]]) + 1;
-  option2 = (currentGame.cats[currentGame.cNms.indexOf(keys[1])] || []).indexOf(clue.d[0][keys[1]]) + 1;
+  option = (curG.cats[curG.cNms.indexOf(keys[0])] || []).indexOf(clue.d[0][keys[0]]) + 1;
+  option2 = (curG.cats[curG.cNms.indexOf(keys[1])] || []).indexOf(clue.d[0][keys[1]]) + 1;
   if (keys2.length)
-  option3 = (currentGame.cats[currentGame.cNms.indexOf(keys2[0])] || []).indexOf(clue.d[1][keys2[0]]) + 1;
+  option3 = (curG.cats[curG.cNms.indexOf(keys2[0])] || []).indexOf(clue.d[1][keys2[0]]) + 1;
 
-  switch(options.lang) {
+  switch(opt.lang) {
     case 'es':
     switch(clue.type) {
       case 'ti':
         return `la persona con ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
         return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la derecha de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
@@ -38,7 +38,7 @@ const wordClues = clue => {
         return `la personne avec ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
         return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à droite de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
@@ -57,7 +57,7 @@ const wordClues = clue => {
         return `有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有 <span data-option="${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}`;
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span> 有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
+        return `<span class="person">${curG.slotNames[clue.d[1].i]}</span> 有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
       break;
       case 'b':
         return `${keys2[0]} <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的右边`;
@@ -75,7 +75,7 @@ const wordClues = clue => {
         return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> li jo e ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span> kin`
       break;
       case 'tiai':
-        return `jan <span class="person">${currentGame.slotNames[clue.d[1].i]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `jan <span class="person">${curG.slotNames[clue.d[1].i]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
         return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pini pi ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
@@ -94,7 +94,7 @@ const wordClues = clue => {
         return `The one with ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, also has ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `<span class="person">${currentGame.slotNames[clue.d[1].i]}</span>has ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>has ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
         return `One left of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}`;
@@ -116,7 +116,7 @@ const showClueArr = (arr, div) => {
       const note = ce('div');
       note[cl].add('waiting')
       note.innerHTML = '<div>🔍</div>';
-      workbook.appendChild(note);
+      workbook[ac](note);
     timeout(() => {
       note[cl].remove('waiting');
       note.innerHTML = '';
@@ -133,35 +133,35 @@ const showClueArr = (arr, div) => {
   if (div) {
     timeout(() => {
       const note = nnote();
-      workbook.appendChild(note);
+      workbook[ac](note);
     }, (arr.length + 1) * 1000);
   }
 }
 
 const scoreMatrix = () => {
-  currentGame.attempts += 1;
+  curG.attempts += 1;
 
-  //if (currentGame.level === currentGame.levels.length - 1) {
+  //if (curG.level === curG.levels.length - 1) {
     // player is on last level check entire board
-    const finalBoard = currentGame.levels[currentGame.levels.length -1].cb[0];
+    const finalBoard = curG.levels[curG.levels.length -1].cb[0];
     let cleared = true;
-    for(let col = 0; col < currentGame.slotNum; col++) {
-      for(let row = 0; row < currentGame.cats.length; row++) {
-        const user = userBoard[col][currentGame.cNms[row]];
+    for(let col = 0; col < curG.sNum; col++) {
+      for(let row = 0; row < curG.cats.length; row++) {
+        const user = userBoard[col][curG.cNms[row]];
         user.span[cl].remove('correct,incorrect');
         if (user.d === '␣'){
           cleared = false;
           continue;
         }
-        if (finalBoard[col][currentGame.cNms[row]] === user.d) {
+        if (finalBoard[col][curG.cNms[row]] === user.d) {
           timeout(() => {
+            user.span.parentElement.style.pointerEvents = 'none';
             user.span[cl].add('correct');
             user.span[cl].remove('incorrect');
           }, (row + col) * 100)
 
         } else {
           timeout(() => {
-            user.span[cl].remove('correct');
             user.span[cl].add('incorrect');
             sfx([1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06]);
           }, (row + col) * 100)
@@ -172,7 +172,7 @@ const scoreMatrix = () => {
     }
 
     return cleared;
-  // } else if (currentGame.levels[currentGame.level].cb.length === 1) {
+  // } else if (curG.levels[curG.level].cb.length === 1) {
   //   // puzzle has only one solution - but might not be filled in
   //
   // } else {
@@ -181,20 +181,20 @@ const scoreMatrix = () => {
 }
 
 const extraClueButton = () => {
-  if (!currentGame.extraClue) return;
+  if (!curG.extraClue) return;
   const checker = ce('button');
   checker[cl].add('clue');
   checker.onclick = () => {
-    sfx([3,,22,,.14,.08,1,2.8,4,-0.7,-300,,,1.9,,.5,.01,.75,.01]);
     checker.parentNode.removeChild(checker);
-    currentGame.extraClue();
+    curG.extraClue();
   };
   checker.innerText = '+ 🔍';
-  for (let i = 0; i < 3; i++) {
-    const spacer = ce('br');
-    workbook.appendChild(spacer);
-  }
-  workbook.appendChild(checker);
+
+  const spacer = ce('div');
+  spacer[cl].add('spacer');
+  workbook[ac](spacer);
+
+  workbook[ac](checker);
 }
 
 const nnote = () =>  {
@@ -209,27 +209,27 @@ const setupWorkbook = () => {
   timeouts.forEach(t => clearTimeout(t));
   clueTime = (sound ? 6000 : 800);
   levelTime = (sound ? 2000 : 7000);
-  const tutorial = currentGame.slotNum === 1 ? (sound ? 7000 : 4000) : (sound ? 2500 : 1000);
+  const tutorial = curG.sNum === 1 ? (sound ? 7000 : 4000) : (sound ? 2500 : 1000);
 
   let clues = 0;
-  currentGame.levels.forEach((level, i, arr) => {
+  curG.levels.forEach((level, i, arr) => {
     timeout(() => {
-      currentGame.level = i;
+      curG.level = i;
       showClueArr(level.rwc, i < arr.length - 1);
 
       // if it's the last level still show the ellipse
-      if (currentGame.level === arr.length - 1) {
+      if (curG.level === arr.length - 1) {
         const note = nnote();
-        workbook.appendChild(note);
+        workbook[ac](note);
         timeout(() => {
           note[cl].add('clue');
           note[cl].remove('loading');
-          note.innerHTML = `<br/><h3>${options[options.lang].solvable}</h3>`;
-          // options.t = false;
-          say(options[options.lang].solvable);
-          workbook.appendChild(note);
+          note.innerHTML = `<br/><h3>${opt[opt.lang].solvable}</h3>`;
+          // opt.t = false;
+          say(opt[opt.lang].solvable);
+          workbook[ac](note);
           extraClueButton();
-        // }, clueTime * level.rwc.length - 1 + (currentGame.slotNum + currentGame.catNum) * 500);
+        // }, clueTime * level.rwc.length - 1 + (curG.sNum + curG.catNum) * 500);
         }, clueTime * level.rwc.length - 1 + 3000);
       }
     }, clues * clueTime + tutorial + (i * levelTime));
@@ -238,15 +238,15 @@ const setupWorkbook = () => {
   });
 
   const note = ce('div');
-  if (currentGame.slotNum === 1) {
-    note.innerHTML = `<div class="tutorial">${options[options.lang].tutorial}</div>`;
-    say(options[options.lang].tutorial);
+  if (curG.sNum === 1) {
+    note.innerHTML = `<div class="tutorial">${opt[opt.lang].tutorial}</div>`;
+    say(opt[opt.lang].tutorial);
   } else {
     newDet();
-    note.innerHTML = `<h1><span>${det}</span> ${options[options.lang].newCase}</h1>`;
-    say(options[options.lang].newCase);
+    note.innerHTML = `<h1><span>${det}</span> ${opt[opt.lang].newCase}</h1>`;
+    say(opt[opt.lang].newCase);
   }
 
-  workbook.appendChild(note);
-  workbook.appendChild(nnote());
+  workbook[ac](note);
+  workbook[ac](nnote());
 };

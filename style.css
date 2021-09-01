@@ -294,6 +294,7 @@ color:#bbb
 
 .clue {
 animation:1s ease both 1 growOn;
+min-height: 1em;
 line-height:2.75em
 }
 
@@ -791,4 +792,8 @@ animation:.5s ease left-e forwards
 .right-e {
 animation:.5s ease right-e forwards
 }
+}
+
+.spacer {
+height: 3.2em
 }
