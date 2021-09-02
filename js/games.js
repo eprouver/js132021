@@ -34,7 +34,7 @@ const addGame = (sNum = 2, catNum = 2) => {
     var R = [];
     let chunkSize;
     for (var i = 0, len = arr.length; i < len; i += chunkSize) {
-      chunkSize = Math.max(1, ~~(Math.random() * sNum) + 1, ~~(Math.random() * catNum) + 1);
+      chunkSize = M.max(1, ~~(M[ra]() * sNum) + 1, ~~(M[ra]() * catNum) + 1);
       R.push(arr.slice(i, i + chunkSize));
     }
     return R;
@@ -198,7 +198,7 @@ const addGame = (sNum = 2, catNum = 2) => {
         data = pickConstraint();
         constraint[data.key] = data.d;
         constraint2 = {
-          i: ~~(Math.random() * row.length)
+          i: ~~(M[ra]() * row.length)
         };
         newConstraint = {
           type: opt.clueTypes[1],
@@ -237,7 +237,7 @@ const addGame = (sNum = 2, catNum = 2) => {
 
     if (attemptedConstraints.some(a => checkToString(a) === checkToString(newConstraint.d))) {
       // console.log('KICKING ALREADY USED CONSTRAINT');
-      requestAnimationFrame(() => {
+      raf(() => {
         addConstraint(type, ++depth, callback);
       });
       return;
@@ -308,7 +308,7 @@ const addGame = (sNum = 2, catNum = 2) => {
           addAndCheck();
           return;
         }
-        requestAnimationFrame(() => {
+        raf(() => {
           addAndCheck(null, 0, print);
         });
         return;
@@ -318,16 +318,16 @@ const addGame = (sNum = 2, catNum = 2) => {
       if (!everyObject) {
         // chapter one make sure every object has at least one key
         firstFill(solution);
-        requestAnimationFrame(() => {
+        raf(() => {
           addAndCheck(null, 0, print);
         });
         return;
       } else if (everyObject && prevSolution < maxFill) {
         // chapter 2 make sure clues indicate one possible arrangement
-        if (prevSolution > Math.min(firstOffering + sNum, firstOffering + catNum)) {
+        if (prevSolution > M.min(firstOffering + sNum, firstOffering + catNum)) {
           firstSolution(solution);
         }
-        requestAnimationFrame(() => {
+        raf(() => {
           addAndCheck(null, 0, print);
         });
         return;
@@ -342,7 +342,7 @@ const addGame = (sNum = 2, catNum = 2) => {
         }).reverse())[0];
 
         if (!rev || !iareEquals(solution[0], rev)) {
-          requestAnimationFrame(() => {
+          raf(() => {
             // console.log('reverse check failed');
             addAndCheck(1, 0, print);
           });

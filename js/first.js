@@ -3,13 +3,16 @@ const cl = 'classList';
 const ac = 'appendChild';
 const d = document;
 const menu = d[ge]('menu');
+const M = Math;
+const ra = 'random';
+const raf = requestAnimationFrame;
 const pauseGame = () => {
   say('')
   pause = true;
   games = [];
   clear();
   menu.style.display = 'flex';
-  cont[cl].remove('end');
+  cont[cl].remove('end', 'bo');
   timeouts.forEach(t => clearTimeout(t));
 }
 
@@ -48,18 +51,15 @@ const makeGames = () => {
 let files = 0;
 
 const sng = (game) => {
-  if (!game) {
-    files += 1;
-    if (files > opt.files) {
-      showChoose();
-      files = 0;
-      return;
-    }
-  }
-
+  pause = false;
   if (games.length < 4) {
     // Add new random game
-    addGame(~~(Math.random() * 4) + 2, ~~(Math.random() * 4) + 2).then((g) => games.push(g));
+    let one = ~~(M[ra]() * 3) + 3;
+    let two = M.max(2, ~~(M[ra]() * 10) - one);
+    if (M[ra]() > 0.5) {
+      two = [one, one = two][0];
+    }
+    addGame(one, two).then((g) => games.push(g));
   }
 
   curG = game || games.shift();
@@ -69,6 +69,15 @@ const sng = (game) => {
     return;
   }
 
+  if (!game) {
+    files += 1;
+    if (files > opt.files) {
+      showChoose();
+      files = 0;
+      return;
+    }
+  }
+
   workbook.setAttribute('data-msg', `${opt[opt.lang].wellDone}`);
   clear();
   opt.t = true;
@@ -76,7 +85,7 @@ const sng = (game) => {
   sfx([, , -62, .02, .03, .23, , 10.8, 5.8, , 200, -0.07, , .3, 2, , , 1.3, .13, .3]);
 
   createMatrix();
-  cont[cl].remove('end');
+  cont[cl].remove('end', 'bo');
   timeout(() => {
     setupWorkbook(curG);
   }, 500);

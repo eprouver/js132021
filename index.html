@@ -43,7 +43,7 @@
 
       <h2 class="set">Sound:
         <label class="switch">
-          <input type="checkbox" checked onchange="sound = !sound">
+          <input type="checkbox" checked="true" onchange="sound=!sound">
           <span class="slider round"></span>
         </label>
       </h2><br />
@@ -58,7 +58,7 @@
     </div>
 
     <div>
-      <button class="clue" id="mon-files" onclick="makeGames(); showChoose()" style="display:none; width: 20%">🗂️</button>
+      <button class="clue" id="mon-files" onclick="showChoose()" style="display:none;width:20%">🗂️</button>
       <button class="clue" onclick="makeGames()">Start 🔍</button>
     </div>
 
@@ -89,7 +89,7 @@
       <h1><span>🗂️</span> <span id="cf">Case Files</span> <span>🗂️</span></h1>
     <div id="mod">
       <div class="root-col left-e">
-        <button id="nc" class="clue" onclick="root.style.display = 'none'; sng()"></button>
+        <button id="nc" class="clue" onclick="root.style.display='none';sng()"></button>
       </div>
 
       <div class="root-col">
@@ -102,10 +102,10 @@
       </div>
       <div class="root-col right-e">
        <h1 id="ch">Choose</h1>
-       <label for="people" id="peplabel">People:</label>
-       <input type="number" id="people" name="people" min="2" max="5" value="3">
-       <label for="cats" id="catlabel">cats:</label>
-       <input type="number" id="cats" name="cats" min="2" max="5" value="3">
+       <label id="peplabel">People:</label>
+       <input type="number" id="people" min="2" max="5" value="3">
+       <label id="catlabel">cats:</label>
+       <input type="number" id="cats" min="2" max="5" value="3">
        <button class="clue" onclick="chooseGame()">👍</button>
       </div>
     </div>

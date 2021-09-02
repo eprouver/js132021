@@ -236,6 +236,10 @@ padding:5vh 0 40vh 3vw;
 transition:background-color .25s ease
 }
 
+#wbc {
+  padding-bottom: 50vh;
+}
+
 #cont:not(.end) #wb > *,#cont:not(.end) td.draggable span {
 filter:drop-shadow(1px 7px 3px rgba(0,0,0,0.06))
 }
@@ -262,6 +266,10 @@ content:attr(data-flair);
 font-size:5em;
 line-height:1em;
 margin-top:.15em
+}
+
+.bo #wbc:before {
+  text-shadow: 0 0 12px #fff, 0 0 10px #fff, 0 0 5px #fff;
 }
 
 .end #wbc:after {

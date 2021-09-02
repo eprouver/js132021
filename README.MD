@@ -32,6 +32,11 @@ I wanted to make something I could play on my Surface Duo, so the layout is in t
 # toki pona
 [toki pona](https://en.wikipedia.org/wiki/Toki_Pona) is a tiny constructed language based on Taoist principles of simplicity. It only has 137 basic words.  It's kind of like 1984's New Speak but with the exact opposite goal.
 
+# 13K Notes
+I went back and forth on some features.  Originally I started with a top down section where the user had to walk around to collect the clues, but it didn't seem to add anything fun. I also had a system where finishing without any mistakes earned a silver medal and before 'solution possible' earned a gold medal, but it didn't translate well to the muted version and wasn't as enjoyable as playing without a time limit.  
+
+I found playing in the other languages more enjoyable than either of those features, but if you play with the sound on and thumbs-up before 'solution possible' it will add '100%' to the good job message.  So, you can still test yourself against that time limit.
+
 # Categories
 * Desktop
 * Mobile

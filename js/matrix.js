@@ -80,7 +80,7 @@ const createMatrix = () => {
       workbook.innerHTML = '';
 
       workbook.scroll(0,0);
-      cont[cl].add('end');
+      cont[cl].add('end', opt.t ? 'bo': 'n');
       // say(opt[opt.lang].wellDone);
       say(opt[opt.lang].wellDone + (opt.t ? '... 100%': ''));
       // if (opt.t) {
