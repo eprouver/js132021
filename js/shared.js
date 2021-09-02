@@ -6,7 +6,7 @@ const shuffle = (arr) => arr.sort(() => .5 - Math.random());
 const timeouts = [];
 
 const cont = d[ge]('cont');
-const workbook = d[ge]('wb');
+const workbook = d[ge]('wbc');
 const matrix = d[ge]('matrix');
 const root = d[ge]('root');
 

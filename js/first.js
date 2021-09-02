@@ -69,7 +69,7 @@ const sng = (game) => {
   clear();
   if (games.length < 4) {
     // Add new random game
-    addGame(~~(Math.random() * 4) + 2, ~~(Math.random() * 4) + 2).then((g) => games.push(g));
+    addGame(~~(Math.random() * 5) + 2, ~~(Math.random() * 5) + 2).then((g) => games.push(g));
   }
   opt.t = true;
   selectNewVoice();

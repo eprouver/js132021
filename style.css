@@ -247,24 +247,24 @@ min-height:50vh;
 transition:all .5s ease
 }
 
-.end #wb * {
+.end #wbc * {
 display:none
 }
 
-.end #wb:before,.end #wb:after {
+.end #wbc:before,.end #wbc:after {
 animation:fadeOn 1s 1 forwards;
 color:#fff;
 display:block
 }
 
-.end #wb:before {
+.end #wbc:before {
 content:attr(data-flair);
 font-size:5em;
 line-height:1em;
 margin-top:.15em
 }
 
-.end #wb:after {
+.end #wbc:after {
 content:attr(data-msg);
 font-size:2em
 }
@@ -750,7 +750,7 @@ button.clue {
 min-width:80%
 }
 
-.end #wb:before {
+.end #wbc:before {
 font-size:6em;
 margin-top:25vh
 }
