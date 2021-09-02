@@ -29,7 +29,11 @@ const makeGames = () => {
   // tutorial first first
   if (!tutorial) {
     // small board for tutorial
-    addGame(1, 2).then((g) => games.push(g));
+    addGame(1, 2).then((g) => sng(g));
+    tutorial = true;
+    files = 0;
+  } else {
+    sng();
   }
   timeout(() => {
     // Ramping Difficulty
@@ -39,11 +43,6 @@ const makeGames = () => {
       }
     }
   }, !tutorial ? 1000 : 0);
-
- tutorial = true;
-
-  files = 0;
-  sng();
 };
 
 let files = 0;
@@ -58,19 +57,20 @@ const sng = (game) => {
     }
   }
 
+  if (games.length < 4) {
+    // Add new random game
+    addGame(~~(Math.random() * 4) + 2, ~~(Math.random() * 4) + 2).then((g) => games.push(g));
+  }
+
   curG = game || games.shift();
-  // Tutorial
-  if (!curG && games.length === 0) {
+
+  if (!curG){
     timeout(sng, 500);
     return;
   }
 
   workbook.setAttribute('data-msg', `${opt[opt.lang].wellDone}`);
   clear();
-  if (games.length < 4) {
-    // Add new random game
-    addGame(~~(Math.random() * 5) + 2, ~~(Math.random() * 5) + 2).then((g) => games.push(g));
-  }
   opt.t = true;
   selectNewVoice();
   sfx([, , -62, .02, .03, .23, , 10.8, 5.8, , 200, -0.07, , .3, 2, , , 1.3, .13, .3]);

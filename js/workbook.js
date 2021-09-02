@@ -229,8 +229,8 @@ const setupWorkbook = () => {
           say(opt[opt.lang].solvable);
           workbook[ac](note);
           extraClueButton();
-        // }, clueTime * level.rwc.length - 1 + (curG.sNum + curG.catNum) * 500);
-        }, clueTime * level.rwc.length - 1 + 3000);
+        }, clueTime * level.rwc.length - 1 + (curG.sNum + curG.catNum) * 500);
+        // }, clueTime * level.rwc.length - 1 + 3000);
       }
     }, clues * clueTime + tutorial + (i * levelTime));
 
