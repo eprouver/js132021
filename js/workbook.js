@@ -225,7 +225,7 @@ const setupWorkbook = () => {
           note[cl].add('clue');
           note[cl].remove('loading');
           note.innerHTML = `<br/><h3>${opt[opt.lang].solvable}</h3>`;
-          // opt.t = false;
+          opt.t = false;
           say(opt[opt.lang].solvable);
           workbook[ac](note);
           extraClueButton();

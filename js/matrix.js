@@ -81,8 +81,8 @@ const createMatrix = () => {
 
       workbook.scroll(0,0);
       cont[cl].add('end');
-      say(opt[opt.lang].wellDone);
-      // say(opt[opt.lang].wellDone + (opt.t ? '... 100%': ''));
+      // say(opt[opt.lang].wellDone);
+      say(opt[opt.lang].wellDone + (opt.t ? '... 100%': ''));
       // if (opt.t) {
       //   d[ge]('hun').innerHTML = d[ge]('hun').innerHTML + '🎖️';
       // } else {
