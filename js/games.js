@@ -94,25 +94,6 @@ const addGame = (sNum = 2, catNum = 2) => {
     * nt(critA, critB, row) {
       yield* this.a(critA, critB, row);
       yield* this.b(critA, critB, row);
-      // for (const i of [...Array(row.length - 1).keys()]) {
-      //   if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
-      //     const newRow = JSON.parse(JSON.stringify(row));
-      //     newRow[i] = Object.assign({}, row[i], critA);
-      //     newRow[i + 1] = Object.assign({}, row[i + 1], critB);
-      //     yield newRow;
-      //   }
-      // }
-      //
-      // critB = [critA, critA = critB][0];
-      //
-      // for (const i of [...Array(row.length - 1).keys()]) {
-      //   if (canBe(row[i], critA) && canBe(row[i + 1], critB) && canBe(row[i + 1], critA) && canBe(row[i], critB)) {
-      //     const newRow = JSON.parse(JSON.stringify(row));
-      //     newRow[i] = Object.assign({}, row[i], critA);
-      //     newRow[i + 1] = Object.assign({}, row[i + 1], critB);
-      //     yield newRow;
-      //   }
-      // }
     },
   };
 
@@ -183,7 +164,7 @@ const addGame = (sNum = 2, catNum = 2) => {
     };
 
     // balance types of clues by adding more of that #
-    switch (type || sample([0, 0, 0, 1, 2, 2, 3, 3, 4])) {
+    switch (type || sample([0, 0, 0, 1, 2, 2, 3, 3, 4, 4])) {
       case 0:
         data = pickConstraint();
         constraint[data.key] = data.d;
@@ -237,9 +218,7 @@ const addGame = (sNum = 2, catNum = 2) => {
 
     if (attemptedConstraints.some(a => checkToString(a) === checkToString(newConstraint.d))) {
       // console.log('KICKING ALREADY USED CONSTRAINT');
-      raf(() => {
-        addConstraint(type, ++depth, callback);
-      });
+      raf(() => addConstraint(type, ++depth, callback));
       return;
     }
     attemptedConstraints.push(newConstraint.d);
@@ -271,7 +250,9 @@ const addGame = (sNum = 2, catNum = 2) => {
     currentStep = [];
   };
 
-  const addAndCheck = (type = null, depth = 0, print = false) => {
+  let ext = sNum < 3;
+
+  const aac = (type = null, depth = 0, print = false) => {
     const constraint = addConstraint(type, depth, (constraint) => {
       if (!constraint) {
         if (print) {
@@ -289,7 +270,7 @@ const addGame = (sNum = 2, catNum = 2) => {
       // constraint breaks the game, pop it off
       if (solution == false || !solution[0]) {
         constraints.pop();
-        addAndCheck(null, ++depth, print);
+        aac(null, ++depth, print);
         return;
       }
 
@@ -305,12 +286,10 @@ const addGame = (sNum = 2, catNum = 2) => {
         if (constraints.length > row.length * 9) {
           // console.log('TOO MANY CLUES, STARTING OVER');
           reset();
-          addAndCheck();
+          aac();
           return;
         }
-        raf(() => {
-          addAndCheck(null, 0, print);
-        });
+        raf(() => aac(null, 0, print));
         return;
       }
       prevSolution = currentLength;
@@ -318,18 +297,14 @@ const addGame = (sNum = 2, catNum = 2) => {
       if (!everyObject) {
         // chapter one make sure every object has at least one key
         firstFill(solution);
-        raf(() => {
-          addAndCheck(null, 0, print);
-        });
+        raf(() => aac(null, 0, print));
         return;
       } else if (everyObject && prevSolution < maxFill) {
         // chapter 2 make sure clues indicate one possible arrangement
         if (prevSolution > M.min(firstOffering + sNum, firstOffering + catNum)) {
           firstSolution(solution);
         }
-        raf(() => {
-          addAndCheck(null, 0, print);
-        });
+        raf(() => aac(null, 0, print));
         return;
       } else {
         // chapter 3 make sure all selections are indicated by clues
@@ -344,11 +319,16 @@ const addGame = (sNum = 2, catNum = 2) => {
         if (!rev || !iareEquals(solution[0], rev)) {
           raf(() => {
             // console.log('reverse check failed');
-            addAndCheck(1, 0, print);
+            aac(1, 0, print);
           });
           return;
         }
 
+        if (!ext) {
+          ext = true;
+          raf(() => aac(null, 0, print));
+          return;
+        }
         stepTest.push({
           solution,
           selections: prevSolution
@@ -385,7 +365,7 @@ const addGame = (sNum = 2, catNum = 2) => {
           catNum,
           levels,
           extraClue: () => {
-            addAndCheck(null, 0, true);
+            aac(null, 0, true);
           },
           clues: constraints,
           cats,
@@ -394,11 +374,11 @@ const addGame = (sNum = 2, catNum = 2) => {
           attempts: 0,
         });
 
-        games = games.sort((a, b) => a.clues.length - b.clues.length);
+        // games = games.sort((a, b) => a.clues.length - b.clues.length);
       }
     });
   }
 
-  addAndCheck(1);
+  aac(1);
 });
 };

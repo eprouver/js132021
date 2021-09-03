@@ -46,7 +46,7 @@ const createMatrix = () => {
     spacer.innerHTML = curG.cNms[i];
     labelRow[ac](spacer);
 
-    const clickopt = ['␣', ...r];
+    const clickopt = ['_', ...r];
     curG.slotNames.forEach((col, slot) => {
       const newCol = ce('td');
       newCol[cl].add('draggable');
@@ -54,7 +54,7 @@ const createMatrix = () => {
       const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
       newSpan.innerHTML = clickopt[0];
-      userBoard[slot][curG.cNms[i]] = { d: '␣', span: newSpan };
+      userBoard[slot][curG.cNms[i]] = { d: '_', span: newSpan };
       newCol.onclick = (e) => {
         re(newSpan, clickopt, slot, curG.cNms[i]);
       };
@@ -90,7 +90,7 @@ const createMatrix = () => {
       // }
       sfx([1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]);
       pause = true;
-      timeout(() => {
+      to(() => {
         pause = false;
         workbook.innerHTML = ``;
         timeouts.forEach(t => clearTimeout(t));

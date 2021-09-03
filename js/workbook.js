@@ -117,10 +117,10 @@ const showClueArr = (arr, div) => {
       note[cl].add('waiting')
       note.innerHTML = '<div>🔍</div>';
       workbook[ac](note);
-    timeout(() => {
+    to(() => {
       note[cl].remove('waiting');
       note.innerHTML = '';
-      timeout(() => {
+      to(() => {
         note.onclick = (e) => { say(e.target.innerText.replace(findSkin, '')) };
         note.innerHTML = clue;
         note[cl].add('clue');
@@ -131,7 +131,7 @@ const showClueArr = (arr, div) => {
   });
 
   if (div) {
-    timeout(() => {
+    to(() => {
       const note = nnote();
       workbook[ac](note);
     }, (arr.length + 1) * 1000);
@@ -149,24 +149,24 @@ const scoreMatrix = () => {
       for(let row = 0; row < curG.cats.length; row++) {
         const user = userBoard[col][curG.cNms[row]];
         user.span[cl].remove('correct,incorrect');
-        if (user.d === '␣'){
-          cleared = false;
+        if (user.d === '_'){
+          cleared = opt.t = false;
           continue;
         }
         if (finalBoard[col][curG.cNms[row]] === user.d) {
-          timeout(() => {
+          to(() => {
             user.span.parentElement.style.pointerEvents = 'none';
             user.span[cl].add('correct');
             user.span[cl].remove('incorrect');
           }, (row + col) * 100)
 
         } else {
-          timeout(() => {
+          to(() => {
             user.span[cl].add('incorrect');
             sfx([1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06]);
           }, (row + col) * 100)
 
-          cleared = false;
+          cleared = opt.t = false;
         }
       }
     }
@@ -213,7 +213,7 @@ const setupWorkbook = () => {
 
   let clues = 0;
   curG.levels.forEach((level, i, arr) => {
-    timeout(() => {
+    to(() => {
       curG.level = i;
       showClueArr(level.rwc, i < arr.length - 1);
 
@@ -221,7 +221,7 @@ const setupWorkbook = () => {
       if (curG.level === arr.length - 1) {
         const note = nnote();
         workbook[ac](note);
-        timeout(() => {
+        to(() => {
           note[cl].add('clue');
           note[cl].remove('loading');
           note.innerHTML = `<br/><h3>${opt[opt.lang].solvable}</h3>`;
@@ -229,8 +229,8 @@ const setupWorkbook = () => {
           say(opt[opt.lang].solvable);
           workbook[ac](note);
           extraClueButton();
-        }, clueTime * level.rwc.length - 1 + (curG.sNum + curG.catNum) * 500);
-        // }, clueTime * level.rwc.length - 1 + 3000);
+        // }, clueTime * level.rwc.length - 1 + (curG.sNum + curG.catNum) * 500);
+      }, clueTime * level.rwc.length - 1 + 2000);
       }
     }, clues * clueTime + tutorial + (i * levelTime));
 

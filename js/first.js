@@ -24,6 +24,8 @@ const clear = () => {
   menu.style.display = 'none';
 };
 
+let tt;
+
 const makeGames = () => {
   clear();
   pause = false;
@@ -32,16 +34,16 @@ const makeGames = () => {
   // tutorial first first
   if (!tutorial) {
     // small board for tutorial
-    addGame(1, 2).then((g) => sng(g));
+    sng(tt);
     tutorial = true;
     files = 0;
   } else {
     sng();
   }
-  timeout(() => {
+  to(() => {
     // Ramping Difficulty
-    for (let slot = 2; slot < 5; slot++) {
-      for (let cat = 2; cat < 5; cat++){
+    for (let slot = 2; slot < 4; slot++) {
+      for (let cat = 2; cat < 4; cat++){
         addGame(~~slot, ~~cat).then((g) => games.push(g));
       }
     }
@@ -52,12 +54,12 @@ let files = 0;
 
 const sng = (game) => {
   pause = false;
-  if (games.length < 4) {
+  if (games.length < 2) {
+    const nn = () => ~~(M[ra]() * 5) + 2;
     // Add new random game
-    let one = ~~(M[ra]() * 3) + 3;
-    let two = M.max(2, ~~(M[ra]() * 10) - one);
-    if (M[ra]() > 0.5) {
-      two = [one, one = two][0];
+    let one = nn(), two = nn();
+    while(one + two > 9) {
+      one = nn(), two = nn();
     }
     addGame(one, two).then((g) => games.push(g));
   }
@@ -65,7 +67,7 @@ const sng = (game) => {
   curG = game || games.shift();
 
   if (!curG){
-    timeout(sng, 500);
+    to(sng, 500);
     return;
   }
 
@@ -86,7 +88,7 @@ const sng = (game) => {
 
   createMatrix();
   cont[cl].remove('end', 'bo');
-  timeout(() => {
+  to(() => {
     setupWorkbook(curG);
   }, 500);
 };

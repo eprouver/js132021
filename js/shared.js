@@ -17,7 +17,7 @@ const fi = (id, txt) => d[ge](id).innerText = txt;
 // create element
 const ce = s => d.createElement(s);
 
-const timeout = (func, time) => {
+const to = (func, time) => {
   timeouts.push(setTimeout(func, time));
 };
 
@@ -49,12 +49,12 @@ const opt = {
     ['🍇', '🍉', '🍊', '🍎', '🥝', '🥥', '🍐', '🍑', '🍒', '🍋'],
     ['🐒', '🐕', '🦝', '🐈', '🦓', '🐄', '🐖', '🐪', '🦒','🐘', '🐇', '🐿️', '🦨'],
     ['🥯', '🍔', '🍕', '🧀', '🍜', '🍦', '🍩', '🍿', '🥐', '🌮', '🍣'],
-    ['😍', '😎', '👿', '🤔', '😓', '😷', '🥺', '😡', '🤪', '🤠', '🥶', '🥱'],
+    ['😍', '😎', '👿', '🤔', '😓', '😷', '🥺', '😡', '🤪', '😇', '🥶', '🥱'],
   ],
-  slotNames: ['🧟‍♂️','🦹🏽‍♂️','🦸🏽‍♂️','🧛🏽‍♂️','👷🏻‍♂️', '👨🏽‍🎨', '👨🏿‍💼','👨🏻‍🔧', '👨🏾‍⚕️', '👨🏼‍🌾', '🧑🏻‍⚖️', '👨🏾‍🔬', '👨🏼‍🎤', '👨🏽‍🚀', '👮🏽‍♂️', '👩🏽‍🍳', '🧕🏼', '💂🏽‍♂️', '🧙🏼‍♂️', '👰🏻', '👩🏼‍✈️', '🧝🏽‍♂️', '👨🏾‍🚒', '👩🏽‍🎓', '👩🏼‍🏭'],
+  slotNames: ['🧟‍♂️','🦹🏽‍♂️','🦸🏽‍♂️','🧛🏽‍♂️','👷🏻‍♂️', '👨🏽‍🎨', '👨🏿‍💼','👨🏻‍🔧', '👨🏾‍⚕️', '👨🏼‍🌾', '👨🏽‍⚖️', '👨🏾‍🔬', '👨🏼‍🎤', '👨🏽‍🚀', '👮🏽‍♂️', '👩🏽‍🍳', '🧕🏼', '💂🏽‍♂️', '🧙🏼‍♂️', '👰🏻', '👩🏼‍✈️', '🧝🏽‍♂️', '👨🏾‍🚒', '👩🏽‍🎓', '👩🏼‍🏭'],
   en: {
     wellDone: 'Well Done!',
-    solvable: 'Possible Solution',
+    solvable: 'Possible 👍',
     noMore: 'No more clues.',
     tutorial: 'Tutorial: Use the prompts. Fill in the spaces.  Then 👍',
     newCase: 'New Case!',
@@ -67,7 +67,7 @@ const opt = {
   },
   tp: {
     wellDone: 'pona!',
-    solvable: 'ken pali',
+    solvable: 'ken 👍',
     noMore: 'pini',
     tutorial: 'kama sona: o kute e toki pi wile sona. tenpo pini la o luka e 👍',
     newCase: 'utala sin',
@@ -80,7 +80,7 @@ const opt = {
   },
   fr: {
     wellDone: 'Bien Joué!',
-    solvable: 'Résolution Possible',
+    solvable: '👍 Possible',
     noMore: 'Indices terminés.',
     tutorial: 'Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍',
     newCase: 'Nouveau Mystère!',
@@ -93,7 +93,7 @@ const opt = {
   },
   es: {
     wellDone: '¡Bien Hecho!',
-    solvable: 'Resolución Posible',
+    solvable: '👍 Posible',
     noMore: 'No más pistas.',
     tutorial: 'Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍',
     newCase: 'Nuevo Misterio!',
@@ -215,7 +215,7 @@ const selectNewVoice = () => {
   voice = voice[new Date%voice.length];
 
   if (!voice) {
-    timeout(selectNewVoice, 1000);
+    to(selectNewVoice, 1000);
   }
 }
 
@@ -248,3 +248,5 @@ const chooseGame = () => {
   root.style.display = 'none';
   addGame(gi('people'), gi('cats')).then(g => sng(g));
 };
+
+addGame(1, 2).then((g) => tt = g);

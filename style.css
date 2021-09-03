@@ -189,7 +189,7 @@ opacity:.5
 [data-option="0"]:after {
 content:'?';
 position:absolute;
-left:.725em;
+left:.7em;
 font-size:.7em;
 top:.3em;
 font-weight:700
