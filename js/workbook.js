@@ -1,4 +1,4 @@
-// workbook
+// wbc
 //['ti', 'tiai', 'a', 'b', 'nt']
 // opt.slotNames
 
@@ -115,14 +115,14 @@ const showClueArr = (arr, div) => {
   arr.map(wordClues).forEach((clue, i) => {
       const note = ce('div');
       note[cl].add('waiting')
-      note.innerHTML = '<div>🔍</div>';
-      workbook[ac](note);
+      note[ih] = '<div>🔍</div>';
+      wbc[ac](note);
     to(() => {
       note[cl].remove('waiting');
-      note.innerHTML = '';
+      note[ih] = '';
       to(() => {
         note.onclick = (e) => { say(e.target.innerText.replace(findSkin, '')) };
-        note.innerHTML = clue;
+        note[ih] = clue;
         note[cl].add('clue');
         sfx([2,0,60,.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
         say(note.innerText.replace(findSkin, ''));
@@ -133,7 +133,7 @@ const showClueArr = (arr, div) => {
   if (div) {
     to(() => {
       const note = nnote();
-      workbook[ac](note);
+      wbc[ac](note);
     }, (arr.length + 1) * 1000);
   }
 }
@@ -192,15 +192,15 @@ const extraClueButton = () => {
 
   const spacer = ce('div');
   spacer[cl].add('spacer');
-  workbook[ac](spacer);
+  wbc[ac](spacer);
 
-  workbook[ac](checker);
+  wbc[ac](checker);
 }
 
 const nnote = () =>  {
   const n = ce('div');
   n[cl].add('clue');
-  n.innerHTML = '<h3 class="loading">&nbsp;</h3>';
+  n[ih] = '<h3 class="loading">&nbsp;</h3>';
   return n;
 }
 
@@ -220,14 +220,14 @@ const setupWorkbook = () => {
       // if it's the last level still show the ellipse
       if (curG.level === arr.length - 1) {
         const note = nnote();
-        workbook[ac](note);
+        wbc[ac](note);
         to(() => {
           note[cl].add('clue');
           note[cl].remove('loading');
-          note.innerHTML = `<br/><h3>${opt[opt.lang].solvable}</h3>`;
+          note[ih] = `<br/><h3>${opt[opt.lang].solvable}</h3>`;
           opt.t = false;
           say(opt[opt.lang].solvable);
-          workbook[ac](note);
+          wbc[ac](note);
           extraClueButton();
         // }, clueTime * level.rwc.length - 1 + (curG.sNum + curG.catNum) * 500);
       }, clueTime * level.rwc.length - 1 + 2000);
@@ -239,14 +239,14 @@ const setupWorkbook = () => {
 
   const note = ce('div');
   if (curG.sNum === 1) {
-    note.innerHTML = `<div class="tutorial">${opt[opt.lang].tutorial}</div>`;
+    note[ih] = `<div class="tutorial">${opt[opt.lang].tutorial}</div>`;
     say(opt[opt.lang].tutorial);
   } else {
     newDet();
-    note.innerHTML = `<h1><span>${det}</span> ${opt[opt.lang].newCase}</h1>`;
+    note[ih] = `<h1><span>${det}</span> ${opt[opt.lang].newCase}</h1>`;
     say(opt[opt.lang].newCase);
   }
 
-  workbook[ac](note);
-  workbook[ac](nnote());
+  wbc[ac](note);
+  wbc[ac](nnote());
 };

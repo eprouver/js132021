@@ -6,7 +6,7 @@ const shuffle = (arr) => arr.sort(() => .5 - M[ra]());
 const timeouts = [];
 
 const cont = d[ge]('cont');
-const workbook = d[ge]('wbc');
+const wbc = d[ge]('wbc');
 const matrix = d[ge]('matrix');
 const root = d[ge]('root');
 
@@ -200,7 +200,7 @@ const newDet = () => {
   det = randSkinTone(randGender('🕵🏼‍♂️'));
   d[ge]('det').innerText = det;
   d.title = `BLANKS ${det} - Reduce the space`;
-  workbook.setAttribute('data-flair', `${det}`);
+  wbc.setAttribute('data-flair', `${det}`);
 }
 
 newDet();
@@ -244,7 +244,7 @@ let say = (m) => {
 
 const chooseGame = () => {
   clear();
-  workbook[ac](nnote());
+  wbc[ac](nnote());
   root.style.display = 'none';
   addGame(gi('people'), gi('cats')).then(g => sng(g));
 };

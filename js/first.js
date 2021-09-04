@@ -1,6 +1,7 @@
 const ge = 'getElementById';
 const cl = 'classList';
 const ac = 'appendChild';
+const ih = 'innerHTML';
 const d = document;
 const menu = d[ge]('menu');
 const M = Math;
@@ -19,8 +20,8 @@ const pauseGame = () => {
 let tutorial = false;
 
 const clear = () => {
-  workbook.innerHTML = '';
-  matrix.innerHTML = '';
+  wbc[ih] = '';
+  matrix[ih] = '';
   menu.style.display = 'none';
 };
 
@@ -80,7 +81,7 @@ const sng = (game) => {
     }
   }
 
-  workbook.setAttribute('data-msg', `${opt[opt.lang].wellDone}`);
+  wbc.setAttribute('data-msg', `${opt[opt.lang].wellDone}`);
   clear();
   opt.t = true;
   selectNewVoice();
@@ -115,5 +116,5 @@ d.onwheel = scroller;
 
 if (d.monetization && d.monetization.state) {
   d[ge]('mon-files').style.display = 'inline-block';
-  d[ge]('coil').innerHTML = 'You\'re signed into COIL.';
+  d[ge]('coil')[ih] = 'You\'re signed into COIL.';
 }

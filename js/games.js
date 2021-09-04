@@ -258,8 +258,8 @@ const addGame = (sNum = 2, catNum = 2) => {
         if (print) {
           const note = ce('div');
           note[cl].add('clue');
-          note.innerHTML = `<h3>${opt[opt.lang].noMore}</h3>`;
-          workbook[ac](note);
+          note[ih] = `<h3>${opt[opt.lang].noMore}</h3>`;
+          wbc[ac](note);
         }
         return;
       }

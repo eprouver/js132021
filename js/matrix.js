@@ -19,7 +19,7 @@ const createMatrix = () => {
   curG.slotNames.forEach(col => {
     const newCol = ce('th');
     newCol[cl].add('person');
-    newCol.innerHTML = `<span>${col}</span>`;
+    newCol[ih] = `<span>${col}</span>`;
     labelRow[ac](newCol)
   });
 
@@ -43,7 +43,7 @@ const createMatrix = () => {
     labelRow = ce('tr');
     labelRow[cl].add('mrow');
     spacer = ce('th');
-    spacer.innerHTML = curG.cNms[i];
+    spacer[ih] = curG.cNms[i];
     labelRow[ac](spacer);
 
     const clickopt = ['_', ...r];
@@ -53,7 +53,7 @@ const createMatrix = () => {
 
       const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
-      newSpan.innerHTML = clickopt[0];
+      newSpan[ih] = clickopt[0];
       userBoard[slot][curG.cNms[i]] = { d: '_', span: newSpan };
       newCol.onclick = (e) => {
         re(newSpan, clickopt, slot, curG.cNms[i]);
@@ -77,22 +77,22 @@ const createMatrix = () => {
   checker.onclick = () => {
     if (scoreMatrix()) {
       checker.parentNode.parentNode.parentNode.removeChild(checker.parentNode.parentNode);
-      workbook.innerHTML = '';
+      wbc[ih] = '';
 
-      workbook.scroll(0,0);
+      wbc.parentElement.scrollTo(0,0);
       cont[cl].add('end', opt.t ? 'bo': 'n');
       // say(opt[opt.lang].wellDone);
       say(opt[opt.lang].wellDone + (opt.t ? '... 100%': ''));
       // if (opt.t) {
-      //   d[ge]('hun').innerHTML = d[ge]('hun').innerHTML + '🎖️';
+      //   d[ge]('hun')[ih] = d[ge]('hun')[ih] + '🎖️';
       // } else {
-      //   d[ge]('hun').innerHTML = '';
+      //   d[ge]('hun')[ih] = '';
       // }
       sfx([1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]);
       pause = true;
       to(() => {
         pause = false;
-        workbook.innerHTML = ``;
+        wbc[ih] = ``;
         timeouts.forEach(t => clearTimeout(t));
         selectNewVoice();
         sng();

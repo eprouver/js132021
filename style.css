@@ -427,7 +427,7 @@ line-height:1
 -webkit-text-stroke:3px #444;
 animation:bg 60s linear infinite alternate;
 background-clip:text;
-background-image:url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>🧑🏾‍🏭👨🏿‍🎓👩🏼‍🚒🧝🏻‍♀️👩🏾‍✈️👰🏽🧙🏼‍♂️💂🏿🧕🏿</text></svg>");
+background-image:url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>👨🏻‍🏭👨🏿‍🎓👩🏼‍🚒🧝🏻‍♀️👩🏾‍✈️👰🏽🧙🏼‍♂️💂🏿🧕🏿</text></svg>");
 background-position-y:2em;
 background-size:280% 80%;
 color:rgba(100,100,100,0.5)

@@ -71,7 +71,7 @@ let subGame;
   const link = d[ge]('near');
 
   if(wallet.isSignedIn()) {
-    link.innerHTML = 'You\'re signed into NEAR.';
+    link[ih] = 'You\'re signed into NEAR.';
   }
 
   link.onclick = () => {
@@ -99,7 +99,7 @@ let subGame;
   subGame = () => {
     if(wallet.isSignedIn()) {
       clear();
-      workbook[ac](nnote());
+      wbc[ac](nnote());
       root.style.display = 'none';
       addGame(5,5).then(g => {
         contract.addMessage({ text: JSON.stringify(g), gas: 100000000000000});
@@ -118,7 +118,7 @@ let subGame;
   const list = d[ge]('com-list');
   sampleSize(20, messages.filter(m => m.text[0] === '{')).forEach(m => {
     const gg = ce('div');
-    gg.innerHTML = `<div class="sub-game"><span>5x5</span> - ${m.sender}: <span>👍</span></div>`;
+    gg[ih] = `<div class="sub-game"><span>5x5</span> - ${m.sender}: <span>👍</span></div>`;
     gg.onclick = () => { clear(); root.style.display = 'none'; sng(deser(m.text)); }
     list[ac](gg);
   });
