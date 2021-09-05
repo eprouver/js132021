@@ -14,7 +14,6 @@ font-family: Georgia, Times New Roman, serif;
 height:100%;
 letter-spacing:-.06em;
 overflow:hidden;
-overflow:hidden;
 text-align:center;
 text-rendering:geometricPrecision
 }
@@ -140,8 +139,7 @@ display:inline-block;
 font-size:3em;
 margin:.1em 0;
 max-width:100%;
-min-width:1.3em;
-transition:transform .05s linear
+min-width:1.3em
 }
 
 span {
@@ -241,7 +239,7 @@ transition:background-color .25s ease
 }
 
 #cont:not(.end) #wb > *,#cont:not(.end) td.draggable span {
-filter:drop-shadow(1px 7px 3px rgba(0,0,0,0.06))
+filter:drop-shadow(1px 7px 3px rgba(0,0,0,0.08))
 }
 
 .end #wb {
@@ -533,6 +531,19 @@ transform:translateY(0) scale(1)
 }
 }
 
+input[type="checkbox"] {
+height: 1.25em;
+width: 1.25em;
+border-radius: 2em;
+appearance: unset;
+border: 0.1em solid #9670c7
+}
+
+input[type="checkbox"]:checked {
+box-shadow: inset 0 0 0 0.2em #fff;
+background: #9670c7
+}
+
 .switch {
 display:inline-block;
 font-size:.4em;
@@ -540,40 +551,6 @@ height:3.4em;
 position:relative;
 top:-.9em;
 width:8em
-}
-
-.switch input {
-display:none
-}
-
-.slider {
-background-color:#ccc;
-bottom:0;
-cursor:pointer;
-left:0;
-position:absolute;
-right:0;
-top:0;
-transition:.4s
-}
-
-.slider:before {
-background-color:#fff;
-bottom:.3em;
-content:"";
-height:1.7em;
-left:.4em;
-position:absolute;
-transition:.2s;
-width:1.7em
-}
-
-input:checked+.slider {
-background-color:#9670c7
-}
-
-input:checked+.slider:before {
-transform:translateX(2.85em)
 }
 
 svg {
@@ -591,10 +568,6 @@ display:block
 animation:dash 3s linear forwards 1;
 stroke-dashoffset:400;
 stroke-linecap:round
-}
-
-.slider.round,.slider.round:before {
-border-radius:10px
 }
 
 @keyframes dash {

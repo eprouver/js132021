@@ -21,6 +21,21 @@ const to = (func, time) => {
   timeouts.push(setTimeout(func, time));
 };
 
+const checkToString = (arr) => arr.map(o => {
+  return Object.keys(o).concat(Object.values(o))
+}).flat().sort().join();
+
+const sample = arr => {
+  const len = arr == null ? 0 : arr.length
+  return len ? arr[~~(M[ra]() * len)] : undefined
+};
+
+const sampleSize = (size, list, collected = []) => size < 1 || list.length < 1 ?
+  collected :
+  shuffle(size >= list.length ? [...collected, ...list] : M[ra]() < size / list.length ?
+  sampleSize(size - 1, list.slice(1), [...collected, list[0]]) :
+  sampleSize(size, list.slice(1), collected));
+
 const iareEquals = (a, b) => {
   for(let i = 0; i < a.length; i++) {
     for(var key in a[i]) {
@@ -36,6 +51,35 @@ const iareEquals = (a, b) => {
   }
   return true;
 };
+
+// random skin tone?
+const stMod = [
+  '\u{1f3fb}',
+  '\u{1f3fc}',
+  '\u{1f3fd}',
+  '\u{1f3fe}',
+  '\u{1f3ff}',
+];
+
+const gMod = [
+  '👩',
+  '👨',
+];
+const gMod2 = ['♂️','♀️'];
+
+const findSkin = new RegExp("\ud83c[\udffb-\udfff]", "g");
+const findGender = new RegExp(gMod.join('|'), "g");
+const findGender2 = new RegExp(gMod2.join('|'), "g");
+const randSkinTone = (string) => string.replace(findSkin, sample(stMod));
+const randGender = (string) => string.replace(findGender, sample(gMod)).replace(findGender2, sample(gMod2));
+
+let det;
+const newDet = () => {
+  det = randSkinTone(randGender('🕵🏼‍♂️'));
+  d[ge]('det').innerText = det;
+  d.title = `BLANKS ${det} - Reduce the space`;
+  wbc.setAttribute('data-flair', `${det}`);
+}
 
 const opt = {
   lang: 'en',
@@ -148,6 +192,8 @@ const lang = (e, play = true) => {
       opt.cNms = ['clothes', 'instrument', 'sport', 'heart', 'fruit', 'animal', 'food', 'mood'];
     break;
   }
+  games = [];
+  addGame(1, 2).then((g) => tt = g);
 }
 
 lang('en', false);
@@ -158,50 +204,6 @@ lang('en', false);
     lang(e);
   });
 });
-
-const checkToString = (arr) => arr.map(o => {
-  return Object.keys(o).concat(Object.values(o))
-}).flat().sort().join();
-
-const sample = arr => {
-  const len = arr == null ? 0 : arr.length
-  return len ? arr[~~(M[ra]() * len)] : undefined
-};
-
-const sampleSize = (size, list, collected = []) => size < 1 || list.length < 1 ?
-  collected :
-  shuffle(size >= list.length ? [...collected, ...list] : M[ra]() < size / list.length ?
-  sampleSize(size - 1, list.slice(1), [...collected, list[0]]) :
-  sampleSize(size, list.slice(1), collected));
-
-// random skin tone?
-const stMod = [
-  '\u{1f3fb}',
-  '\u{1f3fc}',
-  '\u{1f3fd}',
-  '\u{1f3fe}',
-  '\u{1f3ff}',
-];
-
-const gMod = [
-  '👩',
-  '👨',
-];
-const gMod2 = ['♂️','♀️'];
-
-const findSkin = new RegExp("\ud83c[\udffb-\udfff]", "g");
-const findGender = new RegExp(gMod.join('|'), "g");
-const findGender2 = new RegExp(gMod2.join('|'), "g");
-const randSkinTone = (string) => string.replace(findSkin, sample(stMod));
-const randGender = (string) => string.replace(findGender, sample(gMod)).replace(findGender2, sample(gMod2));
-
-let det;
-const newDet = () => {
-  det = randSkinTone(randGender('🕵🏼‍♂️'));
-  d[ge]('det').innerText = det;
-  d.title = `BLANKS ${det} - Reduce the space`;
-  wbc.setAttribute('data-flair', `${det}`);
-}
 
 newDet();
 
@@ -248,5 +250,3 @@ const chooseGame = () => {
   root.style.display = 'none';
   addGame(gi('people'), gi('cats')).then(g => sng(g));
 };
-
-addGame(1, 2).then((g) => tt = g);
