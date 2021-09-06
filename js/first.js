@@ -43,8 +43,8 @@ const makeGames = () => {
   }
   to(() => {
     // Ramping Difficulty
-    for (let slot = 2; slot < 4; slot++) {
-      for (let cat = 2; cat < 4; cat++){
+    for (let slot = 2; slot < 5; slot++) {
+      for (let cat = 2; cat < 5; cat++){
         addGame(~~slot, ~~cat).then((g) => games.push(g));
       }
     }

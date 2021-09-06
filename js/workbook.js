@@ -11,43 +11,46 @@ const wordClues = clue => {
   option2 = (curG.cats[curG.cNms.indexOf(keys[1])] || []).indexOf(clue.d[0][keys[1]]) + 1;
   if (keys2.length)
   option3 = (curG.cats[curG.cNms.indexOf(keys2[0])] || []).indexOf(clue.d[1][keys2[0]]) + 1;
+  let per = '';
 
   switch(opt.lang) {
     case 'es':
+    per = 'la persona con';
     switch(clue.type) {
       case 'ti':
-        return `la persona con ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
+        return `${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
       break;
       case 'tiai':
         return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la derecha de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la derecha de ${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la izquierda de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la izquierda de ${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está cerca de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está cerca de ${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
     case 'fr':
+    per = 'la personne avec';
     switch(clue.type) {
       case 'ti':
-        return `la personne avec ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
+        return `${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
       break;
       case 'tiai':
         return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à droite de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à droite de<br/>${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à gauche de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à gauche de<br/>${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est a coté de ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est a coté de<br/>${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
@@ -89,6 +92,7 @@ const wordClues = clue => {
     }
     break;
     default:
+    per = 'the person with';
     switch(clue.type) {
       case 'ti':
         return `The one with ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, also has ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
@@ -97,13 +101,13 @@ const wordClues = clue => {
         return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>has ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `One left of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}`;
+        return `One left of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
       break;
       case 'b':
-        return `One right of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
+        return `One right of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
       break;
       case 'nt':
-        return `Next to ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
+        return `Next to ${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>,<br/> is ${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
       break;
     }
     break;
@@ -207,7 +211,7 @@ const nnote = () =>  {
 let clueTime, levelTime;
 const setupWorkbook = () => {
   timeouts.forEach(t => clearTimeout(t));
-  clueTime = (sound ? 6000 : 800);
+  clueTime = (sound ? 6600 : 800);
   levelTime = (sound ? 2000 : 7000);
   const tutorial = curG.sNum === 1 ? (sound ? 7000 : 4000) : (sound ? 2500 : 1000);
 
