@@ -174,14 +174,7 @@ const scoreMatrix = () => {
         }
       }
     }
-
     return cleared;
-  // } else if (curG.levels[curG.level].cb.length === 1) {
-  //   // puzzle has only one solution - but might not be filled in
-  //
-  // } else {
-  //   // score current selection against all possibles
-  // }
 }
 
 const extraClueButton = () => {

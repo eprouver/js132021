@@ -13,7 +13,7 @@ const pauseGame = () => {
   games = [];
   clear();
   menu.style.display = 'flex';
-  cont[cl].remove('end', 'bo');
+  cont[cl].remove('end');
   timeouts.forEach(t => clearTimeout(t));
 }
 
@@ -31,6 +31,7 @@ const makeGames = () => {
   clear();
   pause = false;
   games = [];
+  files = 0;
 
   // tutorial first first
   if (!tutorial) {
@@ -88,7 +89,7 @@ const sng = (game) => {
   sfx([, , -62, .02, .03, .23, , 10.8, 5.8, , 200, -0.07, , .3, 2, , , 1.3, .13, .3]);
 
   createMatrix();
-  cont[cl].remove('end', 'bo');
+  cont[cl].remove('end');
   to(() => {
     setupWorkbook(curG);
   }, 500);
@@ -97,16 +98,13 @@ const sng = (game) => {
 function scroller(event){
   switch(event.deltaMode){
     case 0: 		//DOM_DELTA_PIXEL		Chrome
-      wb.scrollTop+=event.deltaY
-      wb.scrollLeft+=event.deltaX
+      wbc.scrollTop+=event.deltaY
       break;
     case 1: 		//DOM_DELTA_LINE		Firefox
-      wb.scrollTop+=15*event.deltaY
-      wb.scrollLeft+=15*event.deltaX
+      wbc.scrollTop+=15*event.deltaY
       break;
     case 2: 		//DOM_DELTA_PAGE
-      wb.scrollTop+=0.03*event.deltaY
-      wb.scrollLeft+=0.03*event.deltaX
+      wbc.scrollTop+=0.03*event.deltaY
       break;
   }
   event.stopPropagation();

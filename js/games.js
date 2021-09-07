@@ -374,7 +374,7 @@ const addGame = (sNum = 2, catNum = 2) => {
           attempts: 0,
         });
 
-        // games = games.sort((a, b) => a.clues.length - b.clues.length);
+        games = games.sort((a, b) => a.clues.length - b.clues.length);
       }
     });
   }

@@ -1,7 +1,7 @@
 const showChoose = () => {
   clear();
   timeouts.forEach(t => clearTimeout(t));
-  cont[cl].remove('end', 'bo');
+  cont[cl].remove('end');
   root.style.display = 'flex';
   say(opt[opt.lang].ff);
   fi('nc', opt[opt.lang].newCase);

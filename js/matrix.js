@@ -80,7 +80,7 @@ const createMatrix = () => {
       wbc[ih] = '';
 
       wbc.parentElement.scrollTo(0,0);
-      cont[cl].add('end', opt.t ? 'bo': 'n');
+      cont[cl].add('end');
       // say(opt[opt.lang].wellDone);
       say(opt[opt.lang].wellDone + (opt.t ? '... 100%': ''));
       // if (opt.t) {
