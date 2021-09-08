@@ -49,7 +49,7 @@ const createMatrix = () => {
     const clickopt = ['_', ...r];
     curG.slotNames.forEach((col, slot) => {
       const newCol = ce('td');
-      newCol[cl].add('draggable');
+      newCol[cl].add('cme');
 
       const newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);

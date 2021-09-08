@@ -140,14 +140,14 @@ a {
     text-decoration: none
 }
 
-.clue span:not(.person),td.draggable span:not([data-option='0']):not(.incorrect):not(.correct) {
+.clue span:not(.person),td.cme span:not([data-option='0']):not(.incorrect):not(.correct) {
     box-shadow: inset 0 -.25em .05em -.15em rgb(0 0 0/18%),0 .1em .25em -.1em rgb(0 0 0/40%);
     padding-bottom: .05em;
     text-shadow: 0 .1em .1em rgb(0 0 0/30%)
 }
 
-.lang,.sub-game,.tutorial,button,input,span,td.draggable {
-    border-radius: .25em
+.lang,.sub-game,.tutorial,button,input,span,td.cme {
+    border-radius: 1em
 }
 
 #matrix,#menu,#root,#wb,body,html,input {
@@ -211,7 +211,7 @@ a {
     width: 90%
 }
 
-.end #matrix table .draggable {
+.end #matrix table .cme {
     background: 0 0;
     box-shadow: none
 }
@@ -247,16 +247,16 @@ col {
     flex-grow: 0
 }
 
-#matrix table,.mrow td,span.person,td.draggable,th {
+#matrix table,.mrow td,span.person,td.cme,th {
     position: relative
 }
 
-td.draggable {
+td.cme {
     background: #fff;
     cursor: pointer
 }
 
-td.draggable span {
+td.cme span {
     color: #c3c3c3;
     display: inline-block;
     font-size: 3em;
@@ -302,6 +302,7 @@ span.incorrect:before {
 }
 
 [data-option="0"],[data-option="0"]:after {
+    filter: none !important;
     opacity: .5
 }
 
@@ -359,7 +360,7 @@ span.incorrect:before {
     padding-bottom: 50vh
 }
 
-#cont:not(.end) #wb>*,#cont:not(.end) td.draggable span,.lang.selected {
+#cont:not(.end) #wb>*,#cont:not(.end) td.cme span,.lang.selected {
     filter: drop-shadow(0 6px 3px rgba(0,0,0,.08))
 }
 
@@ -376,8 +377,8 @@ span.incorrect:before {
 
 .end #wbc:after,.end #wbc:before {
     animation: fadeOn 1s 1 forwards;
+    display:none;
     color: #fff;
-    display: block
 }
 
 .end #wbc:before {
@@ -389,6 +390,7 @@ span.incorrect:before {
 
 .end #wbc:after {
     content: attr(data-msg);
+    display: block;
     font-size: 2em
 }
 
@@ -431,7 +433,7 @@ h3 {
     line-height: 2em
 }
 
-.night table:before,.night td.draggable {
+.night table:before,.night td.cme {
     background: #444
 }
 
@@ -703,7 +705,7 @@ input {
         padding-right: 53vw
     }
 
-    .mrow td.draggable {
+    .mrow td.cme {
         font-size: 1.25em
     }
 
@@ -736,7 +738,7 @@ input {
 
     .end #wbc:before {
         font-size: 6em;
-        margin-top: 25vh
+        margin-top: 20vh
     }
 
     th.person {
@@ -774,6 +776,9 @@ input {
 
     .right-e {
         animation: .5s ease right-e forwards
+    }
+    .end #wbc:before {
+      display: block;
     }
 }
 
