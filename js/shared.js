@@ -9,6 +9,7 @@ const cont = d[ge]('cont');
 const wbc = d[ge]('wbc');
 const matrix = d[ge]('matrix');
 const root = d[ge]('root');
+const bd = [1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06];
 
 // get value
 const gi = (id, or = 3) => parseInt(d[ge](id).value) || or;
@@ -83,7 +84,7 @@ const newDet = () => {
 
 const opt = {
   lang: 'en',
-  files: 10,
+  files: 16,
   clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
   cats: [
     ['👓', '👕', '👘', '🎩', '👠', '🧤', '🧣', '👒', '🧢', '👟', '🩳'],

@@ -167,7 +167,7 @@ const scoreMatrix = () => {
         } else {
           to(() => {
             user.span[cl].add('incorrect');
-            sfx([1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06]);
+            sfx(bd);
           }, (row + col) * 100)
 
           cleared = opt.t = false;

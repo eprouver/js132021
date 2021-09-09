@@ -250,7 +250,7 @@ const addGame = (sNum = 2, catNum = 2) => {
     currentStep = [];
   };
 
-  let ext = sNum < 3;
+  let ext = sNum < 2;
 
   const aac = (type = null, depth = 0, print = false) => {
     const constraint = addConstraint(type, depth, (constraint) => {
@@ -283,7 +283,7 @@ const addGame = (sNum = 2, catNum = 2) => {
             !Object.entries((obj || {})).length) ||
           currentLength === prevSolution) && prevSolution < maxFill) {
         // empty objects, or fewer than all selections indicated
-        if (constraints.length > row.length * 9) {
+        if (constraints.length > row.length * 8) {
           // console.log('TOO MANY CLUES, STARTING OVER');
           reset();
           aac();

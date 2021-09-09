@@ -98,6 +98,15 @@ const createMatrix = () => {
         wbc.setAttribute('data-flair', randSkinTone(randGender('🙅🏽‍♂️')));
         wbc.setAttribute('data-msg', '○ ○ ○');
         sfx([1.11,,260,.05,.18,.78,,1.9,,,-23,.06,.14,,,,,.8]);
+        pause = true;
+        // repeat board of same size
+        to(() => {
+          addGame(curG.sNum,curG.catNum).then((g) => {
+            newDet();
+            sng(g);
+          });
+        }, 3000);
+        return;
       }
       pause = true;
       to(() => {
@@ -108,6 +117,7 @@ const createMatrix = () => {
         sng();
       }, 3000);
     } else if (curG.attempts <= 3){
+      sfx(bd);
       li.innerHTML = '● '.repeat(3 - curG.attempts) + '○ '.repeat(curG.attempts);
     }
   };

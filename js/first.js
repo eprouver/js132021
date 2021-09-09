@@ -56,6 +56,7 @@ let files = 0;
 
 const sng = (game) => {
   pause = false;
+  wbc[ac](nnote());
   if (games.length < 2) {
     const nn = () => ~~(M[ra]() * 5) + 2;
     // Add new random game
