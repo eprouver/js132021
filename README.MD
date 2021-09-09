@@ -21,7 +21,7 @@ The game uses that theme by:
 * Filling in the empty spaces in the board
 * Completing the puzzle reduces the space between the characters
 * Filling in the empty space in all the template strings
-* Staying within 13k of available submission space :)
+* There's no time limit to give you some space to think
 
 # Why does it say "Woman Doctor" and "Man Astronaut"?
 The voices are using the speechSynthesis library of the browser, used by screen readers. That's how the emojis are read by some of the voices in screen reader. Although I was able to remove the skin tone from the emoji before speechSynthesis to avoid the browser saying things like "Man Doctor with Medium Light Skin Tone" in those clues, because of how the emojis defined, removing the gender breaks the meaning in some cases.  For example, instead of "Woman Scientist", it would just say "microscope".

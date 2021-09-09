@@ -182,8 +182,8 @@ const extraClueButton = () => {
   const checker = ce('button');
   checker[cl].add('clue');
   checker.onclick = () => {
-    checker.parentNode.removeChild(checker);
     curG.extraClue();
+    checker.parentNode.removeChild(checker);
   };
   checker.innerText = '+ 🔍';
 

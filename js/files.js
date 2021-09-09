@@ -12,6 +12,7 @@ const showChoose = () => {
   fi('create', `${opt[opt.lang].cr} ${opt[opt.lang].newCase}`);
   fi('com', opt[opt.lang].com);
   fi('com2', opt[opt.lang].com);
+  fi('com3', opt[opt.lang].newCase);
 }
 
 // serialize
@@ -101,9 +102,9 @@ let subGame;
       clear();
       wbc[ac](nnote());
       root.style.display = 'none';
-      addGame(5,5).then(g => {
-        contract.addMessage({ text: JSON.stringify(g), gas: 100000000000000});
+      addGame(4,4).then(g => {
         sng(g);
+        contract.addMessage({ text: ser(g), gas: 100000000000000});
       });
     } else {
       var r = confirm("Going to NEAR to log in.");
@@ -118,7 +119,7 @@ let subGame;
   const list = d[ge]('com-list');
   sampleSize(20, messages.filter(m => m.text[0] === '{')).forEach(m => {
     const gg = ce('div');
-    gg[ih] = `<div class="sub-game"><span>5x5</span> - ${m.sender}: <span>👍</span></div>`;
+    gg[ih] = `<div class="sub-game"><span>Play</span> - ${m.sender}: <span>👍</span></div>`;
     gg.onclick = () => { clear(); root.style.display = 'none'; sng(deser(m.text)); }
     list[ac](gg);
   });

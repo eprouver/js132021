@@ -64,6 +64,9 @@
       <h3 id="near"><a>Click to sign into NEAR</a></h3>
       <h3 id="coil"><a href="https://coil.com/" target="_BLANKS">Click to sign into COIL</a></h3>
     </div>
+
+    <div class="background">
+    </div>
   </div>
 
 
@@ -92,7 +95,7 @@
 
       <div class="root-col">
         <h1 id="create">Create</h1>
-        <p><span>5 x 5 =></span> <span id="com2"></span></p>
+        <p><span id="com3"> </span><span> ➔ </span><span id="com2"></span></p>
         <button class="clue" onclick="subGame()">👍</button>
         <h2 id="com">Community</h2>
         <div id="com-list">
@@ -101,9 +104,9 @@
       <div class="root-col right-e">
        <h1 id="ch">Choose</h1>
        <label id="peplabel">People:</label>
-       <input type="number" id="people" min="2" max="5" value="3">
+       <input type="number" id="people" min="2" max="5" value="3" onKeyDown="return false">
        <label id="catlabel">cats:</label>
-       <input type="number" id="cats" min="2" max="5" value="3">
+       <input type="number" id="cats" min="2" max="5" value="3" onKeyDown="return false">
        <button class="clue" onclick="chooseGame()">👍</button>
       </div>
     </div>

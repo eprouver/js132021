@@ -146,8 +146,8 @@ a {
     text-shadow: 0 .1em .1em rgb(0 0 0/30%)
 }
 
-.lang,.sub-game,.tutorial,button,input,span,td.cme {
-    border-radius: 1em
+.lang,.sub-game,.tutorial,button,input,span,.cme {
+    border-radius: 0.25em
 }
 
 #matrix,#menu,#root,#wb,body,html,input {
@@ -165,9 +165,8 @@ a {
 }
 
 #matrix button.clue:active,.night #matrix button,.night button.clue,button.clue:active {
-    border: 1px solid #b7b7b7;
     box-shadow: 0 0 2px #444;
-    top: 7px
+    transform: translateY(11px)
 }
 
 .night .title .bl {
@@ -360,7 +359,7 @@ span.incorrect:before {
     padding-bottom: 50vh
 }
 
-#cont:not(.end) #wb>*,#cont:not(.end) td.cme span,.lang.selected {
+#cont:not(.end) #wb>*,#cont:not(.end) td.cme span,.lang.selected,#det, button {
     filter: drop-shadow(0 6px 3px rgba(0,0,0,.08))
 }
 
@@ -394,7 +393,7 @@ span.incorrect:before {
     font-size: 2em
 }
 
-#wb h1,.waiting {
+#wb h1,.waiting,#li {
     animation: .5s ease forwards 1 fadeOn;
     font-size: 2em
 }
@@ -412,7 +411,7 @@ span.incorrect:before {
     width: 80%
 }
 
-h3 {
+h3, #li {
     color: #bbb
 }
 
@@ -441,15 +440,15 @@ button.clue {
     animation: 1s ease forwards 1 fadeOn;
     background: #f7f7f736;
     border: none;
-    box-shadow: 0 0 1px #1b1b1b,0 6px 3px #eee,0 7px 1px 1px #8c8c8c,0 10px 6px rgb(0 0 0/19%);
+    box-shadow: 0 0 2px #5d5d5d, 0 9px 0px #d6d6d6, 0 10px 3px -1px #5d5d5d, 0 13px 8px rgb(74 74 74 / 19%);
     color: #aaa;
     cursor: pointer;
-    font-size: 3em;
     font-size: 5vmin;
     line-height: 1.5em;
     min-width: auto;
     padding: 0 .25em;
     width: 60%;
+    margin-bottom: 0.5em;
     position: relative
 }
 
@@ -543,7 +542,7 @@ button.clue {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 800px;
     padding: 0 50px
 }
 
@@ -720,10 +719,6 @@ input {
         right: 0;
         top: 0;
         width: 50.5vw
-    }
-
-    #matrix button {
-        box-shadow: 0 0 1px #1b1b1b,0 6px 3px #c8c8c8,0 7px 1px 1px #8c8c8c,0 10px 6px rgb(0 0 0/19%)
     }
 
     #matrix table {

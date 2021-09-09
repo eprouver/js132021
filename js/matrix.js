@@ -70,7 +70,10 @@ const createMatrix = () => {
 
   labelRow = ce('tr');
   labelRow[cl].add('mrow');
-  labelRow[ac](ce('td'));
+  const li = ce('td');
+  li.setAttribute('id', 'li');
+  li.innerHTML = '● ● ●';
+  labelRow[ac](li);
 
   const checker = ce('button');
   checker[cl].add('clue');
@@ -81,14 +84,21 @@ const createMatrix = () => {
 
       wbc.parentElement.scrollTo(0,0);
       cont[cl].add('end');
-      // say(opt[opt.lang].wellDone);
-      say(opt[opt.lang].wellDone + (opt.t ? '... 100%': ''));
-      // if (opt.t) {
-      //   d[ge]('hun')[ih] = d[ge]('hun')[ih] + '🎖️';
-      // } else {
-      //   d[ge]('hun')[ih] = '';
-      // }
-      sfx([1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]);
+      say('')
+      if (curG.attempts <= 3) {
+        // say(opt[opt.lang].wellDone);
+        say(opt[opt.lang].wellDone + (opt.t ? '... 100%': ''));
+        // if (opt.t) {
+        //   d[ge]('hun')[ih] = d[ge]('hun')[ih] + '🎖️';
+        // } else {
+        //   d[ge]('hun')[ih] = '';
+        // }
+        sfx([1.4,,474,,.25,.63,1,1.145,-0.3,,100,.09,.09,,,,.09,.4,.65]);
+      } else {
+        wbc.setAttribute('data-flair', randSkinTone(randGender('🙅🏽‍♂️')));
+        wbc.setAttribute('data-msg', '○ ○ ○');
+        sfx([1.11,,260,.05,.18,.78,,1.9,,,-23,.06,.14,,,,,.8]);
+      }
       pause = true;
       to(() => {
         pause = false;
@@ -97,6 +107,8 @@ const createMatrix = () => {
         selectNewVoice();
         sng();
       }, 3000);
+    } else if (curG.attempts <= 3){
+      li.innerHTML = '● '.repeat(3 - curG.attempts) + '○ '.repeat(curG.attempts);
     }
   };
   checker.innerText = '👍';
