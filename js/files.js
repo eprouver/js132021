@@ -32,7 +32,8 @@ let deser = g => {
   let ss = JSON.parse(g);
   ss.cNms[fe]((n, i) => g = g.replace(new RegExp(`b${i}b`, 'g'), n));
   g = JSON.parse(g);
-  g.sNum = g.slotNames.length;
+  g.sN = g.sN || g.slotNames;
+  g.sNum = g.sN.length;
   g.catNum = g.cNms.length;
   g.attempts = 0;
 

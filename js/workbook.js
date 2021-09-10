@@ -1,6 +1,6 @@
 // wbc
 //['ti', 'tiai', 'a', 'b', 'nt']
-// opt.slotNames
+// opt.sN
 
 let wordClues = clue => {
   let keys = Object.keys(clue.d[0]);
@@ -12,102 +12,103 @@ let wordClues = clue => {
   if (keys2.length)
   option3 = (curG.cats[curG.cNms.indexOf(keys2[0])] || []).indexOf(clue.d[1][keys2[0]]) + 1;
   let per = '';
+  let sdo = '<span data-o="'
 
   switch(opt.lang) {
     case 'es':
-    per = 'la persona con';
+    per = 'la persona con ';
     switch(clue.type) {
       case 'ti':
-        return `${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, también tiene ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
+        return `${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>, también tiene ${keys[1]}  ${sdo}${option2}">${clue.d[0][keys[1]]}</span>`;
       break;
       case 'tiai':
-        return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>tiene ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `<span class="person">${curG.sN[clue.d[1].i]}</span>tiene ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la derecha de ${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> está a la derecha de ${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está a la izquierda de ${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> está a la izquierda de ${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> está cerca de ${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> está cerca de ${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
     case 'fr':
-    per = 'la personne avec';
+    per = 'la personne avec ';
     switch(clue.type) {
       case 'ti':
-        return `${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, aussi tiens ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`;
+        return `${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>, aussi tiens ${keys[1]}  ${sdo}${option2}">${clue.d[0][keys[1]]}</span>`;
       break;
       case 'tiai':
-        return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>tiens ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `<span class="person">${curG.sN[clue.d[1].i]}</span>tiens ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à droite de<br/>${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> est à droite de<br/>${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est à gauche de<br/>${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> est à gauche de<br/>${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> est a coté de<br/>${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${per} ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> est a coté de<br/>${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
     case 'zh-CN':
     switch(clue.type) {
       case 'ti':
-        return `有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有 <span data-option="${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}`;
+        return `有 ${sdo}${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有 ${sdo}${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}`;
       break;
       case 'tiai':
-        return `<span class="person">${curG.slotNames[clue.d[1].i]}</span> 有 <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
+        return `<span class="person">${curG.sN[clue.d[1].i]}</span> 有 ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
       break;
       case 'b':
-        return `${keys2[0]} <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的右边`;
+        return `${keys2[0]} ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的右边`;
       break;
       case 'a':
-        return `${keys2[0]} <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的左边`;
+        return `${keys2[0]} ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的左边`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> 就在 ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> 的旁边`;
+        return `${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 就在 ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的旁边`;
       break;
     }
     case 'tp':
     switch(clue.type) {
       case 'ti':
-        return `jan li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> li jo e ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span> kin`
+        return `jan li jo e ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> li jo e ${keys[1]}  ${sdo}${option2}">${clue.d[0][keys[1]]}</span> kin`
       break;
       case 'tiai':
-        return `jan <span class="person">${curG.slotNames[clue.d[1].i]}</span>li jo e ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `jan <span class="person">${curG.sN[clue.d[1].i]}</span>li jo e ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'b':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pini pi ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pini pi ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka open pi ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> li lon poka open pi ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'nt':
-        return `${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pi ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> li lon poka pi ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
     }
     break;
     default:
-    per = 'the person with';
+    per = 'the person with ';
     switch(clue.type) {
       case 'ti':
-        return `The one with ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>, also has ${keys[1]}  <span data-option="${option2}">${clue.d[0][keys[1]]}</span>`
+        return `The one with ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>, also has ${keys[1]}  ${sdo}${option2}">${clue.d[0][keys[1]]}</span>`
       break;
       case 'tiai':
-        return `<span class="person">${curG.slotNames[clue.d[1].i]}</span>has ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>`;
+        return `<span class="person">${curG.sN[clue.d[1].i]}</span>has ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>`;
       break;
       case 'a':
-        return `One left of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
+        return `One left of ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> is ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span>`;
       break;
       case 'b':
-        return `One right of ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span> is ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
+        return `One right of ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> is ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span>`;
       break;
       case 'nt':
-        return `Next to ${per} ${keys[0]}  <span data-option="${option}">${clue.d[0][keys[0]]}</span>,<br/> is ${per} ${keys2[0]}  <span data-option="${option3}">${clue.d[1][keys2[0]]}</span>`;
+        return `Next to ${per} ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span>,<br/> is ${per} ${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span>`;
       break;
     }
     break;
@@ -143,7 +144,6 @@ let showClueArr = (arr, div) => {
 }
 
 let scoreMatrix = () => {
-  timeouts[fe](t => clearTimeout(t));
   [...d[gcn]('dan')][fe](c => c[cl].remove('dan'));
   curG.attempts += 1;
 
@@ -153,7 +153,7 @@ let scoreMatrix = () => {
     let cleared = true;
     for(let col = 0; col < curG.sNum; col++) {
       for(let row = 0; row < curG.cats.length; row++) {
-        let user = userBoard[col][curG.cNms[row]];
+        let user = uB[col][curG.cNms[row]];
         user.span[cl].remove('correct,incorrect');
         if (user.d === '_'){
           cleared = opt.t = false;

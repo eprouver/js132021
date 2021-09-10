@@ -1,22 +1,22 @@
-let userBoard = [];
+let uB = [];
 
 let createMatrix = () => {
-  userBoard = [];
+  uB = [];
   for (let i = 0; i < curG.sNum; i++) {
-    userBoard.push({});
+    uB.push({});
   }
   // why does this make one object by reference
-  // userBoard = Array(curG.sNum).fill(new Object());
+  // uB = Array(curG.sNum).fill(new Object());
 
   let table = ce('table');
   let col = ce('col');
-  col.setAttribute('span', 1);
+  col[sa]('span', 1);
   table[ac](col);
   let labelRow = ce('tr');
   let spacer = ce('td');
   labelRow[ac](spacer);
 
-  curG.slotNames[fe](col => {
+  curG.sN[fe](col => {
     let newCol = ce('th');
     newCol[cl].add('person');
     newCol[ih] = `<span>${col}</span>`;
@@ -33,10 +33,10 @@ let createMatrix = () => {
     }
 
     sfx([.7,.45,82.40689,,,.02,,3,35,,-150 + ((opt.indexOf(current) + 1) * 100),-0.06,,,,,,.5,.03,.21]);
-    userBoard[slot][category] = { d: current, span };
+    uB[slot][category] = { d: current, span };
     span.innerText = current;
     span[cl].remove('correct','incorrect');
-    span.setAttribute('data-option', opt.indexOf(current));
+    span[sa]('data-o', opt.indexOf(current));
   };
 
   curG.cats[fe]((r, i) => {
@@ -47,14 +47,14 @@ let createMatrix = () => {
     labelRow[ac](spacer);
 
     let clickopt = ['_', ...r];
-    curG.slotNames[fe]((col, slot) => {
+    curG.sN[fe]((col, slot) => {
       let newCol = ce('td');
       newCol[cl].add('cme');
 
       let newSpan = ce('span');
-      newSpan.setAttribute('data-option', 0);
+      newSpan[sa]('data-o', 0);
       newSpan[ih] = clickopt[0];
-      userBoard[slot][curG.cNms[i]] = { d: '_', span: newSpan };
+      uB[slot][curG.cNms[i]] = { d: '_', span: newSpan };
       newCol.onclick = (e) => {
         re(newSpan, clickopt, slot, curG.cNms[i]);
       };
@@ -71,7 +71,7 @@ let createMatrix = () => {
   labelRow = ce('tr');
   labelRow[cl].add('mrow');
   let li = ce('td');
-  li.setAttribute('id', 'li');
+  li[sa]('id', 'li');
   li[ih] = '●●●';
   labelRow[ac](li);
 
@@ -90,8 +90,8 @@ let createMatrix = () => {
         opt.t ? mn.innerText = parseInt(mn.innerText) + 1 : null;
       } else {
         say('')
-        wbc.setAttribute('data-flair', rst(randGender('🙅🏽‍♂️')));
-        wbc.setAttribute('data-msg', '○○○');
+        wbc[sa]('data-flair', rst(randGender('🙅🏽‍♂️')));
+        wbc[sa]('data-msg', '○○○');
         sfx([1.11,,260,.05,.18,.78,,1.9,,,-23,.06,.14,,,,,.8]);
         pause = true;
         // repeat board of same size
@@ -120,7 +120,7 @@ let createMatrix = () => {
   checker.innerText = '👍';
 
   spacer = ce('td');
-  spacer.setAttribute('colspan', curG.sNum );
+  spacer[sa]('colspan', curG.sNum );
   spacer[ac](checker);
   labelRow[ac](spacer);
 

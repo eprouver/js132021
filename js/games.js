@@ -42,9 +42,9 @@ let addGame = (sNum = 2, catNum = 2) => {
 
   let cats = opt.cats;
   let cNms = opt.cNms;
-  let slotNames = opt.slotNames;
+  let sN = opt.sN;
 
-  slotNames = sampleSize(sNum, slotNames).map(f => rst(f)).map(f => randGender(f));
+  sN = sampleSize(sNum, sN).map(f => rst(f)).map(f => randGender(f));
 
   let select = sampleSize(catNum, [...Array(cNms.length).keys()]);
 
@@ -225,17 +225,30 @@ let addGame = (sNum = 2, catNum = 2) => {
     callback(newConstraint);
   };
 
-  let firstSolution = (solution) => {
-    if (firstBoard) return;
-    firstBoard = true;
-    // // console.log('*****', `Middle: ${ prevSolution } selections, ${solution.length} arrangements, ${constraints.length} clues`, solution);
-    // stepTest.push({
-    //   solution,
-    //   selections: prevSolution
-    // });
-    // steps.push(currentStep.slice(0));
-    // currentStep = [];
-  };
+  // let firstFill = (solution) => {
+  //   if (everyObject) return;
+  //   everyObject = true;
+  //   firstOffering = prevSolution;
+  //   // console.log('*****', `Everyone has a key. ${ prevSolution } selections, ${solution.length} arrangements, ${constraints.length} clues`, solution);
+  //   stepTest.push({
+  //     solution,
+  //     selections: prevSolution
+  //   });
+  //   steps.push(currentStep.slice(0));
+  //   currentStep = [];
+  // };
+
+  // let firstSolution = (solution) => {
+  //   if (firstBoard) return;
+  //   firstBoard = true;
+  //   // console.log('*****', `Middle: ${ prevSolution } selections, ${solution.length} arrangements, ${constraints.length} clues`, solution);
+  //   stepTest.push({
+  //     solution,
+  //     selections: prevSolution
+  //   });
+  //   steps.push(currentStep.slice(0));
+  //   currentStep = [];
+  // };
 
   let ext = sNum < 2;
 
@@ -284,12 +297,13 @@ let addGame = (sNum = 2, catNum = 2) => {
       if (!everyObject) {
         // chapter one make sure every object has at least one key
         everyObject = true;
+        firstOffering = prevSolution;
         raf(() => aac(null, 0, print));
         return;
       } else if (everyObject && prevSolution < maxFill) {
         // chapter 2 make sure clues indicate one possible arrangement
         if (prevSolution > M.min(firstOffering + sNum, firstOffering + catNum)) {
-          firstSolution(solution);
+          firstBoard = true;
         }
         raf(() => aac(null, 0, print));
         return;
@@ -358,7 +372,7 @@ let addGame = (sNum = 2, catNum = 2) => {
           clues: constraints,
           cats,
           cNms,
-          slotNames,
+          sN,
           attempts: 0,
         });
 

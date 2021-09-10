@@ -1,15 +1,16 @@
-let ge = 'getElementById';
-let gcn = 'getElementsByClassName';
-let cl = 'classList';
-let ac = 'appendChild';
-let ih = 'innerHTML';
-let fe = 'forEach';
-let d = document;
-let menu = d[ge]('menu');
-let M = Math;
-let ra = 'random';
-let raf = requestAnimationFrame;
-let pauseGame = () => {
+let ge = 'getElementById',
+gcn = 'getElementsByClassName',
+cl = 'classList',
+ac = 'appendChild',
+ih = 'innerHTML',
+fe = 'forEach',
+sa = 'setAttribute',
+d = document,
+menu = d[ge]('menu'),
+M = Math,
+ra = 'random',
+raf = requestAnimationFrame,
+pauseGame = () => {
   say('')
   pause = true;
   games = [];
@@ -84,7 +85,7 @@ let sng = (game) => {
     }
   }
 
-  wbc.setAttribute('data-msg', `${opt[opt.lang].wellDone}`);
+  wbc[sa]('data-msg', `${opt[opt.lang].wellDone}`);
   clear();
   opt.t = true;
   selectNewVoice();
