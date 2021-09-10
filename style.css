@@ -394,10 +394,6 @@ span.incorrect:before {
     font-size: 2.4rem
 }
 
-.waiting {
-    animation: 1s ease alternate infinite growOn;
-}
-
 .tutorial {
     animation: fadeOn 1s 1 forwards;
     background: #7fdbff;
@@ -795,4 +791,23 @@ input {
     pointer-events: none;
     border-bottom-left-radius: 0.5em;
     line-height: 1em;
+}
+
+.mrow, .cme, .cme span:not([data-option='0']) {
+  transform-style: preserve-3d;
+  perspective-origin: center;
+  perspective: 2000px;
+  transition: transform 0.5s ease;
+}
+
+.dan {
+  transform: translate3d(0, 3em, -5em) rotateX(60deg)  ;
+}
+
+span:not([data-option='0']) {
+  transition: transform 1s ease;
+}
+
+.dan span:not([data-option='0']) {
+  transform: rotateX(-60deg) translate3d(0, -1.5em, 0) scale(0.5);
 }

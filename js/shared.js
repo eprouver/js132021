@@ -1,17 +1,13 @@
-let curG;
-let sound = true;
-let pause = false;
-let games = [];
-const shuffle = (arr) => arr.sort(() => .5 - M[ra]());
-const timeouts = [];
-
-const cont = d[ge]('cont');
-const wbc = d[ge]('wbc');
-const matrix = d[ge]('matrix');
-const root = d[ge]('root');
-const cn = d[ge]('cn');
-const mn = d[ge]('mn');
-const bd = [1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06];
+let curG, sound = true, pause = false, games = [];
+const shuffle = (arr) => arr.sort(() => .5 - M[ra]()),
+timeouts = [],
+cont = d[ge]('cont'),
+wbc = d[ge]('wbc'),
+matrix = d[ge]('matrix'),
+root = d[ge]('root'),
+cn = d[ge]('cn'),
+mn = d[ge]('mn'),
+bd = [1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06];
 
 const theme = (mod = 65) => {
   // const s = (t, a) => to(() => sfx([.82,0.1,a,.1,.3,.22,,3,,,,.05,,,,,,(700 - a) / 1000,.19,1]), t);
@@ -210,3 +206,18 @@ const chooseGame = () => {
   root.style.display = 'none';
   addGame(gi('people'), gi('cats')).then(g => sng(g));
 };
+
+setInterval(() => {
+const s = sample([...d.getElementsByClassName('cme')]);
+if (s.children[0][cl].contains('correct', 'incorrect') || curG.sNum == 1) {
+  return;
+}
+s[cl].add('dan');
+to(() => {
+
+while (s.children[0].dataset.option !== '0'){
+  s.click();
+}
+[...d.getElementsByClassName('dan')][fe](c => c[cl].remove('dan'))
+}, 1000);
+}, 45000);
