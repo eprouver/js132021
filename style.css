@@ -53,7 +53,7 @@
 
 @keyframes ellipsis {
     to {
-        width: 2em
+        width: 1.5em
     }
 }
 
@@ -116,10 +116,12 @@
 }
 
 * {
+    font-family: Trebuchet MS,sans-serif;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-backface-visibility: hidden;
     -webkit-transform: translate3d(0,0,0);
+    scrollbar-width: none;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -127,11 +129,10 @@
 }
 
 body,html {
-    font-family: Georgia,Times New Roman,serif;
     height: 100%;
-    letter-spacing: -.06em;
     overflow: hidden;
     text-align: center;
+    font-size:3vmin;
     text-rendering: geometricPrecision
 }
 
@@ -150,12 +151,12 @@ a {
     border-radius: 0.25em
 }
 
-#matrix,#menu,#root,#wb,body,html,input {
+#matrix,#menu,#root,#wb,body,html,input,#hun {
     background: #fff;
     color: #696969
 }
 
-.night #matrix,.night #menu,.night #root,.night #wb,.night body,.night html,.night input {
+.night #matrix,.night #menu,.night #root,.night #wb,.night body,.night html,.night input, .night #hun {
     background: #333;
     color: #fff
 }
@@ -188,20 +189,16 @@ a {
     bottom: 0;
     box-shadow: 0 0 114px rgba(0,0,0,.4),0 0 20px rgba(0,0,0,.4);
     display: flex;
-    min-height: 40vh;
     padding: .5em;
     position: fixed;
-    transition: all .5s ease;
     width: 100%
 }
 
 #matrix table {
     border-collapse: separate;
     border-spacing: .25em;
-    font-size: 2.5vmin;
     table-layout: fixed;
     top: -.25em;
-    transition: all 1s ease;
     width: 100%
 }
 
@@ -216,12 +213,13 @@ a {
 }
 
 th {
+  font-size: 0.9rem;
     pointer-events: none
 }
 
 th.person {
     animation: sib .5s ease both;
-    font-size: 7vmin;
+    font-size: 3.3rem;
     top: .4em
 }
 
@@ -233,7 +231,7 @@ th.person {
 
 th.person span {
     bottom: 0;
-    font-size: 2em;
+    font-size: 6rem;
     margin-left: -.5em;
     position: absolute
 }
@@ -260,7 +258,6 @@ td.cme span {
     display: inline-block;
     font-size: 3em;
     margin: .1em 0;
-    max-width: 100%;
     min-width: 1.3em
 }
 
@@ -269,8 +266,9 @@ span {
 }
 
 span.person {
-    font-size: 3em;
-    padding: 0 .1em
+    top: 0.05em;
+    font-size: 3.2em;
+    padding: 0 .05em
 }
 
 #matrix span.incorrect {
@@ -309,7 +307,7 @@ span.incorrect:before {
     content: '?';
     position: absolute;
     left: .7em;
-    font-size: .7em;
+    font-size: 0.7em;
     top: .3em;
     font-weight: 700
 }
@@ -347,8 +345,6 @@ span.incorrect:before {
 }
 
 #wb {
-    font-size: 2.5vmin;
-    height: 60vh;
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 5vh 0 40vh 3vw;
@@ -356,6 +352,7 @@ span.incorrect:before {
 }
 
 #wbc {
+    font-size: 1.2em;
     padding-bottom: 50vh
 }
 
@@ -365,7 +362,7 @@ span.incorrect:before {
 
 .end #wb {
     background: #444;
-    font-size: 2.2em;
+    font-size: 2.2rem;
     min-height: 50vh;
     transition: all .5s ease
 }
@@ -382,7 +379,6 @@ span.incorrect:before {
 
 .end #wbc:before {
     content: attr(data-flair);
-    font-size: 5em;
     line-height: 1em;
     margin-top: .15em
 }
@@ -390,16 +386,16 @@ span.incorrect:before {
 .end #wbc:after {
     content: attr(data-msg);
     display: block;
-    font-size: 2em
+    font-size: 4rem
 }
 
 #wb h1,.waiting,#li {
-    animation: .5s ease forwards 1 fadeOn;
-    font-size: 2em
+    animation: 1s ease forwards 1 fadeOn;
+    font-size: 2.4rem
 }
 
 .waiting {
-    animation: 1s ease alternate infinite growOn
+    animation: 1s ease alternate infinite growOn;
 }
 
 .tutorial {
@@ -418,7 +414,7 @@ h3, #li {
 .clue {
     animation: 1s ease both 1 growOn;
     min-height: 1em;
-    line-height: 2.75em
+    line-height: 3em
 }
 
 .clue span:not(.person) {
@@ -440,10 +436,10 @@ button.clue {
     animation: 1s ease forwards 1 fadeOn;
     background: #f7f7f736;
     border: none;
-    box-shadow: 0 0 2px #5d5d5d, 0 9px 0px #d6d6d6, 0 10px 3px -1px #5d5d5d, 0 13px 8px rgb(74 74 74 / 19%);
+    box-shadow: 0 0 2px #5d5d5d, 0 0.2em 0px #d6d6d6, 0 0.21em 3px -1px #5d5d5d, 0 0.3em 8px rgb(74 74 74 / 19%);
     color: #aaa;
     cursor: pointer;
-    font-size: 5vmin;
+    font-size: 2.5rem;
     line-height: 1.5em;
     min-width: auto;
     padding: 0 .25em;
@@ -460,6 +456,10 @@ button.clue {
     width: 0
 }
 
+#menu {
+  font-size: 2vw;
+}
+
 #menu,#root {
     height: 100%;
     justify-content: space-around;
@@ -471,36 +471,36 @@ button.clue {
 }
 
 .title {
-    font-size: 8vw;
+    font-size: 8.5vw;
     font-weight: 700;
     line-height: 1
 }
 
 .title .bl {
     -webkit-background-clip: text;
-    -webkit-text-stroke: 3px #444;
+    -webkit-text-stroke: 0.02em #444;
     animation: bg 60s linear infinite alternate;
     background-clip: text;
-    background-image: url("data:image/svg+xml,<svg width='1800px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>👨🏻‍🏭👨🏿‍🎓👩🏼‍🚒🧝🏻‍♀️👩🏾‍✈️👰🏽🧙🏼‍♂️💂🏿🧕🏿</text></svg>");
-    background-position-y: 2em;
+    background-image: url("data:image/svg+xml,<svg width='1600px' height='150px' xmlns='http://www.w3.org/2000/svg'><text x='0' y='130px' font-size='200px'>👨🏻‍🏭👨🏿‍🎓👩🏼‍🚒🧝🏻‍♀️👩🏾‍✈️👰🏽🧙🏼‍♂️💂🏿🧕🏿</text></svg>");
+    background-position-y: 3em;
     background-size: 280% 80%;
     color: rgba(100,100,100,.5)
 }
 
 #menu h2 {
     color: #9670c7;
-    font-size: 3.35vmin
+    font-size: 1.6em
 }
 
 #menu button {
-    font-size: 8vmin;
+    font-size: 3em;
     margin: .5em;
     min-width: auto;
     width: 40%
 }
 
 .lang-h,.right {
-    font-size: 2.5vmin;
+    font-size: 1.2em;
     margin: .4em 0 .1em 20em
 }
 
@@ -514,7 +514,7 @@ button.clue {
 
 .dec span {
     display: inline-block;
-    font-size: 20px;
+    font-size: 1.2em;
     width: 17vw
 }
 
@@ -548,11 +548,11 @@ button.clue {
 
 #pause {
     color: #bbb;
-    font-size: 2.5em;
+    font-size: 2rem;
     line-height: 1em;
     padding: .5em;
     position: absolute;
-    right: 0;
+    left: 0;
     z-index: 1
 }
 
@@ -575,7 +575,7 @@ input[type=checkbox]:checked {
 
 .switch {
     display: inline-block;
-    font-size: .4em;
+    font-size: 1rem;
     height: 3.4em;
     position: relative;
     top: -.9em;
@@ -600,13 +600,12 @@ svg {
 }
 
 #root {
-    animation: .5s fadeOn 1 ease;
-    font-size: 1.6vmin
+    animation: .5s fadeOn 1 ease
 }
 
 #root label {
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1.25rem;
     padding: .5em
 }
 
@@ -628,11 +627,11 @@ svg {
 }
 
 input {
-    font-size: 3em;
+    font-size: 1.8rem;
     margin-bottom: 1em;
     padding: .1em;
     text-align: center;
-    width: 100%
+    width: 80%
 }
 
 #com-list {
@@ -645,13 +644,14 @@ input {
 .root-col {
     background: rgba(0,0,0,.1);
     border: 1px solid #aaa;
-    padding: 2vmin;
+    padding: 1em;
     position: relative;
     width: 60vw;
     margin: 1em auto;
     min-height: 57vmin;
     animation: .5s ease left-e forwards;
     justify-content: space-around;
+    font-size: 0.7rem;
     align-items: center
 }
 
@@ -662,7 +662,7 @@ input {
     border-top-left-radius: .5em;
     border-top-right-radius: .5em;
     content: '🔍';
-    font-size: 2.5em;
+    font-size: 2.5rem;
     height: 1em;
     left: .25em;
     position: absolute;
@@ -681,7 +681,7 @@ input {
 .sub-game {
     background: rgba(0,0,0,.15);
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1rem;
     margin: .5em;
     padding: .5em
 }
@@ -695,6 +695,12 @@ input {
 }
 
 @media screen and (min-width:1000px),(screen-spanning:single-fold-horizontal),(orientation:landscape) {
+    #menu {
+      font-size: 2.3vmin;
+    }
+    html, body {
+      font-size: 2.2vmin;
+    }
     #wb,svg {
         height: 100%
     }
@@ -705,7 +711,7 @@ input {
     }
 
     .mrow td.cme {
-        font-size: 1.25em
+        font-size: 1.25rem
     }
 
     #matrix {
@@ -715,14 +721,14 @@ input {
         box-shadow: none;
         height: 100%;
         overflow-y: scroll;
-        padding-top: 15vw;
+        padding-top: 11rem;
         right: 0;
         top: 0;
         width: 50.5vw
     }
 
     #matrix table {
-        font-size: 2vmin;
+        font-size: 1rem;
         margin: 0 auto;
         top: 0
     }
@@ -732,14 +738,14 @@ input {
     }
 
     .end #wbc:before {
-        font-size: 6em;
+        font-size: 13.3rem;
         margin-top: 20vh
     }
 
     th.person {
         animation: sib .5s ease both;
         text-shadow: 0 0 4px rgba(0,0,0,.75);
-        font-size: 4vw
+        font-size: 3rem
     }
 
     .end th.person {
@@ -779,4 +785,14 @@ input {
 
 .spacer {
     height: 3.2em
+}
+
+#hun {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.25em 0.5em;
+    pointer-events: none;
+    border-bottom-left-radius: 0.5em;
+    line-height: 1em;
 }

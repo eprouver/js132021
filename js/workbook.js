@@ -115,8 +115,8 @@ const wordClues = clue => {
 };
 
 const showClueArr = (arr, div) => {
-  [...d.getElementsByClassName('loading')].forEach(c => c[cl].remove('loading'));
-  arr.map(wordClues).forEach((clue, i) => {
+  [...d.getElementsByClassName('loading')][fe](c => c[cl].remove('loading'));
+  arr.map(wordClues)[fe]((clue, i) => {
       const note = ce('div');
       note[cl].add('waiting')
       note[ih] = '<div>🔍</div>';
@@ -128,7 +128,7 @@ const showClueArr = (arr, div) => {
         note.onclick = (e) => { say(e.target.innerText.replace(findSkin, '')) };
         note[ih] = clue;
         note[cl].add('clue');
-        sfx([2,0,60,.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
+        sfx([2,0,~~(40 + M[ra]() * 40),.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
         say(note.innerText.replace(findSkin, ''));
       }, 100);
     }, clueTime * (i + (sound ? 0 : 1)));
@@ -203,13 +203,13 @@ const nnote = () =>  {
 
 let clueTime, levelTime;
 const setupWorkbook = () => {
-  timeouts.forEach(t => clearTimeout(t));
+  timeouts[fe](t => clearTimeout(t));
   clueTime = (sound ? 6600 : 800);
   levelTime = (sound ? 2000 : 7000);
   const tutorial = curG.sNum === 1 ? (sound ? 7000 : 4000) : (sound ? 2500 : 1000);
 
   let clues = 0;
-  curG.levels.forEach((level, i, arr) => {
+  curG.levels[fe]((level, i, arr) => {
     to(() => {
       curG.level = i;
       showClueArr(level.rwc, i < arr.length - 1);
@@ -223,11 +223,12 @@ const setupWorkbook = () => {
           note[cl].remove('loading');
           note[ih] = `<br/><h3>${opt[opt.lang].solvable}</h3>`;
           opt.t = false;
-          say(opt[opt.lang].solvable);
+          theme(-200);
+          to(() => say(opt[opt.lang].solvable), 600);
           wbc[ac](note);
           extraClueButton();
-        // }, clueTime * level.rwc.length - 1 + (curG.sNum + curG.catNum) * 500);
-      }, clueTime * level.rwc.length - 1 + 2000);
+        }, 6600 * level.rwc.length - 1 + (curG.sNum + curG.catNum) * 500);
+      // }, clueTime * level.rwc.length - 1 + 2000);
       }
     }, clues * clueTime + tutorial + (i * levelTime));
 
@@ -241,7 +242,8 @@ const setupWorkbook = () => {
   } else {
     newDet();
     note[ih] = `<h1><span>${det}</span> ${opt[opt.lang].newCase}</h1>`;
-    say(opt[opt.lang].newCase);
+    theme();
+    to(() => say(opt[opt.lang].newCase), 700);
   }
 
   wbc[ac](note);

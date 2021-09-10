@@ -9,7 +9,15 @@ const cont = d[ge]('cont');
 const wbc = d[ge]('wbc');
 const matrix = d[ge]('matrix');
 const root = d[ge]('root');
+const cn = d[ge]('cn');
+const mn = d[ge]('mn');
 const bd = [1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06];
+
+const theme = (mod = 65) => {
+  // const s = (t, a) => to(() => sfx([.82,0.1,a,.1,.3,.22,,3,,,,.05,,,,,,(700 - a) / 1000,.19,1]), t);
+  const s = (t, a) => to(() => sfx([2,,a,,.08,.07,,.94,,,510,.09,.08,,,,.05,1.5,.02,.1]), t);
+  [0, 250, 500][fe]((e,i) => s(e, 100 - i * mod));
+};
 
 // get value
 const gi = (id, or = 3) => parseInt(d[ge](id).value) || or;
@@ -82,87 +90,38 @@ const newDet = () => {
   wbc.setAttribute('data-flair', `${det}`);
 }
 
+const su = a => a.split(',');
 const opt = {
   lang: 'en',
-  files: 16,
-  clueTypes: ['ti', 'tiai', 'a', 'b', 'nt'],
+  files: 10,
+  clueTypes: su('ti,tiai,a,b,nt'),
   cats: [
-    ['👓', '👕', '👘', '🎩', '👠', '🧤', '🧣', '👒', '🧢', '👟', '🩳'],
-    ['🎷', '🎸', '🎺', '🎻', '🪕', '🥁', '🎹'],
-    ['⚽', '🏀', '🏈', '🎾', '🥏', '🏓', '🥊', '🎳', '🏐', '⚾', '🏸'],
-    ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤎', '💔'],
-    ['🍇', '🍉', '🍊', '🍎', '🥝', '🥥', '🍐', '🍑', '🍒', '🍋'],
-    ['🐒', '🐕', '🦝', '🐈', '🦓', '🐄', '🐖', '🐪', '🦒','🐘', '🐇', '🐿️', '🦨'],
-    ['🥯', '🍔', '🍕', '🧀', '🍜', '🍦', '🍩', '🍿', '🥐', '🌮', '🍣'],
-    ['😍', '😎', '👿', '🤔', '😓', '😷', '🥺', '😡', '🤪', '😇', '🥶', '🥱'],
+    "👓,👕,👘,🎩,👠,🧤,🧣,👒,👖,🧢,🥾,🩳",
+    "🎷,🎸,🎺,🎻,🪕,🥁,🎹",
+    "⚽,🏀,🏈,🎾,🥏,🏓,🥊,🎳,🏐,⚾,🏸,🥌",
+    "❤️,🧡,💛,💚,💙,💜,🖤,🤎,💔,💖",
+    "🍇,🍉,🍊,🍎,🥝,🥥,🍐,🍑,🍒,🍋,🍌",
+    "🐒,🐕,🦝,🐈,🦓,🐄,🐖,🐪,🦒,🐘,🐇,🐿️,🦨",
+    "🥯,🍔,🍕,🧀,🍜,🍦,🍩,🍿,🥐,🌮,🍣",
+    "🥰,😎,👿,🤔,😓,😷,🥺,😡,🤪,😇,🥶,🥱,🧐"
   ],
-  slotNames: ['🧟‍♂️','🦹🏽‍♂️','🦸🏽‍♂️','🧛🏽‍♂️','👷🏻‍♂️', '👨🏽‍🎨', '👨🏿‍💼','👨🏻‍🔧', '👨🏾‍⚕️', '👨🏼‍🌾', '👨🏽‍⚖️', '👨🏾‍🔬', '👨🏼‍🎤', '👨🏽‍🚀', '👮🏽‍♂️', '👩🏽‍🍳', '🧕🏼', '💂🏽‍♂️', '🧙🏼‍♂️', '👰🏻', '👩🏼‍✈️', '🧝🏽‍♂️', '👨🏾‍🚒', '👩🏽‍🎓', '👩🏼‍🏭'],
-  en: {
-    wellDone: 'Well Done!',
-    solvable: 'Possible 👍',
-    noMore: 'No more clues.',
-    tutorial: 'Tutorial: Use the prompts. Fill in the spaces.  Then 👍',
-    newCase: 'New Case!',
-    p: '# of People',
-    c: '# of Categories',
-    ch: 'Choose',
-    cr: 'Create',
-    com: 'Community',
-    ff: 'Case Files',
-  },
-  tp: {
-    wellDone: 'pona!',
-    solvable: 'ken 👍',
-    noMore: 'pini',
-    tutorial: 'kama sona: o kute e toki pi wile sona. tenpo pini la o luka e 👍',
-    newCase: 'utala sin',
-    p: 'jan',
-    c: 'kulupu ilo',
-    ch: 'o pana',
-    cr: 'o sin',
-    com: 'kulupu',
-    ff: 'utala mute',
-  },
-  fr: {
-    wellDone: 'Bien Joué!',
-    solvable: '👍 Possible',
-    noMore: 'Indices terminés.',
-    tutorial: 'Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍',
-    newCase: 'Nouveau Mystère!',
-    p : 'Nombre de Personnes',
-    c : 'Nombre de Catégories',
-    ch: 'Choisir',
-    cr : 'Créer',
-    com : 'Communauté',
-    ff : 'Fichiers de Mystères',
-  },
-  es: {
-    wellDone: '¡Bien Hecho!',
-    solvable: '👍 Posible',
-    noMore: 'No más pistas.',
-    tutorial: 'Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍',
-    newCase: 'Nuevo Misterio!',
-    p: 'Gente',
-    c: 'Categorías',
-    ch: 'Elegir',
-    cr: 'Crear',
-    com: 'Comunidad',
-    ff: 'Archivos de Misterios',
-  },
-  'zh-CN': {
-    wellDone: '做得好!',
-    solvable: '可以完成',
-    noMore: '没有了',
-    tutorial: '教程：使用线索并完成信息。 然后单击 👍。',
-    newCase: '新谜底!',
-    p: '人数',
-    c: '类别数',
-    ch: '选择',
-    cr: '创建',
-    com: '社区',
-    ff: '神秘档案',
-  },
+  slotNames: "🧟‍♂️,🦹🏽‍♂️,🦸🏽‍♂️,🧛🏽‍♂️,👷🏻‍♂️,👨🏽‍🎨,👨🏿‍💼,👨🏻‍🔧,👨🏾‍⚕️,👨🏼‍🌾,👨🏽‍⚖️,👨🏾‍🔬,👨🏼‍🎤,👨🏽‍🚀,👮🏽‍♂️,👩🏽‍🍳,🧕🏼,💂🏽‍♂️,🧙🏼‍♂️,👰🏻,👩🏼‍✈️,🧝🏽‍♂️,👨🏾‍🚒,👩🏽‍🎓,👩🏼‍🏭",
+  en: "Well Done!_Possible 👍_No more clues._Tutorial: Use the prompts. Fill in the spaces.  Then 👍_New Case!_# of People_# of Categories_Choose_Create_Community_Case Files",
+  tp: "pona!_ken 👍_pini_kama sona: o kute e toki pi wile sona. tenpo pini la o luka e 👍_utala sin_jan_kulupu ilo_o pana_o sin_kulupu_utala mute",
+  fr: "Bien Joué!_👍 Possible_Indices terminés._Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍_Nouveau Mystère!_Nombre de Personnes_Nombre de Catégories_Choisir_Créer_Communauté_Fichiers de Mystères",
+  es: "¡Bien Hecho!_👍 Posible_No más pistas._Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍_Nuevo Misterio!_Gente_Categorías_Elegir_Crear_Comunidad_Archivos de Misterios",
+  'zh-CN': "做得好!_可以完成_没有了_教程：使用线索并完成信息。 然后单击 👍。_新谜底!_人数_类别数_选择_创建_社区_神秘档案",
 };
+
+opt.slotNames = su(opt.slotNames);
+opt.cats = opt.cats.map(su);
+const kk = su("wellDone,solvable,noMore,tutorial,newCase,p,c,ch,cr,com,ff");
+['en', 'tp', 'fr', 'es', 'zh-CN'][fe]((l) => {
+  const nl = {};
+  opt[l] = opt[l].split('_')[fe]((w, i) => nl[kk[i]] = w);
+  opt[l] = nl;
+})
+
 
 const lang = (e, play = true) => {
   pause = false;
@@ -178,19 +137,19 @@ const lang = (e, play = true) => {
 
   switch (opt.lang) {
     case 'tp':
-      opt.cNms = ['len', 'kalama musi', 'musi utala', 'olin', 'kili', 'soweli', 'moku', 'pilin'];
+      opt.cNms = su('len,kalama musi,musi utala,olin,kili,soweli,moku,pilin');
     break;
     case 'fr':
-      opt.cNms = ['le vêtement', 'l\'instrument', 'le sport', 'le cœur', 'le fruit', 'l\'animal', 'la bouffe', 'le sentiment'];
+      opt.cNms = su('le vêtement,l\'instrument,le sport,le cœur,le fruit,l\'animal,la bouffe,le sentiment');
     break;
     case 'es':
-      opt.cNms = ['la ropa', 'el instrumento', 'el deporte', 'el corazón', 'la fruta', 'el animal', 'la comida', 'el sentimiento'];
+      opt.cNms = su('la ropa,el instrumento,el deporte,el corazón,la fruta,el animal,la comida,el sentimiento');
     break;
     case 'zh-CN':
-      opt.cNms = ['衣服','乐器','运动','心脏','水果','动物','食物','心情'];
+      opt.cNms = su('衣服,乐器,运动,心脏,水果,动物,食物,心情');
     break;
     default:
-      opt.cNms = ['clothes', 'instrument', 'sport', 'heart', 'fruit', 'animal', 'food', 'mood'];
+      opt.cNms = su('clothes,instrument,sport,heart,fruit,animal,food,mood');
     break;
   }
   games = [];
@@ -199,9 +158,9 @@ const lang = (e, play = true) => {
 
 lang('en', false);
 
-[...d.getElementsByClassName('lang')].forEach((button, i, arr) => {
+[...d.getElementsByClassName('lang')][fe]((button, i, arr) => {
   button.addEventListener('click', (e) => {
-    arr.forEach(a => a[cl].remove('selected'));
+    arr[fe](a => a[cl].remove('selected'));
     lang(e);
   });
 });

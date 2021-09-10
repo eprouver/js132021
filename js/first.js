@@ -2,6 +2,7 @@ const ge = 'getElementById';
 const cl = 'classList';
 const ac = 'appendChild';
 const ih = 'innerHTML';
+const fe = 'forEach';
 const d = document;
 const menu = d[ge]('menu');
 const M = Math;
@@ -14,7 +15,7 @@ const pauseGame = () => {
   clear();
   menu.style.display = 'flex';
   cont[cl].remove('end');
-  timeouts.forEach(t => clearTimeout(t));
+  timeouts[fe](t => clearTimeout(t));
 }
 
 let tutorial = false;
@@ -44,9 +45,9 @@ const makeGames = () => {
   }
   to(() => {
     // Ramping Difficulty
-    for (let slot = 2; slot < 5; slot++) {
-      for (let cat = 2; cat < 5; cat++){
-        addGame(~~slot, ~~cat).then((g) => games.push(g));
+    for (let cat = 2; cat < 4; cat++){
+      for (let slot = 2; slot < 4; slot++) {
+        addGame(slot, cat).then((g) => games.push(g));
       }
     }
   }, !tutorial ? 1000 : 0);
@@ -56,7 +57,6 @@ let files = 0;
 
 const sng = (game) => {
   pause = false;
-  wbc[ac](nnote());
   if (games.length < 2) {
     const nn = () => ~~(M[ra]() * 5) + 2;
     // Add new random game
@@ -95,23 +95,6 @@ const sng = (game) => {
     setupWorkbook(curG);
   }, 500);
 };
-
-function scroller(event){
-  switch(event.deltaMode){
-    case 0: 		//DOM_DELTA_PIXEL		Chrome
-      wbc.scrollTop+=event.deltaY
-      break;
-    case 1: 		//DOM_DELTA_LINE		Firefox
-      wbc.scrollTop+=15*event.deltaY
-      break;
-    case 2: 		//DOM_DELTA_PAGE
-      wbc.scrollTop+=0.03*event.deltaY
-      break;
-  }
-  event.stopPropagation();
-}
-
-d.onwheel = scroller;
 
 if (d.monetization && d.monetization.state) {
   d[ge]('mon-files').style.display = 'inline-block';

@@ -1,6 +1,6 @@
 const showChoose = () => {
   clear();
-  timeouts.forEach(t => clearTimeout(t));
+  timeouts[fe](t => clearTimeout(t));
   cont[cl].remove('end');
   root.style.display = 'flex';
   say(opt[opt.lang].ff);
@@ -21,7 +21,7 @@ const ser = g => {
   delete g.catNum;
   delete g.attempts;
   let ss = JSON.stringify(g)
-  g.cNms.forEach((n, i) => ss = ss.replace(new RegExp(n, 'g'), `b${i}b`));
+  g.cNms[fe]((n, i) => ss = ss.replace(new RegExp(n, 'g'), `b${i}b`));
   ss = JSON.parse(ss)
   ss.cNms = g.cNms;
   return JSON.stringify(ss)
@@ -30,7 +30,7 @@ const ser = g => {
 // deserialize
 const deser = g => {
   let ss = JSON.parse(g);
-  ss.cNms.forEach((n, i) => g = g.replace(new RegExp(`b${i}b`, 'g'), n));
+  ss.cNms[fe]((n, i) => g = g.replace(new RegExp(`b${i}b`, 'g'), n));
   g = JSON.parse(g);
   g.sNum = g.slotNames.length;
   g.catNum = g.cNms.length;
@@ -117,7 +117,7 @@ let subGame;
   }
 
   const list = d[ge]('com-list');
-  sampleSize(20, messages.filter(m => m.text[0] === '{')).forEach(m => {
+  sampleSize(20, messages.filter(m => m.text[0] === '{'))[fe](m => {
     const gg = ce('div');
     gg[ih] = `<div class="sub-game"><span>Play</span> - ${m.sender}: <span>👍</span></div>`;
     gg.onclick = () => { clear(); root.style.display = 'none'; sng(deser(m.text)); }

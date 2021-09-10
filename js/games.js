@@ -345,8 +345,8 @@ const addGame = (sNum = 2, catNum = 2) => {
         }
         //create chunked Steps
         const chunkedSteps = steps.map(arr => chunk(arr));
-        chunkedSteps.forEach((step, act) => {
-          step.forEach((level, scene) => {
+        chunkedSteps[fe]((step, act) => {
+          step[fe]((level, scene) => {
             levels.push({
               cb:  stepTest[act].solution,
               rwc: level,
