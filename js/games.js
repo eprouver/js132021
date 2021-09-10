@@ -1,4 +1,4 @@
-const addGame = (sNum = 2, catNum = 2) => {
+let addGame = (sNum = 2, catNum = 2) => {
   return new Promise(function(resolve){
   let row,
     constraints,
@@ -13,7 +13,7 @@ const addGame = (sNum = 2, catNum = 2) => {
     levels,
     stepTest;
 
-  const reset = () => {
+  let reset = () => {
     row = [...Array(sNum)].map(a => ({}));
     constraints = [];
     prevSolution = 0;
@@ -30,7 +30,7 @@ const addGame = (sNum = 2, catNum = 2) => {
 
   reset();
 
-  const chunk = (arr) => {
+  let chunk = (arr) => {
     var R = [];
     let chunkSize;
     for (var i = 0, len = arr.length; i < len; i += chunkSize) {
@@ -44,37 +44,37 @@ const addGame = (sNum = 2, catNum = 2) => {
   let cNms = opt.cNms;
   let slotNames = opt.slotNames;
 
-  slotNames = sampleSize(sNum, slotNames).map(f => randSkinTone(f)).map(f => randGender(f));
+  slotNames = sampleSize(sNum, slotNames).map(f => rst(f)).map(f => randGender(f));
 
-  const select = sampleSize(catNum, [...Array(cNms.length).keys()]);
+  let select = sampleSize(catNum, [...Array(cNms.length).keys()]);
 
   cNms = cNms.filter((a, i) => select.indexOf(i) !== -1);
   cats = cats.filter((a, i) => select.indexOf(i) !== -1).map(e => sampleSize(sNum + 2, e));
 
-  const maxFill = catNum * sNum;
+  let maxFill = catNum * sNum;
 
-  const canBe = (slot, criteria) => {
-    for (const key of Object.keys(criteria))
+  let canBe = (slot, criteria) => {
+    for (let key of Object.keys(criteria))
       if (slot[key] && slot[key] !== criteria[key]) return false;
     return true;
   };
 
-  const clueCheck = {
+  let clueCheck = {
     * ti(critA, critB, row) {
-      for (const i of [...Array(row.length).keys()])
+      for (let i of [...Array(row.length).keys()])
         yield* this.tiai(critA, {i}, row);
     },
     * tiai(critA, critB, row) {
       if (canBe(row[critB.i], critA)) {
-        const newRow = JSON.parse(JSON.stringify(row));
+        let newRow = JSON.parse(JSON.stringify(row));
         newRow[critB.i] = Object.assign({}, row[critB.i], critA);
         yield newRow;
       }
     },
     * b(critA, critB, row) {
-      for (const i of [...Array(row.length - 1).keys()]) {
+      for (let i of [...Array(row.length - 1).keys()]) {
         if (canBe(row[i], critA) && canBe(row[i + 1], critB)) {
-          const newRow = JSON.parse(JSON.stringify(row));
+          let newRow = JSON.parse(JSON.stringify(row));
           newRow[i] = Object.assign({}, row[i], critA);
           newRow[i + 1] = Object.assign({}, row[i + 1], critB);
           yield newRow;
@@ -82,9 +82,9 @@ const addGame = (sNum = 2, catNum = 2) => {
       }
     },
     * a(critA, critB, row) {
-      for (const i of [...Array(row.length - 1).keys()].map(k => k + 1)) {
+      for (let i of [...Array(row.length - 1).keys()].map(k => k + 1)) {
         if (canBe(row[i], critA) && canBe(row[i - 1], critB)) {
-          const newRow = JSON.parse(JSON.stringify(row));
+          let newRow = JSON.parse(JSON.stringify(row));
           newRow[i] = Object.assign({}, row[i], critA);
           newRow[i - 1] = Object.assign({}, row[i - 1], critB);
           yield newRow;
@@ -97,9 +97,9 @@ const addGame = (sNum = 2, catNum = 2) => {
     },
   };
 
-  const findDupes = (row) => {
+  let findDupes = (row) => {
     let dupes = false;
-    const checks = {};
+    let checks = {};
     row.reduce(function(acc, x) {
       for (var key in x) {
         if (!checks[key]) {
@@ -127,22 +127,22 @@ const addGame = (sNum = 2, catNum = 2) => {
       }
       yield row;
     } else {
-      const [head, ...tail] = remainingConstraints
-      for (const newRow of head(row))
+      let [head, ...tail] = remainingConstraints
+      for (let newRow of head(row))
         yield* findSolution(tail, newRow);
     }
   }
 
-  const findSolutions = (consts) => {
-    const solutions = [];
-    for (const rowSolution of findSolution(consts, row)) {
+  let findSolutions = (consts) => {
+    let solutions = [];
+    for (let rowSolution of findSolution(consts, row)) {
       solutions.push(rowSolution);
     }
 
     return solutions.filter(a => a);
   };
 
-  const addConstraint = (type = null, depth, callback) => {
+  let addConstraint = (type = null, depth, callback) => {
     if (depth > 100) {
       return callback(false);
     }
@@ -152,11 +152,11 @@ const addGame = (sNum = 2, catNum = 2) => {
     let constraint2 = {};
     let newConstraint;
 
-    const pickConstraint = (not = '', size = 1) => {
-      const key = sample(cNms.filter(a => a !== not));
-      const obj = {};
+    let pickConstraint = (not = '', size = 1) => {
+      let key = sample(cNms.filter(a => a !== not));
+      let obj = {};
       obj.key = key;
-      const category = cats[cNms.indexOf(key)];
+      let category = cats[cNms.indexOf(key)];
       return {
         key,
         d: size === 1 ? sample(category) : sampleSize(size, category)
@@ -225,38 +225,25 @@ const addGame = (sNum = 2, catNum = 2) => {
     callback(newConstraint);
   };
 
-  const firstFill = (solution) => {
-    if (everyObject) return;
-    everyObject = true;
-    firstOffering = prevSolution;
-    // console.log('*****', `Everyone has a key. ${ prevSolution } selections, ${solution.length} arrangements, ${constraints.length} clues`, solution);
-    stepTest.push({
-      solution,
-      selections: prevSolution
-    });
-    steps.push(currentStep.slice(0));
-    currentStep = [];
-  };
-
-  const firstSolution = (solution) => {
+  let firstSolution = (solution) => {
     if (firstBoard) return;
     firstBoard = true;
-    // console.log('*****', `Middle: ${ prevSolution } selections, ${solution.length} arrangements, ${constraints.length} clues`, solution);
-    stepTest.push({
-      solution,
-      selections: prevSolution
-    });
-    steps.push(currentStep.slice(0));
-    currentStep = [];
+    // // console.log('*****', `Middle: ${ prevSolution } selections, ${solution.length} arrangements, ${constraints.length} clues`, solution);
+    // stepTest.push({
+    //   solution,
+    //   selections: prevSolution
+    // });
+    // steps.push(currentStep.slice(0));
+    // currentStep = [];
   };
 
   let ext = sNum < 2;
 
-  const aac = (type = null, depth = 0, print = false) => {
-    const constraint = addConstraint(type, depth, (constraint) => {
+  let aac = (type = null, depth = 0, print = false) => {
+    let constraint = addConstraint(type, depth, (constraint) => {
       if (!constraint) {
         if (print) {
-          const note = ce('div');
+          let note = ce('div');
           note[cl].add('clue');
           note[ih] = `<h3>${opt[opt.lang].noMore}</h3>`;
           wbc[ac](note);
@@ -274,7 +261,7 @@ const addGame = (sNum = 2, catNum = 2) => {
         return;
       }
 
-      const currentLength = solution[0].reduce((a, b) => {
+      let currentLength = solution[0].reduce((a, b) => {
         return a + Object.keys(b).length
       }, 0);
 
@@ -296,7 +283,7 @@ const addGame = (sNum = 2, catNum = 2) => {
 
       if (!everyObject) {
         // chapter one make sure every object has at least one key
-        firstFill(solution);
+        everyObject = true;
         raf(() => aac(null, 0, print));
         return;
       } else if (everyObject && prevSolution < maxFill) {
@@ -309,7 +296,7 @@ const addGame = (sNum = 2, catNum = 2) => {
       } else {
         // chapter 3 make sure all selections are indicated by clues
         // console.log(`******* ALL ${ prevSolution } selections, ${solution.length} arrangement, ${constraints.length} clues`);
-        const rev = findSolutions(constraints.map(c => {
+        let rev = findSolutions(constraints.map(c => {
           if (c.type === 'nt') {
               c.d = c.d.reverse();
           }
@@ -343,8 +330,9 @@ const addGame = (sNum = 2, catNum = 2) => {
           extraClueButton();
           return;
         }
+
         //create chunked Steps
-        const chunkedSteps = steps.map(arr => chunk(arr));
+        let chunkedSteps = steps.map(arr => chunk(arr));
         chunkedSteps[fe]((step, act) => {
           step[fe]((level, scene) => {
             levels.push({

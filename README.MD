@@ -5,7 +5,7 @@
 Created for the [js13k](https://js13kgames.com/) competition 2021
 
 # Gameplay
-Blanks Detective is a mystery themed, point-and-click, logic puzzle game.  Use the clues to fill in the empty spaces on the board.  To 'solve the case' you must answer correctly within the first three attempts.  If you can fill in the board correctly and submit before the 'possible thumbs up' message, you get a 🥇 bonus.
+Blanks Detective is a mystery themed, point-and-click, logic puzzle game.  Use the clues to fill in the empty spaces on the board.  To 'solve the case' you must answer correctly within the first three attempts.  If you can fill in the board correctly and submit before the 'possible thumbs up' message, you get a 🥇 bonus.  Watch out, your evidence may get stolen.
 
 If you're having trouble after 'possible thumbs up' you can use the extra clue button.  There is no penalty for additional clues. Although, it will eventually give you the whole answer, at which point the "Well Done" message may feel empty or sarcastic.
 

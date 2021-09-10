@@ -1,14 +1,15 @@
-const ge = 'getElementById';
-const cl = 'classList';
-const ac = 'appendChild';
-const ih = 'innerHTML';
-const fe = 'forEach';
-const d = document;
-const menu = d[ge]('menu');
-const M = Math;
-const ra = 'random';
-const raf = requestAnimationFrame;
-const pauseGame = () => {
+let ge = 'getElementById';
+let gcn = 'getElementsByClassName';
+let cl = 'classList';
+let ac = 'appendChild';
+let ih = 'innerHTML';
+let fe = 'forEach';
+let d = document;
+let menu = d[ge]('menu');
+let M = Math;
+let ra = 'random';
+let raf = requestAnimationFrame;
+let pauseGame = () => {
   say('')
   pause = true;
   games = [];
@@ -20,7 +21,7 @@ const pauseGame = () => {
 
 let tutorial = false;
 
-const clear = () => {
+let clear = () => {
   wbc[ih] = '';
   matrix[ih] = '';
   menu.style.display = 'none';
@@ -28,7 +29,7 @@ const clear = () => {
 
 let tt;
 
-const makeGames = () => {
+let makeGames = () => {
   clear();
   pause = false;
   games = [];
@@ -45,8 +46,8 @@ const makeGames = () => {
   }
   to(() => {
     // Ramping Difficulty
-    for (let cat = 2; cat < 4; cat++){
-      for (let slot = 2; slot < 4; slot++) {
+    for (let cat = 2; cat < 5; cat++){
+      for (let slot = 2; slot < 5; slot++) {
         addGame(slot, cat).then((g) => games.push(g));
       }
     }
@@ -55,10 +56,10 @@ const makeGames = () => {
 
 let files = 0;
 
-const sng = (game) => {
+let sng = (game) => {
   pause = false;
   if (games.length < 2) {
-    const nn = () => ~~(M[ra]() * 5) + 2;
+    let nn = () => ~~(M[ra]() * 5) + 2;
     // Add new random game
     let one = nn(), two = nn();
     while(one + two > 9) {

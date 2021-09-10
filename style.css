@@ -8,16 +8,6 @@
     }
 }
 
-@keyframes fadeOut {
-    0% {
-        opacity: 1
-    }
-
-    to {
-        opacity: 0
-    }
-}
-
 @keyframes growOn {
     0% {
         transform: scaleX(.3)
@@ -92,26 +82,6 @@
 
     to {
         stroke-dashoffset: -1800
-    }
-}
-
-@keyframes left-e {
-    0% {
-        transform: translateX(-1000px)
-    }
-
-    to {
-        transform: translateX(0)
-    }
-}
-
-@keyframes right-e {
-    0% {
-        transform: translateX(1000px)
-    }
-
-    to {
-        transform: translateX(0)
     }
 }
 
@@ -417,6 +387,7 @@ h3, #li {
     display: inline-block;
     line-height: 1.5em;
     pointer-events: none;
+    margin-left: 0.2em;
     width: 1.5em
 }
 
@@ -459,7 +430,7 @@ button.clue {
 #menu,#root {
     height: 100%;
     justify-content: space-around;
-    padding: 20px 0;
+    padding: 3em 0;
     position: fixed;
     transition: background-color .2s ease;
     width: 100vw;
@@ -645,7 +616,6 @@ input {
     width: 60vw;
     margin: 1em auto;
     min-height: 57vmin;
-    animation: .5s ease left-e forwards;
     justify-content: space-around;
     font-size: 0.7rem;
     align-items: center
@@ -680,14 +650,6 @@ input {
     font-size: 1rem;
     margin: .5em;
     padding: .5em
-}
-
-.left-e {
-    animation: .5s ease left-e forwards
-}
-
-.right-e {
-    animation: .5s ease right-e forwards
 }
 
 @media screen and (min-width:1000px),(screen-spanning:single-fold-horizontal),(orientation:landscape) {
@@ -767,13 +729,6 @@ input {
         animation: none
     }
 
-    .left-e {
-        animation: .5s ease left-e forwards
-    }
-
-    .right-e {
-        animation: .5s ease right-e forwards
-    }
     .end #wbc:before {
       display: block;
     }
@@ -795,13 +750,13 @@ input {
 
 .mrow, .cme, .cme span:not([data-option='0']) {
   transform-style: preserve-3d;
-  perspective-origin: center;
+  perspective-origin: center center;
   perspective: 2000px;
   transition: transform 0.5s ease;
 }
 
 .dan {
-  transform: translate3d(0, 3em, -5em) rotateX(60deg)  ;
+  transform: translate3d(0, 1.5em, -5em) rotateX(70deg)  ;
 }
 
 span:not([data-option='0']) {
@@ -809,5 +764,5 @@ span:not([data-option='0']) {
 }
 
 .dan span:not([data-option='0']) {
-  transform: rotateX(-60deg) translate3d(0, -1.5em, 0) scale(0.5);
+  transform: rotateX(-70deg) translate3d(0, -1em, 0) scale(0.01);
 }

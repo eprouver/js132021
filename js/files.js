@@ -1,4 +1,4 @@
-const showChoose = () => {
+let showChoose = () => {
   clear();
   timeouts[fe](t => clearTimeout(t));
   cont[cl].remove('end');
@@ -16,7 +16,7 @@ const showChoose = () => {
 }
 
 // serialize
-const ser = g => {
+let ser = g => {
   delete g.sNum;
   delete g.catNum;
   delete g.attempts;
@@ -28,7 +28,7 @@ const ser = g => {
 }
 
 // deserialize
-const deser = g => {
+let deser = g => {
   let ss = JSON.parse(g);
   ss.cNms[fe]((n, i) => g = g.replace(new RegExp(`b${i}b`, 'g'), n));
   g = JSON.parse(g);
@@ -40,7 +40,7 @@ const deser = g => {
 }
 
 // configure minimal network settings and key storage
-const config = {
+let config = {
   nodeUrl: "https://rpc.testnet.near.org",
   deps: {
     keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore(),
@@ -52,9 +52,9 @@ let subGame;
 
 // open a connection to the NEAR platform
 (async function () {
-  const { connect, keyStores, WalletConnection } = nearApi;
+  let { connect, keyStores, WalletConnection } = nearApi;
 
-  const config = {
+  let config = {
     networkId: "testnet",
     keyStore: new keyStores.BrowserLocalStorageKeyStore(),
     nodeUrl: "https://rpc.testnet.near.org",
@@ -66,10 +66,10 @@ let subGame;
   // connect to NEAR
   window.near = await connect(config);
   // create wallet connection
-  const wallet = new WalletConnection(near);
-  const account = await wallet.account();
+  let wallet = new WalletConnection(near);
+  let account = await wallet.account();
 
-  const link = d[ge]('near');
+  let link = d[ge]('near');
 
   if(wallet.isSignedIn()) {
     link[ih] = 'You\'re signed into NEAR.';
@@ -84,7 +84,7 @@ let subGame;
     }
   }
 
-  const contract = new nearApi.Contract(
+  let contract = new nearApi.Contract(
     account, // the account object that is connecting
     "dev-1629217600951-74234604044359",
     {
@@ -116,9 +116,9 @@ let subGame;
     }
   }
 
-  const list = d[ge]('com-list');
+  let list = d[ge]('com-list');
   sampleSize(20, messages.filter(m => m.text[0] === '{'))[fe](m => {
-    const gg = ce('div');
+    let gg = ce('div');
     gg[ih] = `<div class="sub-game"><span>Play</span> - ${m.sender}: <span>👍</span></div>`;
     gg.onclick = () => { clear(); root.style.display = 'none'; sng(deser(m.text)); }
     list[ac](gg);

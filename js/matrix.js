@@ -1,6 +1,6 @@
 let userBoard = [];
 
-const createMatrix = () => {
+let createMatrix = () => {
   userBoard = [];
   for (let i = 0; i < curG.sNum; i++) {
     userBoard.push({});
@@ -8,8 +8,8 @@ const createMatrix = () => {
   // why does this make one object by reference
   // userBoard = Array(curG.sNum).fill(new Object());
 
-  const table = ce('table');
-  const col = ce('col');
+  let table = ce('table');
+  let col = ce('col');
   col.setAttribute('span', 1);
   table[ac](col);
   let labelRow = ce('tr');
@@ -17,7 +17,7 @@ const createMatrix = () => {
   labelRow[ac](spacer);
 
   curG.slotNames[fe](col => {
-    const newCol = ce('th');
+    let newCol = ce('th');
     newCol[cl].add('person');
     newCol[ih] = `<span>${col}</span>`;
     labelRow[ac](newCol)
@@ -25,7 +25,7 @@ const createMatrix = () => {
 
   table[ac](labelRow);
 
-  const re = (span, opt, slot, category) => {
+  let re = (span, opt, slot, category) => {
     let current = span.innerText;
     current = opt[opt.indexOf(current) + 1];
     if (!current) {
@@ -46,12 +46,12 @@ const createMatrix = () => {
     spacer[ih] = curG.cNms[i];
     labelRow[ac](spacer);
 
-    const clickopt = ['_', ...r];
+    let clickopt = ['_', ...r];
     curG.slotNames[fe]((col, slot) => {
-      const newCol = ce('td');
+      let newCol = ce('td');
       newCol[cl].add('cme');
 
-      const newSpan = ce('span');
+      let newSpan = ce('span');
       newSpan.setAttribute('data-option', 0);
       newSpan[ih] = clickopt[0];
       userBoard[slot][curG.cNms[i]] = { d: '_', span: newSpan };
@@ -70,12 +70,12 @@ const createMatrix = () => {
 
   labelRow = ce('tr');
   labelRow[cl].add('mrow');
-  const li = ce('td');
+  let li = ce('td');
   li.setAttribute('id', 'li');
-  li.innerHTML = '●●●';
+  li[ih] = '●●●';
   labelRow[ac](li);
 
-  const checker = ce('button');
+  let checker = ce('button');
   checker[cl].add('clue');
   checker.onclick = () => {
     if (scoreMatrix()) {
@@ -90,7 +90,7 @@ const createMatrix = () => {
         opt.t ? mn.innerText = parseInt(mn.innerText) + 1 : null;
       } else {
         say('')
-        wbc.setAttribute('data-flair', randSkinTone(randGender('🙅🏽‍♂️')));
+        wbc.setAttribute('data-flair', rst(randGender('🙅🏽‍♂️')));
         wbc.setAttribute('data-msg', '○○○');
         sfx([1.11,,260,.05,.18,.78,,1.9,,,-23,.06,.14,,,,,.8]);
         pause = true;
@@ -114,7 +114,7 @@ const createMatrix = () => {
       }, 3000);
     } else if (curG.attempts <= 3){
       sfx(bd);
-      li.innerHTML = '●'.repeat(3 - curG.attempts) + '○'.repeat(curG.attempts);
+      li[ih] = '●'.repeat(3 - curG.attempts) + '○'.repeat(curG.attempts);
     }
   };
   checker.innerText = '👍';

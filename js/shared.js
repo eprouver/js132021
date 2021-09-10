@@ -1,5 +1,5 @@
 let curG, sound = true, pause = false, games = [];
-const shuffle = (arr) => arr.sort(() => .5 - M[ra]()),
+let shuffle = (arr) => arr.sort(() => .5 - M[ra]()),
 timeouts = [],
 cont = d[ge]('cont'),
 wbc = d[ge]('wbc'),
@@ -9,39 +9,39 @@ cn = d[ge]('cn'),
 mn = d[ge]('mn'),
 bd = [1.82,,1554,,.03,.23,,1.67,,,,,,,34,,.06,.62,.06];
 
-const theme = (mod = 65) => {
-  // const s = (t, a) => to(() => sfx([.82,0.1,a,.1,.3,.22,,3,,,,.05,,,,,,(700 - a) / 1000,.19,1]), t);
-  const s = (t, a) => to(() => sfx([2,,a,,.08,.07,,.94,,,510,.09,.08,,,,.05,1.5,.02,.1]), t);
+let theme = (mod = 65) => {
+  // let s = (t, a) => to(() => sfx([.82,0.1,a,.1,.3,.22,,3,,,,.05,,,,,,(700 - a) / 1000,.19,1]), t);
+  let s = (t, a) => to(() => sfx([2,,a,,.08,.07,,.94,,,510,.09,.08,,,,.05,1.5,.02,.1]), t);
   [0, 250, 500][fe]((e,i) => s(e, 100 - i * mod));
-};
+},
 
 // get value
-const gi = (id, or = 3) => parseInt(d[ge](id).value) || or;
+gi = (id, or = 3) => parseInt(d[ge](id).value) || or,
 // replace text
-const fi = (id, txt) => d[ge](id).innerText = txt;
+fi = (id, txt) => d[ge](id)[ih] = txt,
 // create element
-const ce = s => d.createElement(s);
+ce = s => d.createElement(s),
 
-const to = (func, time) => {
+to = (func, time) => {
   timeouts.push(setTimeout(func, time));
-};
+},
 
-const checkToString = (arr) => arr.map(o => {
+checkToString = (arr) => arr.map(o => {
   return Object.keys(o).concat(Object.values(o))
-}).flat().sort().join();
+}).flat().sort().join(),
 
-const sample = arr => {
-  const len = arr == null ? 0 : arr.length
+sample = arr => {
+  let len = arr == null ? 0 : arr.length
   return len ? arr[~~(M[ra]() * len)] : undefined
-};
+},
 
-const sampleSize = (size, list, collected = []) => size < 1 || list.length < 1 ?
+sampleSize = (size, list, collected = []) => size < 1 || list.length < 1 ?
   collected :
   shuffle(size >= list.length ? [...collected, ...list] : M[ra]() < size / list.length ?
   sampleSize(size - 1, list.slice(1), [...collected, list[0]]) :
-  sampleSize(size, list.slice(1), collected));
+  sampleSize(size, list.slice(1), collected)),
 
-const iareEquals = (a, b) => {
+iareEquals = (a, b) => {
   for(let i = 0; i < a.length; i++) {
     for(var key in a[i]) {
         if(!(key in b[i]) || a[i][key] !== b[i][key]) {
@@ -55,51 +55,51 @@ const iareEquals = (a, b) => {
     }
   }
   return true;
-};
+},
 
 // random skin tone?
-const stMod = [
+stMod = [
   '\u{1f3fb}',
   '\u{1f3fc}',
   '\u{1f3fd}',
   '\u{1f3fe}',
   '\u{1f3ff}',
-];
+],
 
-const gMod = [
+gMod = [
   '👩',
   '👨',
 ];
-const gMod2 = ['♂️','♀️'];
+gMod2 = ['♂️','♀️'],
 
-const findSkin = new RegExp("\ud83c[\udffb-\udfff]", "g");
-const findGender = new RegExp(gMod.join('|'), "g");
-const findGender2 = new RegExp(gMod2.join('|'), "g");
-const randSkinTone = (string) => string.replace(findSkin, sample(stMod));
-const randGender = (string) => string.replace(findGender, sample(gMod)).replace(findGender2, sample(gMod2));
+fsn = new RegExp("\ud83c[\udffb-\udfff]", "g"),
+fg = new RegExp(gMod.join('|'), "g"),
+fg2 = new RegExp(gMod2.join('|'), "g"),
+rst = (string) => string.replace(fsn, sample(stMod)),
+randGender = (string) => string.replace(fg, sample(gMod)).replace(fg2, sample(gMod2));
 
 let det;
-const newDet = () => {
-  det = randSkinTone(randGender('🕵🏼‍♂️'));
-  d[ge]('det').innerText = det;
+let newDet = () => {
+  det = rst(randGender('🕵🏼‍♂️'));
+  d[ge]('det')[ih] = det;
   d.title = `BLANKS ${det} - Reduce the space`;
   wbc.setAttribute('data-flair', `${det}`);
 }
 
-const su = a => a.split(',');
-const opt = {
+let su = a => a.split(',');
+let opt = {
   lang: 'en',
   files: 10,
   clueTypes: su('ti,tiai,a,b,nt'),
   cats: [
-    "👓,👕,👘,🎩,👠,🧤,🧣,👒,👖,🧢,🥾,🩳",
+    "👓,👕,👘,🎩,👠,🧤,🧣,👒,🧢,🩳",
     "🎷,🎸,🎺,🎻,🪕,🥁,🎹",
-    "⚽,🏀,🏈,🎾,🥏,🏓,🥊,🎳,🏐,⚾,🏸,🥌",
+    "⚽,🏀,🏈,🎾,🥏,🏓,🥊,🎳,⚾,🏸,🥌",
     "❤️,🧡,💛,💚,💙,💜,🖤,🤎,💔,💖",
     "🍇,🍉,🍊,🍎,🥝,🥥,🍐,🍑,🍒,🍋,🍌",
-    "🐒,🐕,🦝,🐈,🦓,🐄,🐖,🐪,🦒,🐘,🐇,🐿️,🦨",
+    "🐒,🐕,🐈,🦓,🐄,🐖,🐪,🦒,🐘,🐇,🐿️,🦨",
     "🥯,🍔,🍕,🧀,🍜,🍦,🍩,🍿,🥐,🌮,🍣",
-    "🥰,😎,👿,🤔,😓,😷,🥺,😡,🤪,😇,🥶,🥱,🧐"
+    "🥰,😎,👿,🤔,😓,😷,🥺,🤪,😇,🥶,🥱,🧐"
   ],
   slotNames: "🧟‍♂️,🦹🏽‍♂️,🦸🏽‍♂️,🧛🏽‍♂️,👷🏻‍♂️,👨🏽‍🎨,👨🏿‍💼,👨🏻‍🔧,👨🏾‍⚕️,👨🏼‍🌾,👨🏽‍⚖️,👨🏾‍🔬,👨🏼‍🎤,👨🏽‍🚀,👮🏽‍♂️,👩🏽‍🍳,🧕🏼,💂🏽‍♂️,🧙🏼‍♂️,👰🏻,👩🏼‍✈️,🧝🏽‍♂️,👨🏾‍🚒,👩🏽‍🎓,👩🏼‍🏭",
   en: "Well Done!_Possible 👍_No more clues._Tutorial: Use the prompts. Fill in the spaces.  Then 👍_New Case!_# of People_# of Categories_Choose_Create_Community_Case Files",
@@ -111,15 +111,15 @@ const opt = {
 
 opt.slotNames = su(opt.slotNames);
 opt.cats = opt.cats.map(su);
-const kk = su("wellDone,solvable,noMore,tutorial,newCase,p,c,ch,cr,com,ff");
+let kk = su("wellDone,solvable,noMore,tutorial,newCase,p,c,ch,cr,com,ff");
 ['en', 'tp', 'fr', 'es', 'zh-CN'][fe]((l) => {
-  const nl = {};
+  let nl = {};
   opt[l] = opt[l].split('_')[fe]((w, i) => nl[kk[i]] = w);
   opt[l] = nl;
 })
 
 
-const lang = (e, play = true) => {
+let lang = (e, play = true) => {
   pause = false;
   if (play) {
     sfx([.7,.45,82.40689,,,.02,,3,35,,-150,-0.06,,,,,,.5,.03,.21]);
@@ -154,7 +154,7 @@ const lang = (e, play = true) => {
 
 lang('en', false);
 
-[...d.getElementsByClassName('lang')][fe]((button, i, arr) => {
+[...d[gcn]('lang')][fe]((button, i, arr) => {
   button.addEventListener('click', (e) => {
     arr[fe](a => a[cl].remove('selected'));
     lang(e);
@@ -164,7 +164,7 @@ lang('en', false);
 newDet();
 
 let voice;
-const selectNewVoice = () => {
+let selectNewVoice = () => {
   let tries = 0;
 
   voice = window.speechSynthesis
@@ -178,7 +178,7 @@ const selectNewVoice = () => {
 }
 
 selectNewVoice();
-const sfx = (d) => {
+let sfx = (d) => {
   if (pause) return;
   if (!sound) return;
   zzfx(...d);
@@ -190,7 +190,7 @@ let say = (m) => {
   if (pause) return;
   selectNewVoice();
   speechSynthesis.cancel();
-  const msg = new SpeechSynthesisUtterance();
+  let msg = new SpeechSynthesisUtterance();
   msg.voice = voice;
   // msg.volume = 1;
   // msg.pitch = 1.1;
@@ -200,7 +200,7 @@ let say = (m) => {
   speechSynthesis.speak(msg);
 };
 
-const chooseGame = () => {
+let chooseGame = () => {
   clear();
   wbc[ac](nnote());
   root.style.display = 'none';
@@ -208,8 +208,8 @@ const chooseGame = () => {
 };
 
 setInterval(() => {
-const s = sample([...d.getElementsByClassName('cme')]);
-if (s.children[0][cl].contains('correct', 'incorrect') || curG.sNum == 1) {
+let s = sample([...d[gcn]('cme')]);
+if (!s || s.children[0][cl].contains('correct', 'incorrect') || curG.sNum == 1) {
   return;
 }
 s[cl].add('dan');
@@ -218,6 +218,6 @@ to(() => {
 while (s.children[0].dataset.option !== '0'){
   s.click();
 }
-[...d.getElementsByClassName('dan')][fe](c => c[cl].remove('dan'))
-}, 1000);
+[...d[gcn]('dan')][fe](c => c[cl].remove('dan'))
+}, 800);
 }, 45000);

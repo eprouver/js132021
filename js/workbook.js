@@ -2,9 +2,9 @@
 //['ti', 'tiai', 'a', 'b', 'nt']
 // opt.slotNames
 
-const wordClues = clue => {
-  const keys = Object.keys(clue.d[0]);
-  const keys2 = Object.keys(clue.d[1] || {});
+let wordClues = clue => {
+  let keys = Object.keys(clue.d[0]);
+  let keys2 = Object.keys(clue.d[1] || {});
   let option, option2, option3;
 
   option = (curG.cats[curG.cNms.indexOf(keys[0])] || []).indexOf(clue.d[0][keys[0]]) + 1;
@@ -114,10 +114,10 @@ const wordClues = clue => {
   }
 };
 
-const showClueArr = (arr, div) => {
-  [...d.getElementsByClassName('loading')][fe](c => c[cl].remove('loading'));
+let showClueArr = (arr, div) => {
+  [...d[gcn]('loading')][fe](c => c[cl].remove('loading'));
   arr.map(wordClues)[fe]((clue, i) => {
-      const note = ce('div');
+      let note = ce('div');
       note[cl].add('waiting')
       note[ih] = '<div>🔍</div>';
       wbc[ac](note);
@@ -125,33 +125,35 @@ const showClueArr = (arr, div) => {
       note[cl].remove('waiting');
       note[ih] = '';
       to(() => {
-        note.onclick = (e) => { say(e.target.innerText.replace(findSkin, '')) };
+        note.onclick = (e) => { say(e.target.innerText.replace(fsn, '')) };
         note[ih] = clue;
         note[cl].add('clue');
         sfx([2,0,~~(40 + M[ra]() * 40),.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
-        say(note.innerText.replace(findSkin, ''));
+        say(note.innerText.replace(fsn, ''));
       }, 100);
     }, clueTime * (i + (sound ? 0 : 1)));
   });
 
   if (div) {
     to(() => {
-      const note = nnote();
+      let note = nnote();
       wbc[ac](note);
     }, (arr.length + 1) * 1000);
   }
 }
 
-const scoreMatrix = () => {
+let scoreMatrix = () => {
+  timeouts[fe](t => clearTimeout(t));
+  [...d[gcn]('dan')][fe](c => c[cl].remove('dan'));
   curG.attempts += 1;
 
   //if (curG.level === curG.levels.length - 1) {
     // player is on last level check entire board
-    const finalBoard = curG.levels[curG.levels.length -1].cb[0];
+    let finalBoard = curG.levels[curG.levels.length -1].cb[0];
     let cleared = true;
     for(let col = 0; col < curG.sNum; col++) {
       for(let row = 0; row < curG.cats.length; row++) {
-        const user = userBoard[col][curG.cNms[row]];
+        let user = userBoard[col][curG.cNms[row]];
         user.span[cl].remove('correct,incorrect');
         if (user.d === '_'){
           cleared = opt.t = false;
@@ -177,36 +179,36 @@ const scoreMatrix = () => {
     return cleared;
 }
 
-const extraClueButton = () => {
+let extraClueButton = () => {
   if (!curG.extraClue) return;
-  const checker = ce('button');
+  let checker = ce('button');
   checker[cl].add('clue');
   checker.onclick = () => {
     curG.extraClue();
     checker.parentNode.removeChild(checker);
   };
-  checker.innerText = '+ 🔍';
+  checker[ih] = '+ 🔍';
 
-  const spacer = ce('div');
+  let spacer = ce('div');
   spacer[cl].add('spacer');
   wbc[ac](spacer);
 
   wbc[ac](checker);
 }
 
-const nnote = () =>  {
-  const n = ce('div');
+let nnote = () =>  {
+  let n = ce('div');
   n[cl].add('clue');
   n[ih] = '<h3 class="loading">&nbsp;</h3>';
   return n;
 }
 
 let clueTime, levelTime;
-const setupWorkbook = () => {
+let setupWorkbook = () => {
   timeouts[fe](t => clearTimeout(t));
   clueTime = (sound ? 6600 : 800);
   levelTime = (sound ? 2000 : 7000);
-  const tutorial = curG.sNum === 1 ? (sound ? 7000 : 4000) : (sound ? 2500 : 1000);
+  let tutorial = curG.sNum === 1 ? (sound ? 7000 : 4000) : (sound ? 2500 : 1000);
 
   let clues = 0;
   curG.levels[fe]((level, i, arr) => {
@@ -216,7 +218,7 @@ const setupWorkbook = () => {
 
       // if it's the last level still show the ellipse
       if (curG.level === arr.length - 1) {
-        const note = nnote();
+        let note = nnote();
         wbc[ac](note);
         to(() => {
           note[cl].add('clue');
@@ -235,7 +237,7 @@ const setupWorkbook = () => {
     clues += level.rwc.length;
   });
 
-  const note = ce('div');
+  let note = ce('div');
   if (curG.sNum === 1) {
     note[ih] = `<div class="tutorial">${opt[opt.lang].tutorial}</div>`;
     say(opt[opt.lang].tutorial);
