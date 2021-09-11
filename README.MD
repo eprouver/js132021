@@ -20,10 +20,6 @@ Periodically you will see the 'case files' screen where you can choose the board
 If you are signed in with NEAR you can also post a new case to the community with your username.
 If you are signed in with Coil you can access the 'case files' screen from the main menu - selecting 'new case' in this menu skips the tutorial and the 'ramping up' board sizes. You can also generate a 5x5 board, which is larger than all random boards.  It may take a moment to generate.
 
-Some of the 'community' cases were made by me during earlier versions of the game logic, so they may take more than one guess to solve.  I never figured out how to delete them.
-
-Also, their category names are in English no matter what language you've chosen.
-
 # Theme
 The theme of the competition was **SPACE**.
 The game uses that theme by:
