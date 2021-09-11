@@ -17,7 +17,8 @@ The cases are entirely generated in the browser for infinite replay. After the t
 Periodically you will see the 'case files' screen where you can choose the board-size of your next case or play one of the community cases submitted to the NEAR blockchain.
 
 # [NEAR](https://near.org/) and [Coil](https://coil.com/)
-If you are signed in with NEAR you can also post a new case to the community with your username.
+If you are signed in with NEAR you can post a new case to the community with your username.
+
 If you are signed in with Coil you can access the 'case files' screen from the main menu - selecting 'new case' in this menu skips the tutorial and the 'ramping up' board sizes. You can also generate a 5x5 board, which is larger than all random boards.  It may take a moment to generate.
 
 # Theme
