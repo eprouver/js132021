@@ -92,17 +92,17 @@ let opt = {
   files: 10,
   clueTypes: su('ti,tiai,a,b,nt'),
   cats: [
-    "👓,👕,👘,🎩,👠,🧤,🧣,👒,🧢,🩳",
+    "👓,👕,👘,🎩,👠,🧤,🧣,👒,🧢,🩳,🧦",
     "🎷,🎸,🎺,🎻,🪕,🥁,🎹",
     "⚽,🏀,🏈,🎾,🥏,🏓,🎳,⚾,🏸,🥌",
-    "❤️,🧡,💛,💚,💙,💜,🖤,🤎,💔,💖",
+    "❤️,🧡,💛,💚,💙,💜,🖤,🤎,💔,💖,💕",
     "🍇,🍉,🍊,🍎,🥝,🥥,🍐,🍑,🍒,🍋,🍌",
-    "🐒,🐕,🐈,🦓,🐄,🐖,🐪,🐘,🐇,🐿️,🦨",
-    "🥯,🍔,🍕,🧀,🍜,🍦,🍩,🍿,🥐,🌮,🍣",
-    "🥰,😎,👿,🤔,😓,😷,🥺,🤪,😇,🥶,🥱,🧐"
+    "🐒,🐕,🐈,🦓,🐄,🐖,🐪,🐘,🐇,🐿️,🦨,🦇",
+    "🥯,🍔,🍕,🧀,🍜,🍦,🍩,🍿,🥐,🌮,🍣,🥔,🧁,🥪",
+    "🥰,😎,👿,🤔,😓,😷,🥺,🤪,😇,🥶,🥱,🧐,😉,😲"
   ],
-  sN: "🧟‍♂️,🦹🏽‍♂️,🦸🏽‍♂️,🧛🏽‍♂️,👷🏻‍♂️,👨🏽‍🎨,👨🏿‍💼,👨🏻‍🔧,👨🏾‍⚕️,👨🏼‍🌾,👨🏽‍⚖️,👨🏾‍🔬,👨🏼‍🎤,👨🏽‍🚀,👮🏽‍♂️,👩🏽‍🍳,🧕🏼,💂🏽‍♂️,🧙🏼‍♂️,👰🏻,👩🏼‍✈️,🧝🏽‍♂️,👨🏾‍🚒,👩🏽‍🎓,👩🏼‍🏭",
-  en: "Well Done!_Possible 👍_No more clues._Tutorial: Use these clues. Fill in the spaces.  Then 👍_New Case!_# of People_# of Categories_Choose_Create_Community_Case Files",
+  sN: "🧟‍♂️,🦹🏽‍♂️,🦸🏽‍♂️,🧛🏽‍♂️,👷🏻‍♂️,👨🏽‍🎨,👨🏿‍💼,👨🏻‍🔧,👨🏾‍⚕️,👨🏼‍🌾,👨🏽‍⚖️,👨🏾‍🔬,👨🏼‍🎤,👨🏽‍🚀,👮🏽‍♂️,👩🏽‍🍳,🧕🏼,💂🏽‍♂️,🧙🏼‍♂️,👰🏻,👩🏼‍✈️,🧝🏽‍♂️,👨🏾‍🚒,👩🏽‍🎓,👩🏼‍🏭,🧚🏽‍♂️",
+  en: "Well Done!_Possible 👍_No more clues._Tutorial: Use these clues. Fill in those spaces.  Then 👍_New Case!_# of People_# of Categories_Choose_Create_Community_Case Files",
   tp: "pona!_ken 👍_pini_kama sona: o kute e toki pi wile sona. tenpo pini la o luka e 👍_utala sin_jan_kulupu ilo_o pana_o sin_kulupu_utala mute",
   fr: "Bien Joué!_👍 Possible_Indices terminés._Tutoriel: Utilisez les indices. Remplissez les espaces. Enfin appuyez sur 👍_Nouveau Mystère!_Nombre de Personnes_Nombre de Catégories_Choisir_Créer_Communauté_Fichiers de Mystères",
   es: "¡Bien Hecho!_👍 Posible_No más pistas._Tutorial: Usa las pistas. Completa la información. Finalmente toca 👍_Nuevo Misterio!_Gente_Categorías_Elegir_Crear_Comunidad_Archivos de Misterios",
@@ -221,4 +221,4 @@ setInterval(() => {
   }
   [...d[gcn]('dan')][fe](c => c[cl].remove('dan'))
   }, 800);
-}, 18000);
+}, 40000);
