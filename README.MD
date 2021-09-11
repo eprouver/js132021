@@ -22,6 +22,8 @@ If you are signed in with Coil you can access the 'case files' screen from the m
 
 Some of the 'community' cases were made by me during earlier versions of the game logic, so they may take more than one guess to solve.  I never figured out how to delete them.
 
+Also, their category names are in English no matter what language you've chosen.
+
 # Theme
 The theme of the competition was **SPACE**.
 The game uses that theme by:
@@ -31,7 +33,11 @@ The game uses that theme by:
 * There's no time limit to give you some space to think
 
 # Why does it say "Woman Doctor" and "Man Zombie"?
-The voices are using the speechSynthesis library of the browser, used by screen readers. That's how the emojis are read by some of the voices in screen reader. Although you can remove the skin tone from the emoji before speechSynthesis to avoid the browser saying things like "Man Doctor with Medium Light Skin Tone", because of how the emojis are defined, removing the gender breaks the meaning in some cases.  For example, instead of "Woman Scientist", it would just say "microscope".
+All of the characters including the detective shuffle randomly both skin tone and gender.
+
+The audio is using the speechSynthesis library of the browser, used by screen readers. What you hear is how each emoji is read by a randomly chosen screen reader voice. Although you can remove the skin tone from the emoji before speechSynthesis to avoid the browser saying things like "Man Doctor with Medium Light Skin Tone", because of how the emojis are defined, removing the gender breaks the meaning in some cases.  For example, instead of "Woman Scientist", it would say "microscope" or "person microscope".
+
+Somewhat worse for the purpose of this game is that on some older browsers it says 'male symbol' and 'female symbol'.
 
 # Layout
 I wanted to make something I could play on my Surface Duo, so the layout is in two equal columns.

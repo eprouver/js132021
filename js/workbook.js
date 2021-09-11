@@ -61,7 +61,7 @@ let wordClues = clue => {
         return `有${sdo}${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有${sdo}${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}`;
       break;
       case 'tiai':
-        return `<span class="person">${curG.sN[clue.d[1].i]}</span> 有 ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
+        return `<span class="person">${curG.sN[clue.d[1].i]}</span>有 ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
       break;
       case 'b':
         return `${keys2[0]}${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 在${keys[0]}${sdo}${option}">${clue.d[0][keys[0]]}</span> 的右边`;
