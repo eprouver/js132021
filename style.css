@@ -371,12 +371,12 @@ span.incorrect:before {
     font-size: 4rem
 }
 
-#wb h1,.waiting,#li {
+#wb h1,.loading,#li {
     animation: 1s ease forwards 1 fadeOn;
     font-size: 2.4rem
 }
 
-.waiting {
+.loading {
     animation: 3s linear alternate infinite look;
 }
 
@@ -431,7 +431,7 @@ button.clue {
     position: relative
 }
 
-.loading:after {
+.waiting:after {
     animation: ellipsis steps(6) 2s infinite;
     content: "\2026";
     display: inline-block;

@@ -221,4 +221,4 @@ setInterval(() => {
   }
   [...d[gcn]('dan')][fe](c => c[cl].remove('dan'))
   }, 800);
-}, 40000);
+}, 38000);

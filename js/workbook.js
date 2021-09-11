@@ -58,19 +58,19 @@ let wordClues = clue => {
     case 'zh-CN':
     switch(clue.type) {
       case 'ti':
-        return `有 ${sdo}${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有 ${sdo}${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}`;
+        return `有${sdo}${option}">${clue.d[0][keys[0]]}</span> ${keys[0]} 的人, 也有${sdo}${option2}">${clue.d[0][keys[1]]}</span> 的${keys[1]}`;
       break;
       case 'tiai':
         return `<span class="person">${curG.sN[clue.d[1].i]}</span> 有 ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的${keys[0]}`;
       break;
       case 'b':
-        return `${keys2[0]} ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的右边`;
+        return `${keys2[0]}${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 在${keys[0]}${sdo}${option}">${clue.d[0][keys[0]]}</span> 的右边`;
       break;
       case 'a':
-        return `${keys2[0]} ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 在 ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的左边`;
+        return `${keys2[0]}${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 在${keys[0]}${sdo}${option}">${clue.d[0][keys[0]]}</span> 的左边`;
       break;
       case 'nt':
-        return `${keys2[0]}  ${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 就在 ${keys[0]}  ${sdo}${option}">${clue.d[0][keys[0]]}</span> 的旁边`;
+        return `${keys2[0]}${sdo}${option3}">${clue.d[1][keys2[0]]}</span> 就在${keys[0]}${sdo}${option}">${clue.d[0][keys[0]]}</span> 的旁边`;
       break;
     }
     case 'tp':
@@ -116,22 +116,20 @@ let wordClues = clue => {
 };
 
 let showClueArr = (arr, div) => {
-  [...d[gcn]('loading')][fe](c => c[cl].remove('loading'));
+  [...d[gcn]('loading')][fe](c => c[ih] = '');
   arr.map(wordClues)[fe]((clue, i) => {
       let note = ce('div');
       note[cl].add('waiting')
-      note[ih] = '<div>🔍</div>';
+      note[ih] = '';
       wbc[ac](note);
     to(() => {
       note[cl].remove('waiting');
       note[ih] = '';
-      to(() => {
-        note.onclick = (e) => { say(e.target.innerText.replace(fsn, '')) };
-        note[ih] = clue;
-        note[cl].add('clue');
-        sfx([2,0,~~(40 + M[ra]() * 40),.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
-        say(note.innerText.replace(fsn, ''));
-      }, 100);
+      note.onclick = (e) => { say(e.target.innerText.replace(fsn, '')) };
+      note[ih] = clue;
+      note[cl].add('clue');
+      sfx([2,0,~~(40 + M[ra]() * 40),.01,,.26,1,2.5,.2,,,,1,,,,,.3,.05]);
+      say(note.innerText.replace(fsn, ''));
     }, clueTime * (i + (sound ? 0 : 1)));
   });
 
@@ -199,7 +197,7 @@ let extraClueButton = () => {
 let nnote = () =>  {
   let n = ce('div');
   n[cl].add('clue');
-  n[ih] = '<h3 class="loading">&nbsp;</h3>';
+  n[ih] = '<h3 class="loading">🔍</h3>';
   return n;
 }
 
@@ -222,7 +220,7 @@ let setupWorkbook = () => {
         wbc[ac](note);
         to(() => {
           note[cl].add('clue');
-          note[cl].remove('loading');
+          note[cl][ih] = '';
           note[ih] = `<br/><h3>${opt[opt.lang].solvable}</h3>`;
           opt.t = false;
           theme(-200);
