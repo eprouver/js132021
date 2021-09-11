@@ -12,13 +12,15 @@ Blanks Detective is a mystery themed, point-and-click, logic puzzle game.  Fill 
 
 If you're having trouble, after 'possible thumbs up' you can use the extra clue button.  There is no penalty for additional clues. Although, it will eventually give you the whole answer, at which point the "Well Done" message may feel sarcastic.
 
-The cases are entirely generated in the browser for infinite replay. After the tutorial there is a ramping up of board size before the board sizes also become random, so some will still be easy and some harder.
+The cases are entirely generated in the browser for infinite replay. After the tutorial there is a ramping up of board size before the board sizes also become random, so some will be easy and some quite a bit harder.
 
-Periodically you will see the 'case files' screen where you can choose the board-size of your next case or play one of the community cases submitted to the NEXT blockchain.
+Periodically you will see the 'case files' screen where you can choose the board-size of your next case or play one of the community cases submitted to the NEAR blockchain.
 
-# NEAR and Coil
-If you are signed in with NEAR you can also post a case to the community with your username
-If you are signed in with Coil you can access the 'case files' screen from the main menu - selecting 'new case' in this menu skips the tutorial and the 'ramping up' board sizes.
+# [NEAR](https://near.org/) and [Coil](https://coil.com/)
+If you are signed in with NEAR you can also post a new case to the community with your username.
+If you are signed in with Coil you can access the 'case files' screen from the main menu - selecting 'new case' in this menu skips the tutorial and the 'ramping up' board sizes. You can also generate a 5x5 board, which is larger than all random boards.  It may take a moment to generate.
+
+Some of the 'community' cases were made by me during earlier versions of the game logic, so they may take more than one guess to solve.  I never figured out how to delete them.
 
 # Theme
 The theme of the competition was **SPACE**.
@@ -34,16 +36,13 @@ The voices are using the speechSynthesis library of the browser, used by screen 
 # Layout
 I wanted to make something I could play on my Surface Duo, so the layout is in two equal columns.
 
-# Emojis
-All the artwork is system emojis to reduce file size, so if you have access to an Apple or Android device, it looks a lot nicer than on PC.
-
 # toki pona
 [toki pona](https://en.wikipedia.org/wiki/Toki_Pona) is a tiny constructed language based on Taoist principles of simplicity. It only has 137 basic words.  It's kind of like 1984's New Speak but with the exact opposite goal.
 
 # 13K Notes
 I went back and forth on some features.  Originally I started with a top down section where the user had to walk around to collect the clues, but it didn't seem to add anything fun.
 
-Also, originally the clue list was pruned of any clues that could be removed without effecting the solution, but it wasn't as fun. It made every board very challenging but you couldn't really play along as the clues arrive.  Also, thematically it's more like an investigation that you'd turn up some information you'd already figured out.
+Also, originally the clue list was pruned of any clues that could be removed without effecting the solution, but it wasn't fun. It made every board very challenging and you couldn't really play along as the clues arrive.  Also, thematically it's more like an investigation that you'd turn up some information you'd already figured out.
 
 # Categories
 * Desktop
