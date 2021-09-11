@@ -34,8 +34,6 @@ All of the characters including the detective shuffle randomly both skin tone an
 
 The audio is using the speechSynthesis library of the browser, used by screen readers. What you hear is how each emoji is read by a randomly chosen screen reader voice. Although you can remove the skin tone from the emoji before speechSynthesis to avoid the browser saying things like "Man Doctor with Medium Light Skin Tone", because of how the emojis are defined, removing the gender breaks the meaning in some cases.  For example, instead of "Woman Scientist", it would say "microscope" or "person microscope".
 
-Somewhat worse for the purpose of this game is that on some older browsers it says 'male symbol' and 'female symbol'.
-
 # Layout
 I wanted to make something I could play on my Surface Duo, so the layout is in two equal columns.
 
