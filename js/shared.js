@@ -89,7 +89,7 @@ let newDet = () => {
 let su = a => a.split(',');
 let opt = {
   lang: 'en',
-  files: 10,
+  files: 6,
   clueTypes: su('ti,tiai,a,b,nt'),
   cats: [
     "👓,👕,👘,🎩,👠,🧤,🧣,👒,🧢,🩳,🧦",
